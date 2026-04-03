@@ -18,38 +18,57 @@ export default function Home() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay"></div>
       </div>
 
-      <main className="relative flex flex-col-reverse lg:flex-row items-center justify-between min-h-[100vh] px-6 py-32 sm:px-12 transition-all max-w-6xl mx-auto z-10 w-full gap-12 lg:gap-8">
+      <main className="relative flex flex-col lg:grid lg:grid-cols-3 items-center min-h-[100vh] px-6 py-32 sm:px-12 transition-all max-w-[1400px] mx-auto z-10 w-full gap-12 lg:gap-8 overflow-hidden lg:overflow-visible">
         
-        {/* Content Container (Left side) */}
-        <div className="flex-1 flex flex-col items-start text-left w-full mt-8 lg:mt-0">
+        {/* Left Column: Text Content */}
+        <div className="lg:col-span-1 z-10 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 w-full max-w-xl mx-auto lg:mx-0 order-1">
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.15] tracking-tight max-w-2xl opacity-0 animate-fade-in animation-delay-200">
+          <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight opacity-0 animate-fade-in animation-delay-200 text-white">
             Building <span className="text-red-500">Powerful</span><br className="hidden sm:block" /> Digital Experiences
           </h1>
 
           {/* Supporting Text */}
-          <p className="mt-8 text-lg sm:text-xl opacity-0 animate-fade-in animation-delay-300 max-w-[600px] text-[#B3B3B3] leading-relaxed">
+          <p className="text-lg sm:text-xl opacity-0 animate-fade-in animation-delay-300 max-w-[600px] text-[#B3B3B3] leading-relaxed mb-2">
             I design and build high-performance websites and applications that combine modern design, speed, and seamless user experience.
           </p>
 
-          {/* Call to action buttons */}
-          <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-start justify-start gap-4 w-full sm:w-auto opacity-0 animate-fade-in animation-delay-400">
+          {/* Call to action buttons horizontally stacked */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-start justify-start gap-4 w-full sm:w-auto opacity-0 animate-fade-in animation-delay-400">
             <Link
               href="#work"
-              className="w-full sm:w-auto px-8 py-4 bg-red-600 text-white font-bold rounded-full shadow-md hover:shadow-[0_0_25px_rgba(255,26,26,0.8)] transition-all duration-300 text-center"
+              className="bg-red-600 text-white font-bold rounded-full px-8 py-4 shadow-md hover:shadow-[0_0_25px_rgba(255,26,26,0.8)] transition-all duration-300 text-center w-full sm:w-auto"
             >
               View My Work
             </Link>
             <Link
               href="#contact"
-              className="w-full sm:w-auto px-8 py-4 bg-transparent border border-red-500 text-red-500 font-bold rounded-full hover:bg-red-500 hover:text-white transition-all duration-300 text-center"
+              className="relative overflow-hidden group border border-red-500 text-red-500 font-bold rounded-full px-8 py-4 text-center w-full sm:w-auto"
             >
-              Contact Me
+              <span className="absolute inset-0 w-full h-full bg-red-500 -translate-x-[105%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></span>
+              <span className="relative z-10 group-hover:text-white transition-colors duration-300">Contact Me</span>
             </Link>
           </div>
+        </div>
 
-          {/* Social Icons */}
-          <div className="mt-12 flex items-center justify-start gap-6 opacity-0 animate-fade-in animation-delay-500 w-full">
+        {/* Center Column: Large Background Image */}
+        <div className="lg:col-span-1 z-0 order-2 w-full flex justify-center items-center pointer-events-none mt-8 lg:mt-0">
+          <div className="relative lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[280px] h-[280px] md:w-[400px] md:h-[400px] lg:w-[650px] lg:h-[650px] max-w-[90vw] animate-fade-in animate-float opacity-0 z-0 mx-auto">
+            <div className="absolute inset-0 rounded-full border-2 border-red-500 shadow-[0_0_120px_rgba(255,26,26,0.6)] overflow-hidden bg-black/30 backdrop-blur-sm animate-pulse">
+              <Image
+                src="/img/my avi.png"
+                alt="Profile"
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 640px) 280px, (max-width: 1024px) 400px, 650px"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Social Icons Only */}
+        <div className="lg:col-span-1 z-10 flex flex-col items-center lg:items-end justify-center w-full h-full order-3 mt-12 lg:mt-0 opacity-0 animate-fade-in animation-delay-500">
+          <div className="flex flex-row lg:flex-col items-center lg:items-end gap-5">
             <Link href="https://github.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
               <FiGithub className="w-6 h-6" />
               <span className="sr-only">GitHub</span>
@@ -62,29 +81,15 @@ export default function Home() {
               <FiTwitter className="w-6 h-6" />
               <span className="sr-only">Twitter</span>
             </Link>
-            <Link href="mailto:hello@example.com" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+            <Link href="mailto:hello@example.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
               <FiMail className="w-6 h-6" />
               <span className="sr-only">Email</span>
             </Link>
           </div>
         </div>
 
-        {/* Profile Image Container (Right side) */}
-        <div className="relative flex-shrink-0 w-[130px] h-[130px] sm:w-[160px] sm:h-[160px] lg:w-[200px] lg:h-[200px] animate-fade-in animate-float opacity-0">
-          <div className="absolute inset-0 rounded-full border-2 border-red-500 shadow-[0_0_40px_rgba(255,26,26,0.6)] overflow-hidden bg-black/20">
-            <Image
-              src="/img/my avi.png"
-              alt="Profile"
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 640px) 130px, (max-width: 1024px) 160px, 200px"
-            />
-          </div>
-        </div>
-
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-[fade-in_1s_cubic-bezier(0.16,1,0.3,1)_800ms_forwards]">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-[fade-in_1s_cubic-bezier(0.16,1,0.3,1)_800ms_forwards] z-10">
           <div className="animate-bounce text-red-500 hover:text-red-400 transition-colors cursor-pointer">
             <FiChevronDown className="w-7 h-7" />
           </div>
