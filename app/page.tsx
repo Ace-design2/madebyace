@@ -24,7 +24,7 @@ export default function Home() {
       <main className="relative flex flex-col lg:grid lg:grid-cols-3 items-center min-h-[100vh] px-6 py-32 sm:px-12 transition-all max-w-[1400px] mx-auto z-10 w-full gap-12 lg:gap-8 overflow-hidden lg:overflow-visible">
         
         {/* Left Column: Text Content */}
-        <div className="lg:col-span-1 z-10 flex flex-col items-center lg:items-start text-center lg:text-left gap-10 w-full max-w-xl mx-auto lg:mx-0 order-1">
+        <div className="lg:col-span-1 z-10 flex flex-col items-center lg:items-start text-center lg:text-left gap-10 lg:gap-24 w-full max-w-xl mx-auto lg:mx-0 order-1">
           {/* Headline */}
           <TypewriterHeadline />
 
@@ -68,9 +68,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right Column: Social Icons Only */}
-        <div className="lg:col-span-1 z-10 flex flex-col items-center lg:items-end justify-center w-full h-full order-3 mt-12 lg:mt-0 opacity-0 animate-fade-in animation-delay-500">
-          <div className="flex flex-row lg:flex-col items-center lg:items-end gap-5">
+        {/* Right Column: Social Icons & Scroll Indicator */}
+        <div className="relative lg:col-span-1 z-10 flex flex-col items-center lg:items-end justify-center w-full h-full order-3 mt-12 lg:mt-0 opacity-0 animate-fade-in animation-delay-500">
+          <div className="flex flex-row lg:flex-col items-center lg:items-end gap-6 mb-auto lg:mb-0 lg:py-20">
             <Link href="https://github.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
               <FiGithub className="w-6 h-6" />
               <span className="sr-only">GitHub</span>
@@ -88,12 +88,15 @@ export default function Home() {
               <span className="sr-only">Email</span>
             </Link>
           </div>
-        </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-[fade-in_1s_cubic-bezier(0.16,1,0.3,1)_800ms_forwards] z-10">
-          <div className="animate-bounce text-red-500 hover:text-red-400 transition-colors cursor-pointer">
-            <FiChevronDown className="w-7 h-7" />
+          {/* Scroll Indicator - Aligned with icons */}
+          <div className="lg:absolute lg:bottom-12 flex flex-col items-center gap-3 opacity-0 animate-[fade-in_1s_cubic-bezier(0.16,1,0.3,1)_1200ms_forwards] mt-12 lg:mt-0">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-red-500 [writing-mode:vertical-lr] font-bold">Scroll</span>
+            <div className="w-[1px] h-20 bg-gradient-to-b from-red-500/0 via-red-500 to-red-500 relative">
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 animate-bounce">
+                <div className="w-1.5 h-1.5 border-r border-b border-red-500 rotate-45"></div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
