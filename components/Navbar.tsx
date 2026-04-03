@@ -1,11 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { FiPhone, FiMail } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const contactRef = useRef<HTMLDivElement>(null);
+  const mobileContactRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,12 +36,27 @@ export default function Navbar() {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (contactRef.current && !contactRef.current.contains(event.target as Node)) {
+        setIsContactOpen(false);
+      }
+      if (mobileContactRef.current && !mobileContactRef.current.contains(event.target as Node)) {
+        // Mobile contact tooltips usually close when the whole menu closes, 
+        // but we can handle it here if needed.
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const navItems = ["Home", "About", "Projects", "Services"];
 
   return (
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 pointer-events-none">
       <nav
-        className={`pointer-events-auto transition-all duration-500 ease-out px-6 py-4 sm:px-8 w-full max-w-6xl rounded-full border ${
+        className={`pointer-events-auto transition-all duration-500 ease-out pl-6 pr-4 py-2.5 sm:pl-8 sm:pr-4 w-full max-w-6xl rounded-full border ${
           isScrolled 
             ? "bg-black/70 backdrop-blur-2xl border-white/10 shadow-[0_8px_32px_rgba(255,26,26,0.15)]" 
             : "bg-transparent border-transparent"
@@ -71,13 +91,50 @@ export default function Navbar() {
 
           {/* CTA & Mobile Toggle */}
           <div className="flex-1 flex justify-end items-center gap-4">
-            <Link 
-              href="#contact" 
-              className="hidden md:flex relative overflow-hidden group border border-white/20 hover:border-red-500 text-[12px] uppercase tracking-widest font-bold text-white rounded-full px-6 py-3 transition-all duration-500"
-            >
-              <span className="absolute inset-0 w-full h-full bg-red-600 -translate-x-[105%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></span>
-              <span className="relative z-10 group-hover:text-white transition-colors duration-300">Let's Talk</span>
-            </Link>
+            <div className="hidden md:block relative" ref={contactRef}>
+              <button 
+                onClick={() => setIsContactOpen(!isContactOpen)}
+                className="relative overflow-hidden group border border-white/20 hover:border-red-500 text-[12px] uppercase tracking-widest font-bold text-white rounded-full px-6 py-3 transition-all duration-500"
+              >
+                <span className="absolute inset-0 w-full h-full bg-red-600 -translate-x-[105%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></span>
+                <span className="relative z-10 group-hover:text-white transition-colors duration-300">Let's Talk</span>
+              </button>
+
+              {/* Desktop Tooltip */}
+              <div className={`absolute top-full right-0 mt-4 w-64 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-2xl p-2 shadow-2xl transition-all duration-300 origin-top-right ${
+                isContactOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+              }`}>
+                <div className="flex flex-col space-y-1">
+                  <a href="https://wa.me/1234567890" target="_blank" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group">
+                    <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all">
+                      <FaWhatsapp className="w-5 h-5" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-white text-sm font-bold">WhatsApp</span>
+                      <span className="text-gray-400 text-[10px] uppercase tracking-wider">Chat with me</span>
+                    </div>
+                  </a>
+                  <a href="tel:+1234567890" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group">
+                    <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                      <FiPhone className="w-5 h-5" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-white text-sm font-bold">Phone</span>
+                      <span className="text-gray-400 text-[10px] uppercase tracking-wider">Call directly</span>
+                    </div>
+                  </a>
+                  <a href="mailto:hello@example.com" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group">
+                    <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 group-hover:bg-red-500 group-hover:text-white transition-all">
+                      <FiMail className="w-5 h-5" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-white text-sm font-bold">Email</span>
+                      <span className="text-gray-400 text-[10px] uppercase tracking-wider">Send a message</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
 
             {/* Mobile Nav Toggle */}
             <div className="md:hidden">
@@ -142,17 +199,26 @@ export default function Navbar() {
           </ul>
 
           {/* Mobile CTA */}
-          <div className={`transition-all duration-700 delay-500 ${
+          <div className={`w-full transition-all duration-700 delay-500 ${
             isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}>
-            <Link 
-              href="#contact" 
-              onClick={() => setIsMenuOpen(false)}
-              className="relative overflow-hidden group border-2 border-red-500 text-[14px] sm:text-[16px] uppercase tracking-widest font-black text-white rounded-full px-10 py-5 transition-all duration-500 block text-center"
-            >
-              <span className="absolute inset-0 w-full h-full bg-red-600 -translate-x-[105%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></span>
-              <span className="relative z-10 group-hover:text-white transition-colors duration-300">Let's Talk</span>
-            </Link>
+            <div className="flex flex-col space-y-4 w-full max-w-[280px] mx-auto">
+              <span className="text-white/40 text-[10px] uppercase tracking-[0.3em] font-bold text-center">Let's Connect</span>
+              <div className="grid grid-cols-1 gap-3">
+                <a href="https://wa.me/1234567890" target="_blank" className="flex items-center justify-center gap-4 border border-white/10 bg-white/5 rounded-2xl py-4 hover:border-red-500/50 transition-all">
+                  <FaWhatsapp className="w-6 h-6 text-green-500" />
+                  <span className="text-white font-bold uppercase tracking-wider text-xs">WhatsApp</span>
+                </a>
+                <a href="tel:+1234567890" className="flex items-center justify-center gap-4 border border-white/10 bg-white/5 rounded-2xl py-4 hover:border-red-500/50 transition-all">
+                  <FiPhone className="w-6 h-6 text-blue-500" />
+                  <span className="text-white font-bold uppercase tracking-wider text-xs">Phone Call</span>
+                </a>
+                <a href="mailto:hello@example.com" className="flex items-center justify-center gap-4 border border-white/10 bg-white/5 rounded-2xl py-4 hover:border-red-500/50 transition-all">
+                  <FiMail className="w-6 h-6 text-red-500" />
+                  <span className="text-white font-bold uppercase tracking-wider text-xs">Send Email</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
