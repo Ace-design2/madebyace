@@ -26,14 +26,14 @@ export default function Navbar() {
       <nav
         className={`pointer-events-auto transition-all duration-300 ease-in-out px-6 py-4 sm:px-8 w-full max-w-[1000px] rounded-full border ${
           isScrolled 
-            ? "bg-white/90 backdrop-blur-md shadow-[0_8px_30px_rgb(8,24,86,0.08)] border-[#081856]/10" 
+            ? "bg-black/40 backdrop-blur-lg border-red-500/20 shadow-[0_4px_30px_rgba(255,26,26,0.1)]" 
             : "bg-transparent border-transparent"
         }`}
       >
         <div className="flex justify-between items-center w-full">
         <Link
           href="/"
-          className="text-2xl font-semibold tracking-wider text-[#081856]"
+          className="text-2xl font-bold tracking-wider text-white hover:text-red-500 transition-colors duration-300"
         >
           Ace
         </Link>
@@ -44,10 +44,10 @@ export default function Navbar() {
             <li key={item}>
               <Link
                 href={`#${item.toLowerCase()}`}
-                className="text-[#081856] font-medium opacity-80 hover:opacity-100 transition-opacity relative group"
+                className="text-white font-medium opacity-80 hover:opacity-100 hover:text-red-500 transition-all duration-300 relative group"
               >
                 {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#081856] transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-red-500 transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </li>
           ))}
@@ -55,7 +55,7 @@ export default function Navbar() {
 
         {/* Mobile Nav Toggle */}
         <div className="md:hidden">
-          <button className="text-[#081856] focus:outline-none" aria-label="Menu">
+          <button className="text-white hover:text-red-500 transition-colors focus:outline-none" aria-label="Menu">
             <svg
               className="w-6 h-6"
               fill="none"
