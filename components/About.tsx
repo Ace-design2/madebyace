@@ -121,7 +121,7 @@ export default function About() {
 
         {/* 1. About Profile Panel */}
         <FadeIn delay={200}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl relative overflow-hidden group">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-[#0A0A0A] border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 blur-3xl rounded-full -mr-16 -mt-16 group-hover:bg-red-600/20 transition-all duration-700" />
             
             {/* Left: Profile Image */}
@@ -157,7 +157,7 @@ export default function About() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <FadeIn key={index} delay={index * 100}>
-              <div className="bg-black/40 border border-white/10 p-6 rounded-2xl text-center group hover:border-red-500/50 hover:shadow-[0_0_25px_rgba(255,26,26,0.15)] transition-all duration-500 hover:-translate-y-1">
+              <div className="bg-[#0A0A0A] border border-white/10 p-6 rounded-2xl text-center group hover:border-red-500/50 hover:shadow-[0_0_25px_rgba(255,26,26,0.15)] transition-all duration-500 hover:-translate-y-1">
                 <div className="mb-3 text-red-500 text-2xl flex justify-center group-hover:scale-110 transition-transform duration-500">{stat.icon}</div>
                 <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
                 <div className="text-xs uppercase tracking-widest text-gray-500 group-hover:text-red-500/80 transition-colors">{stat.label}</div>
@@ -174,7 +174,7 @@ export default function About() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {skills.map((skill, index) => (
               <FadeIn key={index} delay={index * 50}>
-                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl group hover:border-red-500/40 hover:shadow-[0_0_25px_rgba(255,26,26,0.2)] hover:-translate-y-2 transition-all duration-500">
+                <div className="bg-[#0A0A0A] border border-white/10 p-6 rounded-2xl group hover:border-red-500/40 hover:shadow-[0_0_25px_rgba(255,26,26,0.2)] hover:-translate-y-2 transition-all duration-500">
                   <div className="mb-4 text-3xl group-hover:scale-110 transition-transform duration-500">{skill.icon}</div>
                   <h4 className="text-lg font-bold text-white mb-2">{skill.name}</h4>
                   <p className="text-sm text-gray-500 leading-snug">{skill.desc}</p>
@@ -186,7 +186,7 @@ export default function About() {
 
         {/* 4. Tools & Technologies Stack */}
         <FadeIn>
-          <div className="bg-white/[0.02] border-y border-white/10 py-10 overflow-hidden relative group">
+          <div className="bg-black border-y border-white/10 py-10 overflow-hidden relative group">
             <div className="flex animate-scroll hover:pause gap-12 items-center whitespace-nowrap px-6">
               {[...techStack, ...techStack].map((tech, index) => (
                 <div key={index} className="flex items-center gap-3 px-6 py-3 bg-black border border-white/10 rounded-full hover:border-red-500/50 hover:shadow-[0_0_15px_rgba(255,26,26,0.3)] transition-all duration-300 group/item">
@@ -225,7 +225,7 @@ export default function About() {
              <div className="grid grid-cols-1 gap-6">
                 {strengths.map((strength, index) => (
                   <FadeIn key={index} delay={index * 150}>
-                    <div className="bg-white/5 border border-white/10 p-8 rounded-[1.5rem] flex gap-6 group hover:shadow-[0_0_30px_rgba(255,26,26,0.15)] hover:border-red-500/30 transition-all duration-500">
+                    <div className="bg-[#0A0A0A] border border-white/10 p-8 rounded-[1.5rem] flex gap-6 group hover:shadow-[0_0_30px_rgba(255,26,26,0.15)] hover:border-red-500/30 transition-all duration-500">
                       <div className="flex-shrink-0 w-14 h-14 bg-red-600/10 rounded-2xl flex items-center justify-center text-red-500 text-2xl group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
                         {strength.icon}
                       </div>
