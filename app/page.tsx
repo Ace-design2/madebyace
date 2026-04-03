@@ -4,10 +4,12 @@ import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiChevronDown } from "react-ic
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
+import MouseGlow from "@/components/MouseGlow";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white relative selection:bg-red-500/30">
+      <MouseGlow />
       <Navbar />
 
       {/* Background Effects */}
@@ -21,19 +23,19 @@ export default function Home() {
       <main className="relative flex flex-col lg:grid lg:grid-cols-3 items-center min-h-[100vh] px-6 py-32 sm:px-12 transition-all max-w-[1400px] mx-auto z-10 w-full gap-12 lg:gap-8 overflow-hidden lg:overflow-visible">
         
         {/* Left Column: Text Content */}
-        <div className="lg:col-span-1 z-10 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 w-full max-w-xl mx-auto lg:mx-0 order-1">
+        <div className="lg:col-span-1 z-10 flex flex-col items-center lg:items-start text-center lg:text-left gap-10 w-full max-w-xl mx-auto lg:mx-0 order-1">
           {/* Headline */}
-          <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight opacity-0 animate-fade-in animation-delay-200 text-white">
+          <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight opacity-0 animate-fade-in animation-delay-200 text-white m-0">
             Building <span className="text-red-500">Powerful</span><br className="hidden sm:block" /> Digital Experiences
           </h1>
 
           {/* Supporting Text */}
-          <p className="text-lg sm:text-xl opacity-0 animate-fade-in animation-delay-300 max-w-[600px] text-[#B3B3B3] leading-relaxed mb-2">
+          <p className="text-lg sm:text-xl opacity-0 animate-fade-in animation-delay-300 max-w-[600px] text-[#B3B3B3] leading-relaxed m-0">
             I design and build high-performance websites and applications that combine modern design, speed, and seamless user experience.
           </p>
 
           {/* Call to action buttons horizontally stacked */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-start justify-start gap-4 w-full sm:w-auto opacity-0 animate-fade-in animation-delay-400">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-start justify-start gap-4 w-full sm:w-auto opacity-0 animate-fade-in animation-delay-400 m-0">
             <Link
               href="#work"
               className="bg-red-600 text-white font-bold rounded-full px-8 py-4 shadow-md hover:shadow-[0_0_25px_rgba(255,26,26,0.8)] transition-all duration-300 text-center w-full sm:w-auto"
@@ -52,14 +54,15 @@ export default function Home() {
 
         {/* Center Column: Large Background Image */}
         <div className="lg:col-span-1 z-0 order-2 w-full flex justify-center items-center pointer-events-none mt-8 lg:mt-0">
-          <div className="relative lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[280px] h-[280px] md:w-[400px] md:h-[400px] lg:w-[650px] lg:h-[650px] max-w-[90vw] animate-fade-in animate-float opacity-0 z-0 mx-auto">
-            <div className="absolute inset-0 rounded-full border-2 border-red-500 shadow-[0_0_120px_rgba(255,26,26,0.6)] overflow-hidden bg-black/30 backdrop-blur-sm animate-pulse">
+          <div className="relative lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[280px] h-[280px] md:w-[400px] md:h-[400px] lg:w-[650px] lg:h-[650px] max-w-[90vw] animate-fade-in opacity-0 z-0 mx-auto">
+            <div className="absolute inset-0 rounded-full border-2 border-red-500 shadow-[0_0_120px_rgba(255,26,26,0.6)] overflow-hidden bg-black/30 backdrop-blur-sm">
               <Image
                 src="/img/my avi.png"
                 alt="Profile"
                 fill
                 priority
                 className="object-cover"
+
                 sizes="(max-width: 640px) 280px, (max-width: 1024px) 400px, 650px"
               />
             </div>
