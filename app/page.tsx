@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
 import MouseGlow from "@/components/MouseGlow";
+import TypewriterHeadline from "@/components/TypewriterHeadline";
 
 export default function Home() {
   return (
@@ -25,9 +26,7 @@ export default function Home() {
         {/* Left Column: Text Content */}
         <div className="lg:col-span-1 z-10 flex flex-col items-center lg:items-start text-center lg:text-left gap-10 w-full max-w-xl mx-auto lg:mx-0 order-1">
           {/* Headline */}
-          <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight opacity-0 animate-fade-in animation-delay-200 text-white m-0">
-            Building <span className="text-red-500">Powerful</span><br className="hidden sm:block" /> Digital Experiences
-          </h1>
+          <TypewriterHeadline />
 
           {/* Supporting Text */}
           <p className="text-lg sm:text-xl opacity-0 animate-fade-in animation-delay-300 max-w-[600px] text-[#B3B3B3] leading-relaxed m-0">
@@ -35,16 +34,16 @@ export default function Home() {
           </p>
 
           {/* Call to action buttons horizontally stacked */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-start justify-start gap-4 w-full sm:w-auto opacity-0 animate-fade-in animation-delay-400 m-0">
+          <div className="flex flex-row items-center justify-start gap-4 w-full sm:w-auto opacity-0 animate-fade-in animation-delay-400 m-0">
             <Link
               href="#work"
-              className="bg-red-600 text-white font-bold rounded-full px-8 py-4 shadow-md hover:shadow-[0_0_25px_rgba(255,26,26,0.8)] transition-all duration-300 text-center w-full sm:w-auto"
+              className="bg-red-600 text-white font-[12px] sm:font-bold rounded-full px-4 sm:px-8 py-3 sm:py-4 shadow-md hover:shadow-[0_0_25px_rgba(255,26,26,0.8)] transition-all duration-300 text-center flex-1 sm:flex-none text-sm sm:text-base"
             >
               View My Work
             </Link>
             <Link
               href="#contact"
-              className="relative overflow-hidden group border border-red-500 text-red-500 font-bold rounded-full px-8 py-4 text-center w-full sm:w-auto"
+              className="relative overflow-hidden group border border-red-500 text-red-500 font-[12px] sm:font-bold rounded-full px-4 sm:px-8 py-3 sm:py-4 text-center flex-1 sm:flex-none text-sm sm:text-base"
             >
               <span className="absolute inset-0 w-full h-full bg-red-500 -translate-x-[105%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></span>
               <span className="relative z-10 group-hover:text-white transition-colors duration-300">Contact Me</span>
