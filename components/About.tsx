@@ -125,7 +125,7 @@ export default function About() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 blur-3xl rounded-full -mr-16 -mt-16 group-hover:bg-red-600/20 transition-all duration-700" />
             
             {/* Left: Profile Image */}
-            <div className="relative aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden border border-red-500/40 shadow-[0_0_40px_rgba(255,26,26,0.2)] group-hover:shadow-[0_0_60px_rgba(255,26,26,0.4)] transition-all duration-700">
+            <div className="relative aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden border border-red-500/40 transition-all duration-700">
               <Image 
                 src="/img/IMG_6723.jpg" 
                 alt="Ace Profile" 

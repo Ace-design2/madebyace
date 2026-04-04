@@ -28,8 +28,20 @@ export default function Home() {
         
         {/* Left Column: Text Content */}
         <div className="lg:col-span-1 z-10 flex flex-col items-center lg:items-start text-center lg:text-left gap-10 lg:gap-24 w-full max-w-xl mx-auto lg:mx-0 order-1">
-          {/* Headline */}
-          <TypewriterHeadline />
+          {/* Header Group */}
+          <div className="flex flex-col items-center lg:items-start gap-3">
+            {/* Availability Badge */}
+            <div className="flex items-center gap-3 px-3 py-1.5 bg-red-500/5 border border-red-500/10 rounded-full w-fit animate-fade-in opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500 shadow-[0_0_8px_rgba(255,26,26,0.8)]"></span>
+              </span>
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] font-bold text-red-500/80">Available for new projects</span>
+            </div>
+
+            {/* Headline */}
+            <TypewriterHeadline />
+          </div>
 
           {/* Supporting Text */}
           <p className="text-lg sm:text-xl opacity-0 animate-fade-in animation-delay-300 max-w-[600px] text-[#B3B3B3] leading-relaxed m-0">
