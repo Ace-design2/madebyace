@@ -95,7 +95,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative w-full bg-black text-white py-32 overflow-hidden selection:bg-red-500/30">
+    <section id="about" className="relative w-full bg-black text-white py-32 pt-0 overflow-hidden selection:bg-red-500/30">
       
       {/* Background Decorative Layer */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
