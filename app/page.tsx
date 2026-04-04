@@ -76,7 +76,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 1 }}
-          className="relative lg:col-span-1 z-10 flex flex-col items-center lg:items-end justify-center lg:justify-end w-full h-full order-3 mt-12 lg:mt-0 lg:pb-12"
+          className="relative lg:col-span-1 z-10 flex flex-col items-center lg:items-end justify-center w-full h-full order-3 mt-12 lg:mt-0"
         >
           <div className="flex flex-col items-center gap-12">
             {/* Top Trailing Line - Pulsing Downwards */}
