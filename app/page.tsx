@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiChevronDown } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiChevronDown, FiArrowRight, FiSend } from "react-icons/fi";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
@@ -40,16 +40,20 @@ export default function Home() {
           <div className="flex flex-row items-center justify-start gap-4 w-full sm:w-auto opacity-0 animate-fade-in animation-delay-400 m-0">
             <Link
               href="#work"
-              className="bg-red-600 text-white font-[12px] sm:font-bold rounded-full px-4 sm:px-8 py-3 sm:py-4 shadow-md hover:shadow-[0_0_25px_rgba(255,26,26,0.8)] transition-all duration-300 text-center flex-1 sm:flex-none text-sm sm:text-base"
+              className="bg-red-600 text-white font-[12px] sm:font-bold rounded-full px-4 sm:px-8 py-3 sm:py-4 shadow-md hover:shadow-[0_0_25px_rgba(255,26,26,0.8)] transition-all duration-300 text-center flex-1 sm:flex-none text-sm sm:text-base flex items-center justify-center gap-2 group"
             >
-              View My Work
+              <span>View My Work</span>
+              <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
             <Link
               href="#contact"
-              className="relative overflow-hidden group border border-red-500 text-red-500 font-[12px] sm:font-bold rounded-full px-4 sm:px-8 py-3 sm:py-4 text-center flex-1 sm:flex-none text-sm sm:text-base"
+              className="relative overflow-hidden group border border-red-500 text-red-500 font-[12px] sm:font-bold rounded-full px-4 sm:px-8 py-3 sm:py-4 text-center flex-1 sm:flex-none text-sm sm:text-base flex items-center justify-center gap-2"
             >
               <span className="absolute inset-0 w-full h-full bg-red-500 -translate-x-[105%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></span>
-              <span className="relative z-10 group-hover:text-white transition-colors duration-300">Contact Me</span>
+              <span className="relative z-10 group-hover:text-white transition-colors duration-300 flex items-center gap-2">
+                Contact Me
+                <FiSend className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+              </span>
             </Link>
           </div>
         </div>

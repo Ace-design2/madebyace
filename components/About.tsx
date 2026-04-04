@@ -127,7 +127,7 @@ export default function About() {
             {/* Left: Profile Image */}
             <div className="relative aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden border border-red-500/40 shadow-[0_0_40px_rgba(255,26,26,0.2)] group-hover:shadow-[0_0_60px_rgba(255,26,26,0.4)] transition-all duration-700">
               <Image 
-                src="/img/my avi.png" 
+                src="/img/IMG_6723.jpg" 
                 alt="Ace Profile" 
                 fill 
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" 
