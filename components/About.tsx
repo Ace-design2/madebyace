@@ -53,6 +53,7 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: nu
 };
 
 export default function About() {
+  const [isMobileBioOpen, setIsMobileBioOpen] = useState(false);
   const stats = [
     { number: "50+", label: "Projects Completed", icon: <FiBriefcase /> },
     { number: "5+", label: "Years Experience", icon: <FiAward /> },
@@ -121,34 +122,77 @@ export default function About() {
 
         {/* 1. About Profile Panel */}
         <FadeIn delay={200}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-[#0A0A0A] border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 blur-3xl rounded-full -mr-16 -mt-16 group-hover:bg-red-600/20 transition-all duration-700" />
-            
-            {/* Left: Profile Image */}
-            <div className="relative aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden border border-red-500/40 transition-all duration-700">
+          <div className="relative w-full h-[450px] md:h-[650px] bg-black border border-white/5 rounded-[2.5rem] overflow-hidden group shadow-2xl transition-all duration-700">
+            {/* Background Image Container - Shrinks on desktop hover, dims on mobile bio open */}
+            <div className={`absolute inset-y-0 left-0 w-full md:group-hover:w-[55%] transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-10 ${isMobileBioOpen ? 'opacity-40' : 'opacity-100'}`}>
               <Image 
                 src="/img/IMG_6723.jpg" 
                 alt="Ace Profile" 
                 fill 
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" 
+                className="object-cover grayscale"
+                priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 transition-opacity duration-700" />
             </div>
 
-            {/* Right: Text Content */}
-            <div className="space-y-6">
-              <h3 className="text-3xl font-bold text-white tracking-tight">Who I Am</h3>
-              <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
+            {/* Mobile Bio Toggle Button (Only visible on mobile) */}
+            <button 
+              onClick={() => setIsMobileBioOpen(true)}
+              className={`md:hidden absolute bottom-8 right-8 z-[30] bg-black/80 backdrop-blur-md border border-white/20 text-white rounded-full px-8 py-4 font-black uppercase tracking-widest text-[10px] shadow-2xl flex items-center gap-2 transition-all duration-500 hover:scale-105 active:scale-95 ${isMobileBioOpen ? 'translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}
+            >
+              Who I Am
+              <FiChevronRight className="w-4 h-4 text-red-500" />
+            </button>
+            
+            {/* Content Overlay Sidebar (Bottom-fixed on mobile, right-sliding on desktop) */}
+            <div className={`absolute bottom-0 md:inset-y-0 right-0 w-full md:w-[45%] bg-[#0A0A0A]/95 md:bg-black/95 backdrop-blur-2xl z-20 border-t md:border-t-0 md:border-l border-white/10 shadow-[-20px_0_40px_rgba(0,0,0,0.5)] transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-center h-full p-8 md:p-14
+              ${isMobileBioOpen ? 'translate-y-0 opacity-100' : 'translate-y-full md:translate-y-0 opacity-0 md:opacity-100 translate-x-0 md:translate-x-full md:group-hover:translate-x-0'}
+            `}>
+              {/* Close Button for Mobile Bio */}
+              <button 
+                onClick={() => setIsMobileBioOpen(false)}
+                className="md:hidden absolute top-6 right-6 text-white/40 hover:text-white transition-colors"
+              >
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
+
+              <div className="space-y-4">
+                <h3 className={`text-3xl md:text-5xl font-black text-white tracking-tighter uppercase transition-all duration-700 delay-100 
+                  ${isMobileBioOpen ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100'}
+                `}>
+                  Who I <span className="text-red-500">Am</span>
+                </h3>
+                <div className={`w-16 md:w-20 h-[3px] bg-white transition-all duration-700 delay-200
+                  ${isMobileBioOpen ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100'}
+                `} />
+              </div>
+              
+              <div className={`space-y-6 text-white/95 text-base md:text-xl font-medium leading-relaxed transition-all duration-700 delay-300
+                ${isMobileBioOpen ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100'}
+              `}>
                 <p>
                   I am a high-end web designer and developer who specializes in building cinematic, agency-level digital products. My work sits at the intersection of aesthetic brilliance and technical precision.
                 </p>
-                <p>
+                <p className="hidden sm:block opacity-80 font-normal">
                   With a deep focus on user experience and performance, I help brands and individuals stand out in a crowded digital landscape through bold design and clean, scalable code.
                 </p>
               </div>
-              <div className="pt-4">
-                <p className="text-red-500 font-bold italic text-xl tracking-wide">— Ace, Web Designer & Developer</p>
+              
+              <div className={`pt-4 md:pt-6 transition-all duration-700 delay-500
+                ${isMobileBioOpen ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100'}
+              `}>
+                <p className="text-white font-black italic text-xl md:text-2xl tracking-wide">— Ace</p>
+                <p className="text-white/40 text-[10px] uppercase tracking-[0.4em] font-bold mt-1">Designer & Developer</p>
               </div>
+
+              {/* Red Glow Detail inside sidebar */}
+              <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-red-400/10 blur-[120px] rounded-full mix-blend-screen pointer-events-none" />
+            </div>
+
+            {/* Hover Indicator Text - Only show on desktop */}
+            <div className="absolute bottom-10 left-10 text-white/40 text-[10px] uppercase tracking-[0.5em] font-black group-hover:opacity-0 transition-opacity duration-300 pointer-events-none hidden md:flex items-center gap-4">
+              <span className="w-8 h-px bg-white/20" />
+              <span>Hover for Bio</span>
             </div>
           </div>
         </FadeIn>

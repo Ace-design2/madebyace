@@ -56,7 +56,7 @@ export default function Navbar() {
   return (
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 pointer-events-none">
       <nav
-        className={`pointer-events-auto transition-all duration-500 ease-out pl-6 pr-4 py-2.5 sm:pl-8 sm:pr-4 w-full max-w-6xl rounded-full border ${
+        className={`pointer-events-auto transition-all duration-500 ease-out pl-6 pr-4 py-2.5 sm:pl-8 sm:pr-4 w-full max-w-4xl rounded-full border ${
           isScrolled 
             ? "bg-black/70 backdrop-blur-2xl border-white/10 shadow-[0_8px_32px_rgba(255,26,26,0.15)]" 
             : "bg-transparent border-transparent"
