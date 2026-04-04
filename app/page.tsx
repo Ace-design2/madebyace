@@ -59,7 +59,7 @@ export default function Home() {
           <div className="relative lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[280px] h-[280px] md:w-[400px] md:h-[400px] lg:w-[650px] lg:h-[650px] max-w-[90vw] animate-fade-in opacity-0 z-0 mx-auto">
             <div className="absolute inset-0 rounded-full border-2 border-red-500 shadow-[0_0_120px_rgba(255,26,26,0.6)] overflow-hidden bg-black/30 backdrop-blur-sm">
               <Image
-                src="/img/my avi 2.png"
+                src="/img/my-avi-2.png"
                 alt="Profile"
                 fill
                 priority

@@ -41,7 +41,7 @@ export default function LoadingScreen() {
               className="relative w-12 h-12 rounded-full border border-red-500/20 overflow-hidden shadow-[0_0_20px_rgba(255,26,26,0.15)] bg-black/50"
             >
               <Image
-                src="/img/my avi 2.png"
+                src="/img/my-avi-2.png"
                 alt="Profile"
                 fill
                 priority
