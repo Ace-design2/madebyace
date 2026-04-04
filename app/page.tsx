@@ -10,7 +10,11 @@ import Projects from "@/components/Projects";
 import MouseGlow from "@/components/MouseGlow";
 import TypewriterHeadline from "@/components/TypewriterHeadline";
 
+import { useLoading } from "@/context/LoadingContext";
+
 export default function Home() {
+  const { isLoading } = useLoading();
+
   return (
     <div className="min-h-screen bg-black text-white relative selection:bg-red-500/30">
       <MouseGlow />
@@ -27,7 +31,12 @@ export default function Home() {
       <main className="relative flex flex-col lg:grid lg:grid-cols-3 items-center min-h-[100vh] px-6 py-32 sm:px-12 transition-all max-w-[1600px] mx-auto z-10 w-full gap-12 lg:gap-8 overflow-hidden lg:overflow-visible">
         
         {/* Left Column: Text Content */}
-        <div className="lg:col-span-1 z-10 flex flex-col items-center lg:items-start text-center lg:text-left gap-10 lg:gap-24 w-full max-w-xl mx-auto lg:mx-0 order-1">
+        <motion.div 
+          initial={{ y: -80, opacity: 0 }}
+          animate={isLoading ? { y: -80, opacity: 0 } : { y: 0, opacity: 1 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          className="lg:col-span-1 z-10 flex flex-col items-center lg:items-start text-center lg:text-left gap-10 lg:gap-24 w-full max-w-xl mx-auto lg:mx-0 order-1"
+        >
           {/* Header Group */}
           <div className="flex flex-col items-center lg:items-start gap-3">
             {/* Availability Badge */}
@@ -44,12 +53,12 @@ export default function Home() {
           </div>
 
           {/* Supporting Text */}
-          <p className="text-lg sm:text-xl opacity-0 animate-fade-in animation-delay-300 max-w-[600px] text-[#B3B3B3] leading-relaxed m-0">
+          <p className="text-lg sm:text-xl max-w-[600px] text-[#B3B3B3] font-medium leading-relaxed m-0">
             I design and build high-performance websites and applications that combine modern design, speed, and seamless user experience.
           </p>
 
           {/* Call to action buttons horizontally stacked */}
-          <div className="flex flex-row items-center justify-start gap-4 w-full sm:w-auto opacity-0 animate-fade-in animation-delay-400 m-0">
+          <div className="flex flex-row items-center justify-start gap-4 w-full sm:w-auto m-0">
             <Link
               href="#work"
               className="bg-red-600 text-white font-[12px] sm:font-bold rounded-full px-4 sm:px-8 py-3 sm:py-4 shadow-md hover:shadow-[0_0_25px_rgba(255,26,26,0.8)] transition-all duration-300 text-center flex-1 sm:flex-none text-sm sm:text-base flex items-center justify-center gap-2 group"
@@ -68,11 +77,16 @@ export default function Home() {
               </span>
             </Link>
           </div>
-        </div>
+        </motion.div>
 
         {/* Center Column: Large Background Image */}
-        <div className="lg:col-span-1 z-0 order-2 w-full flex justify-center items-center pointer-events-none mt-8 lg:mt-0">
-          <div className="relative lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[680px] xl:h-[680px] 2xl:w-[780px] 2xl:h-[780px] max-w-[90vw] animate-fade-in opacity-0 z-0 mx-auto">
+        <motion.div 
+          initial={{ y: 150, opacity: 0, scale: 0.5 }}
+          animate={isLoading ? { y: 150, opacity: 0, scale: 0.5 } : { y: 0, opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="lg:col-span-1 z-0 order-2 w-full flex justify-center items-center pointer-events-none mt-8 lg:mt-0"
+        >
+          <div className="relative lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[680px] xl:h-[680px] 2xl:w-[780px] 2xl:h-[780px] max-w-[90vw] z-0 mx-auto">
             <div className="absolute inset-0 rounded-full border-2 border-red-500 shadow-[0_0_120px_rgba(255,26,26,0.6)] overflow-hidden bg-black/30 backdrop-blur-sm">
               <Image
                 src="/img/my-avi-2.png"
@@ -81,17 +95,17 @@ export default function Home() {
                 priority
                 className="object-cover"
 
-                sizes="(max-width: 640px) 280px, (max-width: 1024px) 400px, 650px"
+                sizes="(max-width: 640px) 240px, (max-width: 1024px) 450px, 780px"
               />
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column: Social Icons & Scroll Indicator */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 1 }}
+          initial={{ y: -80, opacity: 0 }}
+          animate={isLoading ? { y: -80, opacity: 0 } : { y: 0, opacity: 1 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           className="relative lg:col-span-1 z-10 flex flex-col items-center lg:items-end justify-center w-full h-full order-3 mt-12 lg:mt-0"
         >
           <div className="flex flex-col items-center gap-12">
@@ -184,6 +198,7 @@ export default function Home() {
             </motion.div>
           </div>
         </motion.div>
+
       </main>
 
       <div className="relative z-10 bg-black">

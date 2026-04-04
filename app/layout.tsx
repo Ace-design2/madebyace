@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 import LoadingScreen from "@/components/LoadingScreen";
+import { LoadingProvider } from "@/context/LoadingContext";
 
 export default function RootLayout({
   children,
@@ -25,8 +26,10 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <LoadingScreen />
-        {children}
+        <LoadingProvider>
+          <LoadingScreen />
+          {children}
+        </LoadingProvider>
       </body>
     </html>
   );

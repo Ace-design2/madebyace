@@ -3,9 +3,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useLoading } from "@/context/LoadingContext";
 
 export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
+  const { setIsLoading } = useLoading();
 
   useEffect(() => {
     // Force a scroll to top on refresh during loading
@@ -13,10 +15,11 @@ export default function LoadingScreen() {
     
     const timer = setTimeout(() => {
       setLoading(false);
+      setIsLoading(false);
     }, 2800); // Give enough time for the progress bar animation
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [setIsLoading]);
 
   return (
     <AnimatePresence>

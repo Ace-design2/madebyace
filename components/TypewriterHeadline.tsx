@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useLoading } from "@/context/LoadingContext";
 
 const phrases = [
   { prefix: "Powerful", suffix: " Digital Experiences" },
@@ -8,12 +9,15 @@ const phrases = [
 ];
 
 export default function TypewriterHeadline() {
+  const { isLoading } = useLoading();
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(100);
 
   useEffect(() => {
+    if (isLoading) return;
+
     let timer: NodeJS.Timeout;
 
     const handleType = () => {
@@ -42,7 +46,7 @@ export default function TypewriterHeadline() {
 
     timer = setTimeout(handleType, typingSpeed);
     return () => clearTimeout(timer);
-  }, [text, isDeleting, loopNum, typingSpeed]);
+  }, [text, isDeleting, loopNum, typingSpeed, isLoading]);
 
   const i = loopNum % phrases.length;
   const currentPhrase = phrases[i];
@@ -51,8 +55,8 @@ export default function TypewriterHeadline() {
   const currentSuffix = text.substring(currentPhrase.prefix.length);
 
   return (
-    <div className="h-[160px] sm:h-[160px] lg:h-[280px] w-full flex items-center lg:items-start">
-      <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight opacity-0 animate-fade-in animation-delay-200 text-white m-0">
+    <div className="h-[160px] sm:h-[160px] lg:h-[280px] w-full flex items-center lg:items-start text-white">
+      <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight text-white m-0">
         Building <br className="hidden sm:block" />
         <span className="text-red-500">{currentPrefix}</span>
         <span className="text-white">{currentSuffix}</span>
