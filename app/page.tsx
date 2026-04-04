@@ -72,71 +72,102 @@ export default function Home() {
         </div>
 
         {/* Right Column: Social Icons & Scroll Indicator */}
-        <div className="relative lg:col-span-1 z-10 flex flex-col items-center lg:items-end justify-center w-full h-full order-3 mt-12 lg:mt-0 opacity-0 animate-fade-in animation-delay-500">
-          <div className="flex flex-row lg:flex-col items-center lg:items-end gap-6 mb-auto lg:mb-0 lg:py-20">
-            <Link href="https://github.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
-              <FiGithub className="w-6 h-6" />
-              <span className="sr-only">GitHub</span>
-            </Link>
-            <Link href="https://linkedin.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
-              <FiLinkedin className="w-6 h-6" />
-              <span className="sr-only">LinkedIn</span>
-            </Link>
-            <Link href="https://twitter.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
-              <FiTwitter className="w-6 h-6" />
-              <span className="sr-only">Twitter</span>
-            </Link>
-            <Link href="mailto:hello@example.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
-              <FiMail className="w-6 h-6" />
-              <span className="sr-only">Email</span>
-            </Link>
-          </div>
-
-          {/* Scroll Indicator - Aligned with icons */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
-            className="lg:absolute lg:bottom-12 flex flex-col items-center gap-2 mt-12 lg:mt-0 group cursor-pointer"
-          >
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="flex flex-col items-center gap-2"
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 1 }}
+          className="relative lg:col-span-1 z-10 flex flex-col items-center lg:items-end justify-center lg:justify-end w-full h-full order-3 mt-12 lg:mt-0 lg:pb-12"
+        >
+          <div className="flex flex-col items-center gap-12">
+            {/* Top Trailing Line - Pulsing Downwards */}
+            <motion.div 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 80 }}
+              transition={{ delay: 1.4, duration: 1.2, ease: "easeOut" }}
+              className="w-[1px] bg-red-500/20 relative overflow-hidden rounded-full hidden lg:block"
             >
-              <span className="text-[10px] uppercase tracking-[0.3em] text-red-500 [writing-mode:vertical-lr] font-bold mb-2 group-hover:text-white transition-colors duration-300">Scroll</span>
-              <div className="w-[1px] h-24 bg-red-500/20 relative overflow-hidden rounded-full">
-                <motion.div 
+              <motion.div 
+                animate={{ 
+                  height: ["0%", "30%", "30%", "0%"],
+                  top: ["0%", "0%", "70%", "100%"],
+                  opacity: [0, 1, 1, 0]
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+                className="absolute left-0 w-full bg-red-500 shadow-[0_0_15px_rgba(255,26,26,0.6)]"
+              />
+            </motion.div>
+
+            {/* Social Icons Stack - Centered horizontally to line */}
+            <div className="flex flex-row lg:flex-col items-center gap-6 lg:py-0">
+              <Link href="https://github.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+                <FiGithub className="w-6 h-6" />
+                <span className="sr-only">GitHub</span>
+              </Link>
+              <Link href="https://linkedin.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+                <FiLinkedin className="w-6 h-6" />
+                <span className="sr-only">LinkedIn</span>
+              </Link>
+              <Link href="https://twitter.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+                <FiTwitter className="w-6 h-6" />
+                <span className="sr-only">Twitter</span>
+              </Link>
+              <Link href="mailto:hello@example.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+                <FiMail className="w-6 h-6" />
+                <span className="sr-only">Email</span>
+              </Link>
+            </div>
+
+            {/* Scroll Indicator - Bottom Tether */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
+              className="flex flex-col items-center gap-2 group cursor-pointer"
+            >
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="flex flex-col items-center gap-2"
+              >
+                <span className="text-[10px] uppercase tracking-[0.3em] text-red-500 [writing-mode:vertical-lr] font-bold mb-2 group-hover:text-white transition-colors duration-300">Scroll</span>
+                <div className="w-[1px] h-24 bg-red-500/20 relative overflow-hidden rounded-full">
+                  <motion.div 
+                    animate={{ 
+                      height: ["0%", "40%", "40%", "0%"],
+                      top: ["0%", "0%", "60%", "100%"],
+                      opacity: [0, 1, 1, 0]
+                    }}
+                    transition={{ 
+                      duration: 2.5, 
+                      repeat: Infinity, 
+                      ease: "easeInOut" 
+                    }}
+                    className="absolute left-0 w-full bg-red-500 shadow-[0_0_15px_rgba(255,26,26,0.8)]"
+                  />
+                </div>
+                <motion.div
                   animate={{ 
-                    height: ["0%", "40%", "40%", "0%"],
-                    top: ["0%", "0%", "60%", "100%"],
-                    opacity: [0, 1, 1, 0]
+                    y: [0, 4, 0],
+                    scale: [1, 1.1, 1],
+                    opacity: [0.5, 1, 0.5]
                   }}
                   transition={{ 
                     duration: 2.5, 
                     repeat: Infinity, 
                     ease: "easeInOut" 
                   }}
-                  className="absolute left-0 w-full bg-red-500 shadow-[0_0_15px_rgba(255,26,26,0.8)]"
-                />
-              </div>
-              <motion.div
-                animate={{ 
-                  y: [0, 4, 0],
-                  scale: [1, 1.1, 1],
-                  opacity: [0.5, 1, 0.5]
-                }}
-                transition={{ 
-                  duration: 2.5, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-              >
-                <FiChevronDown className="w-5 h-5 text-red-500 -mt-1 group-hover:scale-110 transition-transform duration-300" />
+                >
+                  <FiChevronDown className="w-5 h-5 text-red-500 -mt-1 group-hover:scale-110 transition-transform duration-300" />
+                </motion.div>
               </motion.div>
             </motion.div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </main>
 
       <div className="relative z-10 bg-black">
