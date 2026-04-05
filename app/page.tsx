@@ -88,14 +88,31 @@ export default function Home() {
           className="lg:col-span-1 z-0 order-2 w-full flex justify-center items-center pointer-events-none mt-8 lg:mt-0"
         >
           <div className="relative lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[680px] xl:h-[680px] 2xl:w-[780px] 2xl:h-[780px] max-w-[90vw] z-0 mx-auto">
-            <div className="absolute inset-0 rounded-full border-2 border-red-500 shadow-[0_0_120px_rgba(255,26,26,0.6)] overflow-hidden bg-black/30 backdrop-blur-sm">
+            {/* Pulsing Rings Background - Subtler Pulse */}
+            {[1.2, 1.8, 2.4].map((scale, i) => (
+              <motion.div
+                key={i}
+                className="absolute inset-0 rounded-full border border-red-500/30"
+                animate={{ 
+                  scale: [1, scale],
+                  opacity: [0.35, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  delay: i * 1.4,
+                  ease: "easeOut",
+                }}
+              />
+            ))}
+
+            <div className="absolute inset-0 rounded-full border-2 border-red-500 shadow-[0_0_120px_rgba(255,26,26,0.6)] overflow-hidden bg-black/30 backdrop-blur-sm z-10">
               <Image
                 src="/img/my-avi-2.png"
                 alt="Profile"
                 fill
                 priority
                 className="object-cover"
-
                 sizes="(max-width: 640px) 240px, (max-width: 1024px) 450px, 780px"
               />
             </div>
