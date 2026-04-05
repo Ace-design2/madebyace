@@ -55,8 +55,9 @@ export default function TypewriterHeadline() {
   const currentSuffix = text.substring(currentPhrase.prefix.length);
 
   return (
-    <div className="h-[160px] sm:h-[160px] lg:h-[280px] w-full flex items-center lg:items-start text-white">
-      <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight text-white m-0">
+    <div className="w-full flex items-center min-h-[140px] sm:min-h-[160px] md:min-h-[180px] perspective-[1000px]">
+      <h1 className="text-5xl lg:text-6xl xl:text-7xl font-marags font-extrabold leading-tight tracking-tight text-white m-0">
+        <span className="sr-only">{text}</span>
         Building <br className="hidden sm:block" />
         <span className="text-red-500">{currentPrefix}</span>
         <span className="text-white">{currentSuffix}</span>

@@ -13,6 +13,19 @@
   --color-secondary: #B30000;
 }
 
+@font-face {
+  font-family: 'MaragsCustom';
+  src: url('/fonts/marags-webfont.woff2') format('woff2'),
+       url('/fonts/marags-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-marags {
+  font-family: 'MaragsCustom', sans-serif !important;
+}
+
 @keyframes float {
   0% {
     transform: translateY(0px) scale(1);

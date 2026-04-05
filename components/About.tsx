@@ -137,7 +137,7 @@ export default function About() {
 
                {/* Headline Title */}
                <div className="space-y-4">
-                 <h3 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tighter uppercase leading-none text-left">
+                 <h3 className="text-5xl sm:text-6xl lg:text-7xl font-marags font-black text-white tracking-tighter uppercase leading-none text-left">
                    WHO I <br/><span className="text-red-500">AM</span>
                  </h3>
                  <div className="w-16 h-[3px] bg-red-600/50" />
@@ -223,7 +223,7 @@ export default function About() {
         {/* 3. Skills Grid */}
         <div className="space-y-12">
           <FadeIn>
-            <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-center">Core <span className="text-red-500">Skills</span></h3>
+            <h3 className="text-2xl md:text-3xl font-marags font-bold tracking-tight text-center">Core <span className="text-red-500">Skills</span></h3>
           </FadeIn>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {skills.map((skill, index) => (
@@ -257,7 +257,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <FadeIn>
             <div className="space-y-12">
-              <h3 className="text-3xl font-bold tracking-tight">The <span className="text-red-500">Journey</span></h3>
+              <h3 className="text-3xl font-marags font-bold tracking-tight">The <span className="text-red-500">Journey</span></h3>
               <div className="border-l-2 border-red-500/30 space-y-12 ml-4">
                 {timeline.map((item, index) => (
                   <div key={index} className="relative pl-10 group">
@@ -274,7 +274,7 @@ export default function About() {
           {/* 6. Core Strengths / Services Cards */}
           <div className="space-y-12">
              <FadeIn>
-               <h3 className="text-3xl font-bold tracking-tight lg:text-right">Core <span className="text-red-500">Strengths</span></h3>
+               <h3 className="text-3xl font-marags font-bold tracking-tight lg:text-right">Core <span className="text-red-500">Strengths</span></h3>
              </FadeIn>
              <div className="grid grid-cols-1 gap-6">
                 {strengths.map((strength, index) => (

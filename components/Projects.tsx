@@ -207,7 +207,7 @@ export default function Projects() {
         {/* Section Header */}
         <FadeIn>
           <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-marags font-extrabold tracking-tight">
               Selected <span className="text-red-500">Works</span>
             </h2>
             <div className="w-24 h-[3px] bg-red-600 rounded-full" />
@@ -221,7 +221,7 @@ export default function Projects() {
         <div className="space-y-12">
           <FadeIn>
             <div className="space-y-6">
-              <h3 className="text-2xl md:text-3xl font-black tracking-widest text-white/90 uppercase">
+              <h3 className="text-2xl md:text-3xl font-marags font-black tracking-widest text-white/90 uppercase">
                 Development
               </h3>
               <div className="h-[1px] w-full bg-gradient-to-r from-red-600/50 to-transparent rounded-full" />

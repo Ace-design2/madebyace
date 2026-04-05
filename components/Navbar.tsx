@@ -4,11 +4,13 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { FiPhone, FiMail } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
+import { useLoading } from "@/context/LoadingContext";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("");
   const [isContactOpen, setIsContactOpen] = useState(false);
   const contactRef = useRef<HTMLDivElement>(null);
+  const { isLoading } = useLoading();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +50,7 @@ export default function Navbar() {
   const navItems = ["About", "Skills", "Projects"];
 
   return (
-    <div className="fixed top-4 sm:top-6 left-0 right-0 z-[100] flex justify-center px-2 pointer-events-none">
+    <div className={`fixed top-4 sm:top-6 left-0 right-0 z-[100] flex justify-center px-2 pointer-events-none transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${isLoading ? "opacity-0 -translate-y-10" : "opacity-100 translate-y-0"}`}>
       {/* Pill Container */}
       <nav className="pointer-events-auto px-2 sm:px-3 py-2 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-full inline-flex justify-center items-center gap-1 sm:gap-2 shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-all duration-300">
 
