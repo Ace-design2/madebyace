@@ -201,10 +201,35 @@ export default function About() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <FadeIn key={index} delay={index * 100}>
-              <div className="bg-[#0A0A0A] border border-white/10 p-6 rounded-2xl text-center group hover:border-red-500/50 hover:shadow-[0_0_25px_rgba(255,26,26,0.15)] transition-all duration-500 hover:-translate-y-1">
-                <div className="mb-3 text-red-500 text-2xl flex justify-center group-hover:scale-110 transition-transform duration-500">{stat.icon}</div>
-                <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
-                <div className="text-xs uppercase tracking-widest text-gray-500 group-hover:text-red-500/80 transition-colors">{stat.label}</div>
+              <div className="relative bg-[#0A0A0A] p-6 rounded-2xl text-center group hover:shadow-[0_0_25px_rgba(255,26,26,0.15)] transition-all duration-500 hover:-translate-y-1 overflow-hidden">
+                {/* Base inactive border */}
+                <div className="absolute inset-0 border border-white/10 rounded-2xl transition-colors duration-500 pointer-events-none group-hover:border-transparent z-0"></div>
+                
+                {/* SVG Progress Border */}
+                <svg
+                  className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="0"
+                    y="0"
+                    width="100%"
+                    height="100%"
+                    rx="16"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    pathLength="100"
+                    strokeDasharray="100"
+                    className="text-red-500 [stroke-dashoffset:100] group-hover:[stroke-dashoffset:0] transition-all duration-700 ease-out"
+                  />
+                </svg>
+
+                <div className="relative z-10">
+                  <div className="mb-3 text-red-500 text-2xl flex justify-center group-hover:scale-110 transition-transform duration-500">{stat.icon}</div>
+                  <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
+                  <div className="text-xs uppercase tracking-widest text-gray-500 group-hover:text-red-500/80 transition-colors">{stat.label}</div>
+                </div>
               </div>
             </FadeIn>
           ))}
