@@ -75,7 +75,7 @@ export default function Navbar() {
         </div>
 
         {/* Divider */}
-        <div className="w-[1px] h-4 sm:h-5 bg-white/20 mx-0.5 sm:mx-1 rounded-full"></div>
+        <div className="w-[1px] h-4 sm:h-5 bg-white/20 mx-1.5 sm:mx-3 rounded-full"></div>
 
         {/* Let's Talk CTA */}
         <div className="relative" ref={contactRef}>
