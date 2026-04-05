@@ -14,16 +14,19 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Simple scroll spy logic
-      const sections = ["about", "skills", "projects"];
+      // Updated scroll spy logic for new section IDs
+      const sections = [
+        { id: "who-i-am", label: "About" },
+        { id: "core-skills", label: "Skills" },
+        { id: "projects", label: "Projects" },
+      ];
       let current = "";
       for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
+        const el = document.getElementById(sections[i].id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          // If the section's top is closer to or past the center, it's active
-          if (rect.top <= 300) {
-            current = sections[i];
+          if (rect.top <= 400) {
+            current = sections[i].label.toLowerCase();
             break;
           }
         }
@@ -32,22 +35,49 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initialize
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (contactRef.current && !contactRef.current.contains(event.target as Node)) {
-        setIsContactOpen(false);
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    const offset = 100; // Extra spacing for top margin
+    const bodyRect = document.body.getBoundingClientRect().top;
+    const elementRect = target.getBoundingClientRect().top;
+    const elementPosition = elementRect - bodyRect;
+    const offsetPosition = elementPosition - offset;
+
+    const startPosition = window.pageYOffset;
+    const distance = offsetPosition - startPosition;
+    const duration = 1500; // Slower duration for cinematic feel
+    let start: number | null = null;
+
+    const easeOutQuint = (t: number) => 1 - Math.pow(1 - t, 5);
+
+    const step = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      const percentage = Math.min(progress / duration, 1);
+      
+      window.scrollTo(0, startPosition + distance * easeOutQuint(percentage));
+      
+      if (progress < duration) {
+        window.requestAnimationFrame(step);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    window.requestAnimationFrame(step);
+    setIsContactOpen(false);
+  };
 
-  const navItems = ["About", "Skills", "Projects"];
+  const navItems = [
+    { label: "About", id: "who-i-am" },
+    { label: "Skills", id: "core-skills" },
+    { label: "Projects", id: "projects" },
+  ];
 
   return (
     <div className={`fixed top-4 sm:top-6 left-0 right-0 z-[100] flex justify-center px-2 pointer-events-none transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${isLoading ? "opacity-0 -translate-y-10" : "opacity-100 translate-y-0"}`}>
@@ -57,11 +87,12 @@ export default function Navbar() {
         {/* Nav Links */}
         <div className="flex items-center gap-0.5 sm:gap-1.5">
           {navItems.map((item) => {
-            const isActive = activeSection === item.toLowerCase();
+            const isActive = activeSection === item.label.toLowerCase();
             return (
-              <Link
-                key={item}
-                href={`#${item.toLowerCase()}`}
+              <a
+                key={item.label}
+                href={`#${item.id}`}
+                onClick={(e) => scrollToSection(e, item.id)}
                 className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full flex justify-center items-center transition-all duration-300 ${
                   isActive ? "bg-red-600/90 shadow-[0_0_15px_rgba(255,26,26,0.5)]" : "hover:bg-white/10"
                 }`}
@@ -69,9 +100,9 @@ export default function Navbar() {
                 <span className={`text-[9px] sm:text-xs tracking-widest uppercase ${
                   isActive ? "text-white font-bold" : "text-gray-300 font-medium"
                 }`}>
-                  {item}
+                  {item.label}
                 </span>
-              </Link>
+              </a>
             );
           })}
         </div>

@@ -106,21 +106,8 @@ export default function About() {
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-0 lg:px-12 space-y-24">
         
-        {/* Section Header */}
-        <FadeIn>
-          <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-              About <span className="text-red-500">Me</span>
-            </h2>
-            <div className="w-24 h-[3px] bg-red-600 rounded-full" />
-            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed mt-6">
-              Crafting powerful digital experiences through design, development, and obsessive attention to detail.
-            </p>
-          </div>
-        </FadeIn>
-
         {/* 1. Who I Am Profile Panel - Hero Cinematic Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center w-full">
+        <div id="who-i-am" className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center w-full pt-12 md:pt-20">
           
           {/* Left Column Text Content */}
           <FadeIn delay={200}>
@@ -221,7 +208,7 @@ export default function About() {
         </div>
 
         {/* 3. Skills Grid */}
-        <div className="space-y-12">
+        <div id="core-skills" className="space-y-12">
           <FadeIn>
             <h3 className="text-2xl md:text-3xl font-marags font-bold tracking-tight text-center">Core <span className="text-red-500">Skills</span></h3>
           </FadeIn>
