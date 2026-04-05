@@ -320,28 +320,7 @@ export default function About() {
           </div>
         </FadeIn>
 
-        {/* 8. Call-To-Action Banner */}
-        <FadeIn>
-          <div className="relative rounded-[2.5rem] overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-r from-black to-[#2a0000] z-0" />
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,26,26,0.05)_0%,transparent_70%)]" />
-            <div className="relative z-10 p-12 md:p-20 text-center space-y-10">
-              <h3 className="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight max-w-2xl mx-auto">
-                Ready to build something <span className="text-red-500">powerful</span> together?
-              </h3>
-              <div className="flex justify-center">
-                <Link
-                  href="#contact"
-                  className="bg-red-600 text-white font-black uppercase tracking-widest rounded-full px-12 py-5 shadow-[0_0_40px_rgba(255,26,26,0.3)] hover:shadow-[0_0_60px_rgba(255,26,26,0.6)] hover:-translate-y-1.5 transition-all duration-500"
-                >
-                  Let's Work Together
-                </Link>
-              </div>
-            </div>
-            {/* Animated background lines */}
-            <div className="absolute border border-white/5 top-10 left-10 right-10 bottom-10 rounded-[1.5rem] pointer-events-none" />
-          </div>
-        </FadeIn>
+
 
       </div>
     </section>
