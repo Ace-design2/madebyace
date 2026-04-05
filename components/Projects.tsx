@@ -119,9 +119,32 @@ const designProjects = [
 ];
 
 const ProjectCard = ({ project }: { project: any }) => (
-  <div className="group relative rounded-[2.5rem] overflow-hidden bg-[#0A0A0A] border border-white/5 shadow-2xl transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,26,26,0.15)] hover:-translate-y-2 p-4 sm:p-5 flex flex-col h-full cursor-pointer hover:border-red-500/30">
+  <div className="group relative rounded-[2.5rem] bg-[#0A0A0A] shadow-2xl transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,26,26,0.15)] hover:-translate-y-2 p-4 sm:p-5 flex flex-col h-full cursor-pointer">
     
-    <div className={`w-full aspect-video sm:aspect-square overflow-hidden rounded-[2rem] relative mb-6 bg-gradient-to-br ${project.gradient}`}>
+    {/* Base inactive border */}
+    <div className="absolute inset-0 border border-white/5 rounded-[2.5rem] transition-colors duration-500 pointer-events-none group-hover:border-transparent z-0"></div>
+    
+    {/* SVG Progress Border */}
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        rx="40"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="4"
+        pathLength="100"
+        strokeDasharray="100"
+        className="text-red-500 [stroke-dashoffset:100] group-hover:[stroke-dashoffset:0] transition-all duration-700 ease-out"
+      />
+    </svg>
+
+    <div className={`w-full aspect-video sm:aspect-square overflow-hidden rounded-[2rem] relative mb-6 bg-gradient-to-br ${project.gradient} z-10`}>
       {/* Cinematic Texture Overlay */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay z-0" />
       
