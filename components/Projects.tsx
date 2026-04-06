@@ -193,7 +193,7 @@ const ProjectCard = ({ project }: { project: any }) => (
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative w-full bg-black text-white py-32 overflow-hidden selection:bg-red-500/30">
+    <section id="projects" className="relative w-full bg-black text-white pt-10 md:pt-16 pb-20 md:pb-32 overflow-hidden selection:bg-red-500/30">
       
       {/* Background Cinematic Decor Element */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -202,7 +202,7 @@ export default function Projects() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-0 lg:px-12 space-y-24 lg:space-y-32">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-0 lg:px-12 space-y-16 md:space-y-32">
         
         {/* Section Header */}
         <FadeIn>

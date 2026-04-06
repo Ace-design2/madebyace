@@ -95,7 +95,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative w-full bg-black text-white py-32 pt-0 overflow-hidden selection:bg-red-500/30">
+    <section id="about" className="relative w-full bg-black text-white pt-0 pb-10 md:pb-16 overflow-hidden selection:bg-red-500/30">
       
       {/* Background Decorative Layer */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -104,10 +104,10 @@ export default function About() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-0 lg:px-12 space-y-24">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-0 lg:px-12 space-y-16 md:space-y-24">
         
         {/* 1. Who I Am Profile Panel - Hero Cinematic Layout */}
-        <div id="who-i-am" className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center w-full pt-12 md:pt-20">
+        <div id="who-i-am" className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 items-center w-full pt-8 md:pt-20">
           
           {/* Left Column Text Content */}
           <FadeIn delay={200}>
@@ -283,7 +283,7 @@ export default function About() {
 
         {/* 7. Personal Quote Block */}
         <FadeIn>
-          <div className="py-20 flex flex-col items-center text-center relative px-6">
+          <div className="pt-12 md:pt-20 pb-0 flex flex-col items-center text-center relative px-6">
             <div className="absolute top-0 text-9xl text-red-500/10 font-serif -translate-y-1/2 select-none">“</div>
             <h4 className="text-2xl md:text-3xl lg:text-4xl font-semibold italic text-white max-w-4xl leading-snug relative z-10">
               "I build digital experiences that are fast, reliable, and designed to make an impact. My goal is to transform blank pixels into cinematic masterpieces."
