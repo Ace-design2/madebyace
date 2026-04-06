@@ -1,24 +1,36 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, animate } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useLoading } from "@/context/LoadingContext";
 
 export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
   const { setIsLoading } = useLoading();
 
   useEffect(() => {
     // Force a scroll to top on refresh during loading
     window.scrollTo(0, 0);
     
+    // Synchronize percentage with progress bar
+    const controls = animate(0, 100, {
+      duration: 2.2,
+      ease: [0.65, 0, 0.35, 1],
+      delay: 0.3,
+      onUpdate: (value) => setProgress(Math.round(value)),
+    });
+
     const timer = setTimeout(() => {
       setLoading(false);
       setIsLoading(false);
     }, 2800); // Give enough time for the progress bar animation
 
-    return () => clearTimeout(timer);
+    return () => {
+      controls.stop();
+      clearTimeout(timer);
+    };
   }, [setIsLoading]);
 
   return (
@@ -54,21 +66,31 @@ export default function LoadingScreen() {
             </motion.div>
 
             {/* Content (Right) */}
-            <div className="flex flex-col gap-1.5 min-w-[140px]">
-              <motion.div
-                initial={{ x: -10, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ 
-                  delay: 0.2, 
-                  duration: 0.6, 
-                  ease: [0.16, 1, 0.3, 1] 
-                }}
-                className="flex items-center"
-              >
-                <h1 className="text-white text-[18px] font-black tracking-tight leading-none">
-                  madebyace<span className="text-red-600">.dev</span>
-                </h1>
-              </motion.div>
+            <div className="flex flex-col gap-2 min-w-[100px]">
+              <div className="flex items-end justify-between overflow-hidden gap-4">
+                <motion.div
+                  initial={{ x: -10, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ 
+                    delay: 0.2, 
+                    duration: 0.6, 
+                    ease: [0.16, 1, 0.3, 1] 
+                  }}
+                  className="flex items-center"
+                >
+                  <h1 className="text-white text-[18px] font-black tracking-tight leading-none">
+                    madebyace<span className="text-red-600">.dev</span>
+                  </h1>
+                </motion.div>
+                <motion.span 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                  className="text-white/30 text-[11px] font-mono leading-none mb-[1px]"
+                >
+                  {progress}%
+                </motion.span>
+              </div>
               
               {/* Progress Bar Container */}
               <div className="h-[1.5px] w-full bg-white/5 overflow-hidden rounded-full relative">
