@@ -29,17 +29,16 @@ export default function Home() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay"></div>
       </div>
 
-      <main className="flex-1 relative flex flex-col lg:grid lg:grid-cols-3 items-center min-h-[100vh] px-6 py-32 sm:px-12 transition-all max-w-[1600px] mx-auto z-10 w-full gap-12 lg:gap-8 overflow-hidden lg:overflow-visible">
+      <main id="hero" className="flex-1 relative flex flex-col lg:grid lg:grid-cols-3 items-center min-h-[100vh] px-6 py-32 sm:px-12 transition-all max-w-[1600px] mx-auto z-10 w-full gap-12 lg:gap-8 overflow-hidden lg:overflow-visible">
         
         {/* Left Column: Text Content */}
         <motion.div 
           initial={{ y: -80, opacity: 0 }}
           animate={isLoading ? { y: -80, opacity: 0 } : { y: 0, opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="lg:col-span-1 z-10 flex flex-col items-center lg:items-start text-center lg:text-left gap-10 lg:gap-24 w-full max-w-xl mx-auto lg:mx-0 order-1"
+          className="lg:col-span-1 z-10 flex flex-col items-center lg:items-start text-center lg:text-left gap-8 lg:gap-10 w-full max-w-xl mx-auto lg:mx-0 order-1"
         >
-          {/* Header Group */}
-          <div className="flex flex-col items-center lg:items-start gap-3">
+          <div className="flex flex-col items-center lg:items-start gap-2">
             {/* Availability Badge */}
             <div className="flex items-center gap-3 px-3 py-1.5 bg-red-500/5 border border-red-500/10 rounded-full w-fit animate-fade-in opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
               <span className="relative flex h-1.5 w-1.5">
@@ -151,23 +150,25 @@ export default function Home() {
             </motion.div>
 
             {/* Social Icons Stack - Centered horizontally to line */}
-            <div className="flex flex-row lg:flex-col items-center gap-6 lg:py-0">
-              <Link href="https://github.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
-                <FiGithub className="w-6 h-6" />
-                <span className="sr-only">GitHub</span>
-              </Link>
-              <Link href="https://linkedin.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
-                <FiLinkedin className="w-6 h-6" />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-              <Link href="https://twitter.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
-                <FiTwitter className="w-6 h-6" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link href="mailto:hello@example.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
-                <FiMail className="w-6 h-6" />
-                <span className="sr-only">Email</span>
-              </Link>
+            <div className="bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-full px-4 py-6 sm:px-6 sm:py-8 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+              <div className="flex flex-row lg:flex-col items-center gap-6 lg:gap-8">
+                <Link href="https://github.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+                  <FiGithub className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="sr-only">GitHub</span>
+                </Link>
+                <Link href="https://linkedin.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+                  <FiLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="sr-only">LinkedIn</span>
+                </Link>
+                <Link href="https://twitter.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+                  <FiTwitter className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="sr-only">Twitter</span>
+                </Link>
+                <Link href="mailto:hello@example.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+                  <FiMail className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="sr-only">Email</span>
+                </Link>
+              </div>
             </div>
 
             {/* Scroll Indicator - Bottom Tether */}

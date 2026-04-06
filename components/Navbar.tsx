@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { FiPhone, FiMail } from "react-icons/fi";
+import { FiPhone, FiMail, FiHome } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { useLoading } from "@/context/LoadingContext";
 
@@ -16,11 +16,12 @@ export default function Navbar() {
     const handleScroll = () => {
       // Updated scroll spy logic for new section IDs
       const sections = [
+        { id: "hero", label: "Home" },
         { id: "who-i-am", label: "About" },
         { id: "core-skills", label: "Skills" },
-        { id: "projects", label: "Projects" },
+        { id: "projects", label: "Work" },
       ];
-      let current = "";
+      let current = "home";
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i].id);
         if (el) {
@@ -52,6 +53,13 @@ export default function Navbar() {
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+    
+    if (id === "hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setIsContactOpen(false);
+      return;
+    }
+
     const target = document.getElementById(id);
     if (!target) return;
 
@@ -85,30 +93,31 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { label: "About", id: "who-i-am" },
-    { label: "Skills", id: "core-skills" },
-    { label: "Projects", id: "projects" },
+    { label: <FiHome className="w-3.5 h-3.5 sm:w-4 sm:h-4" />, id: "hero", tracking: "home" },
+    { label: "About", id: "who-i-am", tracking: "about" },
+    { label: "Skills", id: "core-skills", tracking: "skills" },
+    { label: "Work", id: "projects", tracking: "work" },
   ];
 
   return (
     <div className={`fixed top-4 sm:top-6 left-0 right-0 z-[100] flex justify-center px-2 pointer-events-none transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${isLoading ? "opacity-0 -translate-y-10" : "opacity-100 translate-y-0"}`}>
       {/* Pill Container */}
-      <nav className="pointer-events-auto px-2 sm:px-3 py-2 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-full inline-flex justify-center items-center gap-1 sm:gap-2 shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-all duration-300">
+      <nav className="pointer-events-auto px-2 sm:px-3 py-2 bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-full inline-flex justify-center items-center gap-1 sm:gap-2 shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-500 hover:bg-white/[0.05] hover:border-white/20">
 
         {/* Nav Links */}
         <div className="flex items-center gap-0.5 sm:gap-1.5">
           {navItems.map((item) => {
-            const isActive = activeSection === item.label.toLowerCase();
+            const isActive = activeSection === item.tracking;
             return (
               <a
-                key={item.label}
+                key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => scrollToSection(e, item.id)}
                 className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full flex justify-center items-center transition-all duration-300 ${
                   isActive ? "bg-red-600/90 shadow-[0_0_15px_rgba(255,26,26,0.5)]" : "hover:bg-white/10"
                 }`}
               >
-                <span className={`text-[9px] sm:text-xs tracking-widest uppercase ${
+                <span className={`text-[9px] sm:text-xs tracking-widest uppercase flex items-center justify-center transition-colors duration-300 ${
                   isActive ? "text-white font-bold" : "text-gray-300 font-medium"
                 }`}>
                   {item.label}
@@ -125,10 +134,14 @@ export default function Navbar() {
         <div className="relative" ref={contactRef}>
           <button
             onClick={() => setIsContactOpen(!isContactOpen)}
-            className="relative overflow-hidden group border border-white/20 hover:border-red-500 rounded-full px-3 sm:px-5 py-1.5 sm:py-2 flex justify-center items-center transition-all duration-500"
+            className={`relative overflow-hidden group border rounded-full px-3 sm:px-5 py-1.5 sm:py-2 flex justify-center items-center transition-all duration-500 ${
+              isContactOpen ? "border-red-500 bg-red-600 shadow-[0_0_15px_rgba(255,26,26,0.4)]" : "border-white/20 hover:border-red-500"
+            }`}
           >
-            <span className="absolute inset-0 w-full h-full bg-red-600 -translate-x-[105%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></span>
-            <span className="relative z-10 text-white text-[9px] sm:text-xs font-bold tracking-widest uppercase group-hover:text-white transition-colors duration-300">Let’s Talk</span>
+            <span className={`absolute inset-0 w-full h-full bg-red-600 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 ${
+              isContactOpen ? "translate-x-0" : "-translate-x-[105%] group-hover:translate-x-0"
+            }`}></span>
+            <span className="relative z-10 text-white text-[9px] sm:text-xs font-bold tracking-widest uppercase transition-colors duration-300">Let’s Talk</span>
           </button>
 
           {/* Contact Tooltip Dropdown */}
