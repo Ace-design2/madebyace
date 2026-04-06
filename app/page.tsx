@@ -150,7 +150,7 @@ export default function Home() {
             </motion.div>
 
             {/* Social Icons Stack - Centered horizontally to line */}
-            <div className="bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-full px-4 py-6 sm:px-6 sm:py-8 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+            <div className="bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-full px-8 py-3 sm:px-10 sm:py-4 lg:px-4 lg:py-8 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
               <div className="flex flex-row lg:flex-col items-center gap-6 lg:gap-8">
                 <Link href="https://github.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
                   <FiGithub className="w-5 h-5 sm:w-6 sm:h-6" />

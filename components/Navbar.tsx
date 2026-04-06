@@ -26,7 +26,9 @@ export default function Navbar() {
         const el = document.getElementById(sections[i].id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 400) {
+          // More sensitive check for hero section at the top
+          const threshold = sections[i].id === "hero" ? 100 : 400;
+          if (rect.top <= threshold) {
             current = sections[i].label.toLowerCase();
             break;
           }
@@ -120,7 +122,11 @@ export default function Navbar() {
                 <span className={`text-[9px] sm:text-xs tracking-widest uppercase flex items-center justify-center transition-colors duration-300 ${
                   isActive ? "text-white font-bold" : "text-gray-300 font-medium"
                 }`}>
-                  {item.label}
+                  {typeof item.label === "string" ? item.label : (
+                    <span className={isActive ? "text-white" : "text-gray-300"}>
+                      {item.label}
+                    </span>
+                  )}
                 </span>
               </a>
             );
