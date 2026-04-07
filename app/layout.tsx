@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 import LoadingScreen from "@/components/LoadingScreen";
 import { LoadingProvider } from "@/context/LoadingContext";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export default function RootLayout({
   children,
@@ -24,12 +25,15 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <LoadingProvider>
-          <LoadingScreen />
-          {children}
-        </LoadingProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <LoadingProvider>
+            <LoadingScreen />
+            {children}
+          </LoadingProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

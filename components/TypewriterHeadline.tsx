@@ -18,8 +18,6 @@ export default function TypewriterHeadline() {
   useEffect(() => {
     if (isLoading) return;
 
-    let timer: NodeJS.Timeout;
-
     const handleType = () => {
       const i = loopNum % phrases.length;
       const fullText = phrases[i].prefix + phrases[i].suffix;
@@ -44,7 +42,7 @@ export default function TypewriterHeadline() {
       setTypingSpeed(nextSpeed);
     };
 
-    timer = setTimeout(handleType, typingSpeed);
+    const timer = setTimeout(handleType, typingSpeed);
     return () => clearTimeout(timer);
   }, [text, isDeleting, loopNum, typingSpeed, isLoading]);
 
@@ -56,11 +54,11 @@ export default function TypewriterHeadline() {
 
   return (
     <div className="w-full flex items-center min-h-[300px] sm:min-h-[220px] md:min-h-[240px] lg:min-h-[280px] xl:min-h-[320px] perspective-[1000px]">
-      <h1 className="text-5xl lg:text-6xl xl:text-7xl font-marags font-extrabold leading-tight tracking-tight text-white m-0">
+      <h1 className="text-5xl lg:text-6xl xl:text-7xl font-marags font-extrabold leading-tight tracking-tight text-black dark:text-white m-0 transition-colors duration-500">
         <span className="sr-only">{text}</span>
         Building <br className="hidden sm:block" />
-        <span className="text-red-500">{currentPrefix}</span>
-        <span className="text-white">{currentSuffix}</span>
+        <span className="text-red-600 dark:text-red-500 transition-colors duration-500">{currentPrefix}</span>
+        <span className="text-gray-900 dark:text-white transition-colors duration-500">{currentSuffix}</span>
       </h1>
     </div>
   );

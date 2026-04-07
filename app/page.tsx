@@ -18,15 +18,15 @@ export default function Home() {
   const { isLoading } = useLoading();
 
   return (
-    <div className="min-h-screen bg-black text-white relative selection:bg-red-500/30 flex flex-col">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white relative selection:bg-red-500/30 flex flex-col transition-colors duration-500">
       <MouseGlow />
       <Navbar />
 
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-500/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#B30000]/20 rounded-full blur-[150px] mix-blend-screen"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#000000_90%)]"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-400/10 dark:bg-red-500/20 rounded-full blur-[100px] dark:blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-pulse transition-all duration-500"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-red-800/5 dark:bg-[#B30000]/20 rounded-full blur-[120px] dark:blur-[150px] mix-blend-multiply dark:mix-blend-screen transition-all duration-500"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#ffffff_90%)] dark:bg-[radial-gradient(circle_at_center,transparent_0%,#000000_90%)] transition-colors duration-500"></div>
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay"></div>
       </div>
 
@@ -54,7 +54,7 @@ export default function Home() {
           </div>
 
           {/* Supporting Text */}
-          <p className="text-lg sm:text-xl max-w-[600px] text-[#B3B3B3] font-medium leading-relaxed m-0">
+          <p className="text-lg sm:text-xl max-w-[600px] text-gray-700 dark:text-[#B3B3B3] font-medium leading-relaxed m-0 transition-colors duration-500">
             I design and build high-performance websites and applications that combine modern design, speed, and seamless user experience.
           </p>
 
@@ -113,7 +113,7 @@ export default function Home() {
               />
             ))}
 
-            <div className="absolute inset-0 rounded-full border-2 border-red-500 shadow-[0_0_120px_rgba(255,26,26,0.6)] overflow-hidden bg-black/30 backdrop-blur-sm z-10">
+            <div className="absolute inset-0 rounded-full border-2 border-red-500 dark:shadow-[0_0_120px_rgba(255,26,26,0.6)] shadow-[0_0_60px_rgba(255,26,26,0.2)] overflow-hidden bg-white/30 dark:bg-black/30 backdrop-blur-sm z-10 transition-all duration-500">
               <Image
                 src="/img/my-avi-2.png"
                 alt="Profile"
@@ -158,21 +158,21 @@ export default function Home() {
             </motion.div>
 
             {/* Social Icons Stack - Centered horizontally to line */}
-            <div className="bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-full px-8 py-3 sm:px-10 sm:py-4 lg:px-4 lg:py-8 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+            <div className="bg-black/5 dark:bg-white/[0.03] backdrop-blur-md border border-black/10 dark:border-white/10 rounded-full px-8 py-3 sm:px-10 sm:py-4 lg:px-4 lg:py-8 shadow-[0_4px_15px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-all duration-500">
               <div className="flex flex-row lg:flex-col items-center gap-6 lg:gap-8">
-                <Link href="https://github.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+                <Link href="https://github.com" target="_blank" className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300">
                   <FiGithub className="w-5 h-5 sm:w-6 sm:h-6" />
                   <span className="sr-only">GitHub</span>
                 </Link>
-                <Link href="https://linkedin.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+                <Link href="https://linkedin.com" target="_blank" className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300">
                   <FiLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
                   <span className="sr-only">LinkedIn</span>
                 </Link>
-                <Link href="https://twitter.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+                <Link href="https://twitter.com" target="_blank" className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300">
                   <FiTwitter className="w-5 h-5 sm:w-6 sm:h-6" />
                   <span className="sr-only">Twitter</span>
                 </Link>
-                <Link href="mailto:hello@example.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300">
+                <Link href="mailto:hello@example.com" target="_blank" className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300">
                   <FiMail className="w-5 h-5 sm:w-6 sm:h-6" />
                   <span className="sr-only">Email</span>
                 </Link>
@@ -228,13 +228,13 @@ export default function Home() {
 
       </main>
 
-      <div className="relative z-10 bg-black flex-none">
+      <div className="relative z-10 bg-transparent flex-none">
         <About />
         <Projects />
       </div>
       
       {/* Footer Section placed at the bottom */}
-      <div id="contact" className="relative z-10 w-full mt-auto shrink-0 flex-none bg-black">
+      <div id="contact" className="relative z-10 w-full mt-auto shrink-0 flex-none bg-transparent">
         <Footer />
       </div>
 
