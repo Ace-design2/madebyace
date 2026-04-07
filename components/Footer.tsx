@@ -27,7 +27,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative w-full bg-black text-white pt-24 md:pt-40 pb-12 overflow-hidden selection:bg-red-500/30">
+    <footer className="relative w-full bg-black text-white pt-16 md:pt-40 pb-12 overflow-hidden selection:bg-red-500/30">
       
       {/* Cinematic Red Underglow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full md:w-[70%] h-[400px] bg-red-600/10 blur-[150px] mix-blend-screen pointer-events-none z-0" />
@@ -40,7 +40,7 @@ export default function Footer() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col items-center">
         
         {/* Massive Typography section */}
-        <div className="w-full flex flex-col items-center text-center space-y-6 md:space-y-10 mb-24 md:mb-32">
+        <div className="w-full flex flex-col items-center text-center space-y-6 md:space-y-10 mb-16 md:mb-32">
           <p className="text-red-500 font-bold uppercase tracking-[0.4em] text-[10px] md:text-sm animate-pulse shadow-sm">Have an idea?</p>
           <h2 className="text-[14vw] md:text-[11vw] leading-none font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/10 select-none drop-shadow-2xl hover:scale-105 transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] cursor-default">
             LET'S WORK
