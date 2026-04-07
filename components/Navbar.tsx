@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FiPhone, FiMail, FiHome } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { useLoading } from "@/context/LoadingContext";
+import { animateScroll } from "@/lib/scroll";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("");
@@ -57,7 +58,7 @@ export default function Navbar() {
     e.preventDefault();
     
     if (id === "hero") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      animateScroll(0, 1500);
       setIsContactOpen(false);
       return;
     }
@@ -69,28 +70,9 @@ export default function Navbar() {
     const bodyRect = document.body.getBoundingClientRect().top;
     const elementRect = target.getBoundingClientRect().top;
     const elementPosition = elementRect - bodyRect;
-    const offsetPosition = elementPosition - offset;
+    const offsetPosition = elementPosition;
 
-    const startPosition = window.pageYOffset;
-    const distance = offsetPosition - startPosition;
-    const duration = 1500; // Slower duration for cinematic feel
-    let start: number | null = null;
-
-    const easeOutQuint = (t: number) => 1 - Math.pow(1 - t, 5);
-
-    const step = (timestamp: number) => {
-      if (!start) start = timestamp;
-      const progress = timestamp - start;
-      const percentage = Math.min(progress / duration, 1);
-      
-      window.scrollTo(0, startPosition + distance * easeOutQuint(percentage));
-      
-      if (progress < duration) {
-        window.requestAnimationFrame(step);
-      }
-    };
-
-    window.requestAnimationFrame(step);
+    animateScroll(offsetPosition, 1500, offset);
     setIsContactOpen(false);
   };
 

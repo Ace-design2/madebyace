@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FiArrowUp, FiGithub, FiLinkedin, FiTwitter, FiMail } from "react-icons/fi";
+import { animateScroll } from "@/lib/scroll";
 
 export default function Footer() {
   const [time, setTime] = useState<string>("");
@@ -23,7 +24,7 @@ export default function Footer() {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    animateScroll(0, 1500);
   };
 
   return (
@@ -43,7 +44,7 @@ export default function Footer() {
         <div className="w-full flex flex-col items-center text-center space-y-6 md:space-y-10 mb-16 md:mb-32">
           <p className="text-red-500 font-bold uppercase tracking-[0.4em] text-[10px] md:text-sm animate-pulse shadow-sm">Have an idea?</p>
           <h2 className="text-[14vw] md:text-[11vw] leading-none font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/10 select-none drop-shadow-2xl hover:scale-105 transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] cursor-default">
-            LET'S WORK
+            LET&apos;S WORK
           </h2>
           <div className="pt-6 md:pt-12">
             <Link 

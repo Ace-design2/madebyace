@@ -12,6 +12,7 @@ import MouseGlow from "@/components/MouseGlow";
 import TypewriterHeadline from "@/components/TypewriterHeadline";
 
 import { useLoading } from "@/context/LoadingContext";
+import { animateScroll } from "@/lib/scroll";
 
 export default function Home() {
   const { isLoading } = useLoading();
@@ -67,7 +68,14 @@ export default function Home() {
               <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
             <button
-               onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})}
+               onClick={() => {
+                 const target = document.getElementById('contact');
+                 if (target) {
+                   const bodyRect = document.body.getBoundingClientRect().top;
+                   const elementRect = target.getBoundingClientRect().top;
+                   animateScroll(elementRect - bodyRect, 1500);
+                 }
+               }}
               className="relative overflow-hidden group border border-red-500 text-red-500 font-[12px] sm:font-bold rounded-full px-4 sm:px-8 py-3 sm:py-4 text-center flex-1 sm:flex-none text-sm sm:text-base flex items-center justify-center gap-2"
             >
               <span className="absolute inset-0 w-full h-full bg-red-500 -translate-x-[105%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></span>
@@ -86,7 +94,7 @@ export default function Home() {
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="lg:col-span-1 z-0 order-2 w-full flex justify-center items-center pointer-events-none mt-8 lg:mt-0"
         >
-          <div className="relative lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[680px] xl:h-[680px] 2xl:w-[780px] 2xl:h-[780px] max-w-[90vw] z-0 mx-auto">
+          <div className="relative lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[240px] h-[240px] sm:w-[240px] sm:h-[240px] md:w-[340px] md:h-[340px] lg:w-[420px] lg:h-[420px] xl:w-[520px] xl:h-[520px] 2xl:w-[600px] 2xl:h-[600px] max-w-[90vw] z-0 mx-auto">
             {/* Pulsing Rings Background - Subtler Pulse */}
             {[1.2, 1.8, 2.4].map((scale, i) => (
               <motion.div
@@ -112,7 +120,7 @@ export default function Home() {
                 fill
                 priority
                 className="object-cover"
-                sizes="(max-width: 640px) 240px, (max-width: 1024px) 450px, 780px"
+                sizes="(max-width: 640px) 240px, (max-width: 1024px) 340px, 600px"
               />
             </div>
           </div>
