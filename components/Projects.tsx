@@ -57,36 +57,40 @@ const devProjects = [
     description: "Modern responsive restaurant website built with React and Tailwind CSS.",
     tags: ["React", "TypeScript", "Tailwind"],
     gradient: "from-red-50 to-white dark:from-[#1a0505] dark:to-black",
-  },
-  {
-    title: "Live Football Scores App",
-    description: "Real-time sports tracking dashboard focusing on performance and responsive design.",
-    tags: ["Next.js", "API", "WebSockets"],
-    gradient: "from-gray-50 to-white dark:from-black dark:to-[#220000]",
+    image: "/img/wokcity.png",
+    link: "https://wokcity-restaurant.vercel.app",
   },
   {
     title: "Portfolio Website",
     description: "Minimalist personal portfolio built with modern tools and smooth animations.",
     tags: ["React", "Framer Motion", "CSS"],
     gradient: "from-stone-50 to-white dark:from-[#0a0a0a] dark:to-[#1a0505]",
+    image: "/img/madebyace.png",
+    link: "https://madebyace.vercel.app",
   },
   {
-    title: "E-commerce Store",
-    description: "Full-stack online shop featuring cart functionality and secure checkout.",
-    tags: ["Next.js", "Stripe", "Tailwind"],
+    title: "Compare Devices Website",
+    description: "A comprehensive platform to compare latest tech gadgets and devices.",
+    tags: ["Next.js", "Tailwind", "Product"],
     gradient: "from-neutral-50 to-white dark:from-[#110505] dark:to-[#0A0A0A]",
+    image: "/img/device-compare.png",
+    link: "https://compare-devices.vercel.app/",
   },
   {
-    title: "Chat Application",
-    description: "Messaging platform designed with layout clarity and intuitive user flow.",
-    tags: ["React", "Socket.io", "Node.js"],
+    title: "Smart Task Management",
+    description: "High-productivity web application for managing tasks with a sleek interface.",
+    tags: ["Next.js", "Zustand", "UX"],
     gradient: "from-red-50/50 to-white dark:from-[#1c0000] dark:to-black",
+    image: "/img/astra-to-do.png",
+    link: "https://astra-to-do.vercel.app/",
   },
   {
     title: "Admin Dashboard",
-    description: "Complex data visualization interface highlighting key metrics beautifully.",
-    tags: ["React", "Recharts", "UX"],
+    description: "Complex data visualization interface highlighting key metrics for restaurant management.",
+    tags: ["React", "Recharts", "Admin"],
     gradient: "from-gray-50 to-white dark:from-[#050505] dark:to-[#120000]",
+    image: "/img/wokcity-admin-dashboard.png",
+    link: "https://wokcity-restaurant.vercel.app/admin",
   },
 ];
 
@@ -134,10 +138,17 @@ interface Project {
   description: string;
   tags: string[];
   gradient: string;
+  image?: string;
+  link?: string;
 }
 
 const ProjectCard = ({ project }: { project: Project }) => (
-  <div className="group relative rounded-[2.5rem] bg-gray-50 dark:bg-[#0A0A0A] shadow-md dark:shadow-2xl transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,26,26,0.15)] hover:-translate-y-2 p-4 sm:p-5 flex flex-col h-full cursor-pointer border border-black/5 dark:border-transparent">
+  <a 
+    href={project.link || "#"} 
+    target={project.link ? "_blank" : undefined}
+    rel={project.link ? "noopener noreferrer" : undefined}
+    className="group relative rounded-[2.5rem] bg-gray-50 dark:bg-[#0A0A0A] shadow-md dark:shadow-2xl transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,26,26,0.15)] hover:-translate-y-2 p-4 sm:p-5 flex flex-col h-full cursor-pointer border border-black/5 dark:border-transparent no-underline block"
+  >
     
     {/* Base inactive border */}
     <div className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-[2.5rem] transition-colors duration-500 pointer-events-none group-hover:border-transparent z-0"></div>
@@ -169,12 +180,20 @@ const ProjectCard = ({ project }: { project: Project }) => (
       {/* Hover Reveal Overlay */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out flex items-center justify-center bg-black/50 backdrop-blur-[2px] z-10">
          <div className="px-6 py-2 rounded-full border border-red-500/50 bg-red-600/20 text-white font-bold tracking-[0.2em] uppercase text-xs sm:text-sm translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center gap-2 shadow-[0_0_20px_rgba(255,26,26,0.3)]">
-            <span>View Case</span>
+            <span>View Site</span>
             <FiArrowUpRight className="w-4 h-4" />
          </div>
       </div>
 
-      <div className="w-full h-full bg-cover bg-center group-hover:scale-105 group-hover:rotate-1 transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
+      {project.image ? (
+        <img 
+          src={project.image} 
+          alt={project.title}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-0"
+        />
+      ) : (
+        <div className="w-full h-full bg-cover bg-center group-hover:scale-105 group-hover:rotate-1 transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
+      )}
       
       {/* Decorative inner border */}
       <div className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-[2rem] pointer-events-none transition-colors duration-500 z-20" />
@@ -191,7 +210,7 @@ const ProjectCard = ({ project }: { project: Project }) => (
         </div>
       </div>
       
-      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-medium mb-8 flex-1 transition-colors duration-500">
+      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-medium mb-8 flex-1 transition-colors duration-500 text-left">
         {project.description}
       </p>
       
@@ -206,7 +225,7 @@ const ProjectCard = ({ project }: { project: Project }) => (
         ))}
       </div>
     </div>
-  </div>
+  </a>
 );
 
 export default function Projects() {
