@@ -137,7 +137,7 @@ export default function Navbar() {
             <span className={`absolute inset-0 w-full h-full bg-red-600 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 ${
               isContactOpen ? "translate-x-0" : "-translate-x-[105%] group-hover:translate-x-0"
             }`}></span>
-            <span className={`relative z-10 text-[9px] sm:text-xs font-bold tracking-widest uppercase transition-colors duration-300 ${isContactOpen ? "text-white" : "text-black dark:text-white group-hover:text-white"}`}>Let’s Talk</span>
+            <span className={`relative z-10 text-[9px] sm:text-xs font-bold tracking-widest uppercase transition-colors duration-300 ${isContactOpen ? "text-white" : "text-black dark:text-white group-hover:text-white"}`}>Let&rsquo;s Talk</span>
           </button>
 
           {/* Theme Toggle Button */}

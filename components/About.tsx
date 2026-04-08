@@ -301,7 +301,7 @@ export default function About() {
           <div className="pt-12 md:pt-20 pb-0 flex flex-col items-center text-center relative px-6">
             <div className="absolute top-0 text-9xl text-black/5 dark:text-red-500/10 font-serif -translate-y-1/2 select-none transition-colors duration-500">“</div>
             <h4 className="text-2xl md:text-3xl lg:text-4xl font-semibold italic text-black dark:text-white max-w-4xl leading-snug relative z-10 transition-colors duration-500">
-              "I build digital experiences that are fast, reliable, and designed to make an impact. My goal is to transform blank pixels into cinematic masterpieces."
+              &ldquo;I build digital experiences that are fast, reliable, and designed to make an impact. My goal is to transform blank pixels into cinematic masterpieces.&rdquo;
             </h4>
             <div className="w-20 h-1 bg-red-600 mt-12 rounded-full" />
           </div>
