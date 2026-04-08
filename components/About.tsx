@@ -217,10 +217,12 @@ export default function About() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {skills.map((skill, index) => (
               <FadeIn key={index} delay={index * 50}>
-                <div className="bg-black/5 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 p-6 rounded-2xl group hover:border-red-500/40 hover:shadow-[0_0_25px_rgba(255,26,26,0.2)] hover:-translate-y-2 transition-all duration-500">
-                  <div className="mb-4 text-3xl group-hover:scale-110 transition-transform duration-500">{skill.icon}</div>
-                  <h4 className="text-lg font-bold text-black dark:text-white mb-2 transition-colors">{skill.name}</h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-500 leading-snug">{skill.desc}</p>
+                <div className="relative overflow-hidden bg-black/5 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 p-6 rounded-2xl group hover:border-red-500/40 hover:shadow-[0_0_25px_rgba(255,26,26,0.2)] transition-all duration-500">
+                  <span className="absolute inset-0 w-full h-full bg-red-600 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 -translate-x-[105%] group-hover:translate-x-0"></span>
+                  
+                  <div className="relative z-10 mb-4 text-3xl transition-transform duration-500">{skill.icon}</div>
+                  <h4 className="relative z-10 text-lg font-bold text-black dark:text-white group-hover:text-white mb-2 transition-colors">{skill.name}</h4>
+                  <p className="relative z-10 text-sm text-gray-500 dark:text-gray-400 group-hover:text-white/90 leading-snug transition-colors">{skill.desc}</p>
                 </div>
               </FadeIn>
             ))}
