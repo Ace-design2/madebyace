@@ -12,6 +12,7 @@ import {
   SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, 
   SiFramer, SiNodedotjs, SiGit, SiFirebase 
 } from "react-icons/si";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Helper components for modularity
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) => {
@@ -274,24 +275,75 @@ export default function About() {
           </FadeIn>
 
           {/* 6. Core Strengths / Services Cards */}
-          <div className="space-y-12">
+          <div className="relative h-[450px] w-full mt-8 md:mt-0">
              <FadeIn>
-               <h3 className="text-3xl font-marags font-bold tracking-tight lg:text-right text-black dark:text-white transition-colors">Core <span className="text-red-600 dark:text-red-500">Strengths</span></h3>
+               <h3 className="text-3xl font-marags font-bold tracking-tight lg:text-right text-black dark:text-white transition-colors mb-12">Core <span className="text-red-600 dark:text-red-500">Strengths</span></h3>
              </FadeIn>
-             <div className="grid grid-cols-1 gap-6">
-                {strengths.map((strength, index) => (
-                  <FadeIn key={index} delay={index * 150}>
-                    <div className="bg-black/5 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 p-8 rounded-[1.5rem] flex gap-6 group hover:shadow-[0_0_30px_rgba(255,26,26,0.15)] hover:border-red-500/30 transition-all duration-500">
-                      <div className="flex-shrink-0 w-14 h-14 bg-red-600/10 rounded-2xl flex items-center justify-center text-red-500 text-2xl group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
-                        {strength.icon}
+             <div className="relative h-full w-full flex items-center justify-center lg:justify-end pr-0 lg:pr-12">
+                {strengths.map((strength, index) => {
+                  // Sequential offsets for horizontal/vertical visibility
+                  const rotations = [2, -2, 4]; // Subtle initial tilt
+                  const xOffsets = [index * 20 - 20, index * 20 - 20, index * 20 - 20]; // Slide out slightly
+                  const yOffsets = [index * 40 - 40, index * 40 - 40, index * 40 - 40]; // Stacked vertically
+                  
+                  return (
+                    <motion.div 
+                      key={index}
+                      initial={{ 
+                        opacity: 0, 
+                        rotate: rotations[index], 
+                        x: xOffsets[index], 
+                        y: yOffsets[index] + 100 
+                      }}
+                      whileInView={{ 
+                        opacity: 1, 
+                        y: yOffsets[index],
+                        transition: { 
+                          delay: index * 0.1, 
+                          duration: 0.8, 
+                          ease: [0.16, 1, 0.3, 1] 
+                        }
+                      }}
+                      viewport={{ once: true }}
+                      whileHover={{ 
+                        rotate: index % 2 === 0 ? 5 : -5, // Alternating tilt on hover
+                        scale: 1.05, 
+                        zIndex: 100,
+                        x: xOffsets[index] + (index % 2 === 0 ? 10 : -10), // Peek out more on hover
+                        y: yOffsets[index] - 20, // Lift up
+                        transition: { type: "spring", stiffness: 300, damping: 20 }
+                      }}
+                      whileTap={{ cursor: "grabbing", scale: 0.98 }}
+                      drag
+                      dragConstraints={{ left: -150, right: 150, top: -150, bottom: 150 }}
+                      className="absolute w-full max-w-[280px] sm:max-w-[320px] md:max-w-[380px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:left-auto lg:right-12 lg:translate-x-0 cursor-grab"
+                      style={{ 
+                        zIndex: index + 1,
+                      }}
+                    >
+                      <div className="bg-white/95 dark:bg-[#0A0A0A] backdrop-blur-md border border-black/10 dark:border-white/10 p-8 md:p-10 rounded-[1.5rem] shadow-[0_20px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_40px_rgba(0,0,0,0.4)] group hover:border-red-500/50 transition-all duration-500 overflow-hidden relative">
+                        {/* Subtle gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        
+                        <div className="relative z-10 flex-shrink-0 w-14 h-14 bg-red-600/10 rounded-xl flex items-center justify-center text-red-500 text-3xl mb-8 group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
+                          {strength.icon}
+                        </div>
+                        <div className="relative z-10">
+                          <h4 className="text-xl md:text-2xl font-bold text-black dark:text-white mb-3 transition-colors tracking-tight">{strength.title}</h4>
+                          <p className="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors text-sm md:text-base font-medium">{strength.desc}</p>
+                        </div>
+                        
+                        {/* Bottom accent line */}
+                        <div className="absolute bottom-0 left-0 h-1 bg-red-600 w-0 group-hover:w-full transition-all duration-500 opacity-50" />
+
+                        {/* Decorative corner icon */}
+                        <div className="absolute -top-6 -right-6 text-black/5 dark:text-white/5 group-hover:text-red-600/10 transition-colors duration-500 pointer-events-none">
+                          <FiZap className="text-9xl rotate-12" />
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="text-xl font-bold text-black dark:text-white mb-2 transition-colors">{strength.title}</h4>
-                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors">{strength.desc}</p>
-                      </div>
-                    </div>
-                  </FadeIn>
-                ))}
+                    </motion.div>
+                  );
+                })}
              </div>
           </div>
         </div>
