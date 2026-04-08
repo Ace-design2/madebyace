@@ -106,6 +106,25 @@ export default function About() {
     { title: "Clean Code", desc: "Writing scalable, maintainable, and type-safe code that stands the test of time.", icon: <FiCode /> },
   ];
 
+  // State for automatic shuffling
+  const [order, setOrder] = useState([0, 1, 2]);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setOrder((prev) => {
+        const newOrder = [...prev];
+        const lastItem = newOrder.pop()!;
+        newOrder.unshift(lastItem);
+        return newOrder;
+      });
+    }, 3000); // Swap every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
   return (
     <section id="about" className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-0 pb-10 md:pb-16 overflow-hidden selection:bg-red-500/30 transition-colors duration-500">
       
@@ -279,7 +298,11 @@ export default function About() {
              <FadeIn>
                <h3 className="text-3xl font-marags font-bold tracking-tight lg:text-right text-black dark:text-white transition-colors mb-12">Core <span className="text-red-600 dark:text-red-500">Strengths</span></h3>
              </FadeIn>
-             <div className="relative h-full w-full flex items-center justify-center lg:justify-end pr-0 lg:pr-12">
+             <div 
+               className="relative h-full w-full flex items-center justify-center lg:justify-end pr-0 lg:pr-12"
+               onMouseEnter={() => setIsAutoPlaying(false)}
+               onMouseLeave={() => setIsAutoPlaying(true)}
+             >
                 {/* Drag Indicator Badge */}
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
@@ -298,45 +321,43 @@ export default function About() {
                 </motion.div>
 
                 {strengths.map((strength, index) => {
-                  // Sequential offsets for horizontal/vertical visibility
-                  const rotations = [2, -2, 4]; // Subtle initial tilt
-                  const xOffsets = [index * 20 - 20, index * 20 - 20, index * 20 - 20]; // Slide out slightly
-                  const yOffsets = [index * 40 - 40, index * 40 - 40, index * 40 - 40]; // Stacked vertically
+                  // Determine visual position based on current order
+                  const visualPos = order.indexOf(index);
+                  
+                  // visualPos 0 = Top/Front card, 2 = Bottom/Back card
+                  const rotations = [2, -2, 4]; 
+                  const xOffsets = [visualPos * 20 - 20, visualPos * 20 - 20, visualPos * 20 - 20];
+                  const yOffsets = [visualPos * 40 - 40, visualPos * 40 - 40, visualPos * 40 - 40];
                   
                   return (
                     <motion.div 
                       key={index}
-                      initial={{ 
-                        opacity: 0, 
-                        rotate: rotations[index], 
-                        x: xOffsets[index], 
-                        y: yOffsets[index] + 100 
-                      }}
-                      whileInView={{ 
+                      layout
+                      initial={false}
+                      animate={{ 
                         opacity: 1, 
-                        y: yOffsets[index],
-                        transition: { 
-                          delay: index * 0.1, 
-                          duration: 0.8, 
-                          ease: [0.16, 1, 0.3, 1] 
-                        }
+                        rotate: rotations[visualPos], 
+                        x: xOffsets[visualPos], 
+                        y: yOffsets[visualPos],
+                        zIndex: 10 - visualPos, // Front card has higher zIndex
                       }}
-                      viewport={{ once: true }}
+                      transition={{ 
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 20
+                      }}
                       whileHover={{ 
-                        rotate: index % 2 === 0 ? 5 : -5, // Alternating tilt on hover
+                        rotate: index % 2 === 0 ? 5 : -5,
                         scale: 1.05, 
                         zIndex: 100,
-                        x: xOffsets[index] + (index % 2 === 0 ? 10 : -10), // Peek out more on hover
-                        y: yOffsets[index] - 20, // Lift up
+                        x: xOffsets[visualPos] + (index % 2 === 0 ? 10 : -10),
+                        y: yOffsets[visualPos] - 20,
                         transition: { type: "spring", stiffness: 300, damping: 20 }
                       }}
                       whileTap={{ cursor: "grabbing", scale: 0.98 }}
                       drag
                       dragConstraints={{ left: -150, right: 150, top: -150, bottom: 150 }}
                       className="absolute w-full max-w-[280px] sm:max-w-[320px] md:max-w-[380px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:left-auto lg:right-12 lg:translate-x-0 cursor-grab"
-                      style={{ 
-                        zIndex: index + 1,
-                      }}
                     >
                       <div className="bg-white/95 dark:bg-[#0A0A0A] backdrop-blur-md border border-black/10 dark:border-white/10 p-8 md:p-10 rounded-[1.5rem] shadow-[0_20px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_40px_rgba(0,0,0,0.4)] group hover:border-red-500/50 transition-all duration-500 overflow-hidden relative">
                         {/* Subtle gradient overlay */}
