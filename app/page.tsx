@@ -30,7 +30,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay"></div>
       </div>
 
-      <main id="hero" className="flex-1 relative flex flex-col lg:grid lg:grid-cols-3 items-center min-h-[100vh] px-6 pt-[92px] pb-20 md:py-32 sm:px-12 transition-all max-w-[1600px] mx-auto z-10 w-full gap-12 lg:gap-8 overflow-hidden lg:overflow-visible">
+      <main id="hero" className="flex-1 relative flex flex-col lg:grid lg:grid-cols-3 items-center min-h-[100vh] px-6 pt-[96px] pb-20 md:py-32 sm:px-12 transition-all max-w-[1600px] mx-auto z-10 w-full gap-12 lg:gap-8 overflow-hidden lg:overflow-visible">
         
         {/* Left Column: Text Content */}
         <motion.div 
