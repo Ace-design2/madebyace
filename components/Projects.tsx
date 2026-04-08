@@ -4,23 +4,36 @@ import { useEffect, useRef, useState } from "react";
 // Helper components for scroll animations
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          // If entering from the top (scrolling up), we don't want the slide animation.
+          if (entry.boundingClientRect.top < 100) {
+            setShouldAnimate(false);
+          } else {
+            setShouldAnimate(true);
+          }
+          setIsVisible(true);
+        } else {
+          // Reset when it leaves the viewport (either top or bottom)
+          setIsVisible(false);
+        }
       },
       { threshold: 0.1 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -28,8 +41,8 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-700 ease-out ${
+      style={{ transitionDelay: isVisible && shouldAnimate ? `${delay}ms` : '0ms' }}
+      className={`${shouldAnimate ? 'transition-all duration-700 ease-out' : 'transition-none'} ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       } ${className}`}
     >
@@ -116,7 +129,14 @@ const designProjects = [
   },
 ];
 
-const ProjectCard = ({ project }: { project: any }) => (
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  gradient: string;
+}
+
+const ProjectCard = ({ project }: { project: Project }) => (
   <div className="group relative rounded-[2.5rem] bg-gray-50 dark:bg-[#0A0A0A] shadow-md dark:shadow-2xl transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,26,26,0.15)] hover:-translate-y-2 p-4 sm:p-5 flex flex-col h-full cursor-pointer border border-black/5 dark:border-transparent">
     
     {/* Base inactive border */}

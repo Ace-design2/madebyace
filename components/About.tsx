@@ -16,23 +16,36 @@ import {
 // Helper components for modularity
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          // If entering from the top (scrolling up), we don't want the slide animation.
+          if (entry.boundingClientRect.top < 100) {
+            setShouldAnimate(false);
+          } else {
+            setShouldAnimate(true);
+          }
+          setIsVisible(true);
+        } else {
+          // Reset when it leaves the viewport (either top or bottom)
+          setIsVisible(false);
+        }
       },
       { threshold: 0.1 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -40,8 +53,8 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: nu
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-700 ease-out ${
+      style={{ transitionDelay: isVisible && shouldAnimate ? `${delay}ms` : '0ms' }}
+      className={`${shouldAnimate ? 'transition-all duration-700 ease-out' : 'transition-none'} ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
