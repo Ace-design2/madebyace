@@ -157,36 +157,36 @@ export default function Navbar() {
 
           {/* Contact Tooltip Dropdown */}
           <div
-            className={`absolute top-full right-0 mt-4 w-60 sm:w-64 bg-black/95 backdrop-blur-3xl border border-white/10 rounded-2xl p-2 shadow-2xl transition-all duration-300 origin-top-right ${
+            className={`absolute top-full right-0 mt-4 w-60 sm:w-64 bg-white/95 dark:bg-black/95 backdrop-blur-3xl border border-black/10 dark:border-white/10 rounded-2xl p-2 shadow-2xl transition-all duration-300 origin-top-right ${
               isContactOpen ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
             }`}
           >
             <div className="flex flex-col space-y-1">
-              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group">
+              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 dark:hover:bg-white/5 transition-colors group">
                 <div className="w-9 h-9 rounded-full bg-green-500/10 flex items-center justify-center text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all">
                   <FaWhatsapp className="w-4 h-4" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-white text-sm font-bold">WhatsApp</span>
-                  <span className="text-gray-400 text-[10px] uppercase tracking-wider">Chat with me</span>
+                  <span className="text-black dark:text-white text-sm font-bold">WhatsApp</span>
+                  <span className="text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-wider">Chat with me</span>
                 </div>
               </a>
-              <a href="tel:+1234567890" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group">
+              <a href="tel:+1234567890" className="flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 dark:hover:bg-white/5 transition-colors group">
                 <div className="w-9 h-9 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all">
                   <FiPhone className="w-4 h-4" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-white text-sm font-bold">Phone</span>
-                  <span className="text-gray-400 text-[10px] uppercase tracking-wider">Call directly</span>
+                  <span className="text-black dark:text-white text-sm font-bold">Phone</span>
+                  <span className="text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-wider">Call directly</span>
                 </div>
               </a>
-              <a href="mailto:hello@example.com" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group">
+              <a href="mailto:hello@example.com" className="flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 dark:hover:bg-white/5 transition-colors group">
                 <div className="w-9 h-9 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 group-hover:bg-red-500 group-hover:text-white transition-all">
                   <FiMail className="w-4 h-4" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-white text-sm font-bold">Email</span>
-                  <span className="text-gray-400 text-[10px] uppercase tracking-wider">Send a message</span>
+                  <span className="text-black dark:text-white text-sm font-bold">Email</span>
+                  <span className="text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-wider">Send a message</span>
                 </div>
               </a>
             </div>

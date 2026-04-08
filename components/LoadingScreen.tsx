@@ -42,7 +42,7 @@ export default function LoadingScreen() {
             opacity: 0, 
             transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
           }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black selection:bg-none"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-black selection:bg-none"
         >
           <div className="flex items-center gap-5 p-4">
             {/* Profile Image (Left) */}
@@ -53,7 +53,7 @@ export default function LoadingScreen() {
                 duration: 0.6, 
                 ease: [0.16, 1, 0.3, 1] 
               }}
-              className="relative w-12 h-12 rounded-full border border-red-500/20 overflow-hidden shadow-[0_0_20px_rgba(255,26,26,0.15)] bg-black/50"
+              className="relative w-12 h-12 rounded-full border border-red-500/20 overflow-hidden shadow-[0_0_20px_rgba(255,26,26,0.15)] bg-black/5 dark:bg-black/50"
             >
               <Image
                 src="/img/my-avi-2.png"
@@ -78,7 +78,7 @@ export default function LoadingScreen() {
                   }}
                   className="flex items-center"
                 >
-                  <h1 className="text-white text-[18px] font-black tracking-tight leading-none">
+                  <h1 className="text-black dark:text-white text-[18px] font-black tracking-tight leading-none">
                     madebyace<span className="text-red-600">.dev</span>
                   </h1>
                 </motion.div>
@@ -86,14 +86,14 @@ export default function LoadingScreen() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.5 }}
-                  className="text-white/30 text-[11px] font-mono leading-none mb-[1px]"
+                  className="text-black/30 dark:text-white/30 text-[11px] font-mono leading-none mb-[1px]"
                 >
                   {progress}%
                 </motion.span>
               </div>
               
               {/* Progress Bar Container */}
-              <div className="h-[1.5px] w-full bg-white/5 overflow-hidden rounded-full relative">
+              <div className="h-[1.5px] w-full bg-black/10 dark:bg-white/5 overflow-hidden rounded-full relative">
                 {/* Progress Bar Fill */}
                 <motion.div
                   initial={{ width: "0%" }}
