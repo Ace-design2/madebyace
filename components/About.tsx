@@ -280,6 +280,23 @@ export default function About() {
                <h3 className="text-3xl font-marags font-bold tracking-tight lg:text-right text-black dark:text-white transition-colors mb-12">Core <span className="text-red-600 dark:text-red-500">Strengths</span></h3>
              </FadeIn>
              <div className="relative h-full w-full flex items-center justify-center lg:justify-end pr-0 lg:pr-12">
+                {/* Drag Indicator Badge */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1, duration: 0.5 }}
+                  className="absolute -top-9 left-1/2 -translate-x-1/2 lg:left-auto lg:right-32 lg:translate-x-0 z-50 flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-black/5 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-full mt-[12px]"
+                >
+                  <motion.span 
+                    animate={{ x: [-2, 2, -2] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                    className="flex gap-1"
+                  >
+                    <span className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-red-500 animate-pulse" />
+                  </motion.span>
+                  <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">Drag to Explore</span>
+                </motion.div>
+
                 {strengths.map((strength, index) => {
                   // Sequential offsets for horizontal/vertical visibility
                   const rotations = [2, -2, 4]; // Subtle initial tilt
