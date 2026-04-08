@@ -21,9 +21,7 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: nu
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        setIsVisible(entry.isIntersecting);
       },
       { threshold: 0.1 }
     );
