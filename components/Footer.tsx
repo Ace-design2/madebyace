@@ -48,7 +48,7 @@ export default function Footer() {
           </h2>
           <div className="pt-6 md:pt-12">
             <Link 
-              href="mailto:hello@example.com"
+              href="mailto:showunmioluwasegun135@gmail.com"
               className="group relative inline-flex items-center justify-center gap-3 bg-black dark:bg-white text-white dark:text-black font-black uppercase tracking-widest px-10 md:px-14 py-4 md:py-6 rounded-full overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all duration-500 hover:shadow-[0_0_50px_rgba(255,26,26,0.3)] hover:-translate-y-2"
             >
               <span className="absolute inset-0 w-full h-full bg-red-600 translate-y-[105%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 rounded-full" />
