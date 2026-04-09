@@ -18,6 +18,13 @@
   --font-sans: var(--font-inter);
   --color-primary: #FF1A1A;
   --color-secondary: #B30000;
+
+  --animate-scroll: scroll-horizontal 30s linear infinite;
+}
+
+@keyframes scroll-horizontal {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @font-face {
@@ -121,16 +128,16 @@
   animation: scroll-line-glow 2s ease-in-out infinite;
 }
 
-@keyframes scroll-horizontal {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.animate-marquee {
+  animation: scroll-marquee 300s linear infinite;
 }
 
-.animate-scroll {
-  animation: scroll-horizontal 30s linear infinite;
+@keyframes scroll-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-.pause {
+.pause-on-hover:hover {
   animation-play-state: paused;
 }
 
