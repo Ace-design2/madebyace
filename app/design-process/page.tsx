@@ -82,7 +82,7 @@ export default function DesignProcessPage() {
         <FadeIn className="pointer-events-auto flex items-center gap-3">
           <Link 
             href="/#about" 
-            className="flex items-center gap-3 px-6 py-3 bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 dark:text-gray-300 hover:text-red-500 hover:border-red-500/50 hover:shadow-[0_8px_32px_rgba(255,26,26,0.3)] transition-all group"
+            className="flex items-center gap-3 px-6 py-3 bg-red-600 border border-red-500 rounded-full text-[10px] font-black uppercase tracking-[0.3em] text-white hover:bg-red-700 hover:shadow-[0_8px_32px_rgba(255,26,26,0.4)] transition-all group"
           >
             <FiArrowLeft className="group-hover:-translate-x-1 transition-transform w-3.5 h-3.5" />
             Back to About
@@ -111,7 +111,7 @@ export default function DesignProcessPage() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 dark:opacity-5 mix-blend-overlay" />
       </div>
 
-      <main className="relative z-10 flex-1 w-full max-w-[1400px] mx-auto px-6 pt-32 pb-40 md:pt-48 md:pb-56">
+      <main className="relative z-10 flex-1 w-full max-w-[1400px] mx-auto px-6 pt-32 pb-24 md:pt-48 md:pb-32">
         
         {/* Header Section */}
         <div className="flex flex-col items-center text-center gap-8 mb-20 md:mb-32">
@@ -147,7 +147,28 @@ export default function DesignProcessPage() {
               
               {/* Content Side */}
               <FadeIn delay={index * 0.1} className="w-full md:w-1/2">
-                <div className={`p-8 md:p-12 rounded-[2.5rem] bg-black/5 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 relative overflow-hidden group hover:border-red-500/40 transition-all duration-500 shadow-xl ${index % 2 !== 0 ? 'md:text-right md:items-end flex flex-col' : ''}`}>
+                <div className={`p-8 md:p-12 rounded-[2.5rem] bg-black/5 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 relative overflow-hidden group hover:border-transparent transition-all duration-500 shadow-xl ${index % 2 !== 0 ? 'md:text-right md:items-end flex flex-col' : ''}`}>
+                  
+                  {/* SVG Progress Border */}
+                  <svg
+                    className="absolute inset-0 w-full h-full pointer-events-none z-20 overflow-visible"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="0"
+                      y="0"
+                      width="100%"
+                      height="100%"
+                      rx="40"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      pathLength="100"
+                      strokeDasharray="100"
+                      className="text-red-500 [stroke-dashoffset:100] group-hover:[stroke-dashoffset:0] transition-all duration-700 ease-out"
+                    />
+                  </svg>
+
                   {/* Subtle Gradient Glow */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${process.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
                   
@@ -169,31 +190,6 @@ export default function DesignProcessPage() {
             </div>
           ))}
         </div>
-
-        {/* Final CTA Section */}
-        <FadeIn delay={0.4} className="mt-32 md:mt-48 text-center bg-black/5 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-[3rem] p-12 md:p-24 relative overflow-hidden group">
-          <div className="absolute inset-0 bg-red-600/[0.02] dark:bg-red-600/5 group-hover:bg-red-600/10 transition-colors duration-700" />
-          <div className="relative z-10 flex flex-col items-center gap-8">
-            <h2 className="text-4xl md:text-6xl font-marags font-black tracking-tight uppercase leading-tight">
-              Ready to create <br/>something <span className="text-red-600 dark:text-red-500">Legendary?</span>
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-xl text-lg md:text-xl font-medium">
-              Transform your digital presence with a design process optimized for results.
-            </p>
-            <Link
-              href="/#contact"
-              className="bg-red-600 text-white font-bold rounded-full px-10 py-5 shadow-xl hover:shadow-[0_0_35px_rgba(255,26,26,0.6)] transition-all duration-300 uppercase tracking-widest text-sm flex items-center gap-3 group/btn"
-            >
-              Start Your Project
-              <FiCheckCircle className="w-5 h-5 group-hover/btn:scale-125 transition-transform" />
-            </Link>
-          </div>
-          
-          {/* Decorative Background Icon */}
-          <div className="absolute -bottom-10 -right-10 text-black/5 dark:text-white/5 group-hover:text-red-600/10 transition-colors duration-700 pointer-events-none">
-            <FiZap className="text-[20rem] rotate-12" />
-          </div>
-        </FadeIn>
 
       </main>
 
