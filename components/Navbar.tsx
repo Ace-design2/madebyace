@@ -94,7 +94,7 @@ export default function Navbar() {
   return (
     <div className={`fixed top-4 sm:top-6 left-0 right-0 z-[100] flex justify-center px-2 pointer-events-none transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${isLoading ? "opacity-0 -translate-y-10" : "opacity-100 translate-y-0"}`}>
       {/* Pill Container */}
-      <nav className="pointer-events-auto px-2 sm:px-3 py-2 bg-black/5 dark:bg-white/[0.03] backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-full inline-flex justify-center items-center gap-1 sm:gap-2 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-500 hover:bg-black/10 dark:hover:bg-white/[0.05] hover:border-black/20 dark:hover:border-white/20">
+      <nav className="pointer-events-auto px-1.5 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/[0.03] backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-full inline-flex justify-center items-center gap-0.5 sm:gap-2 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-500 hover:bg-black/10 dark:hover:bg-white/[0.05] hover:border-black/20 dark:hover:border-white/20">
 
         {/* Nav Links */}
         <div className="flex items-center gap-0.5 sm:gap-1.5">
@@ -105,11 +105,11 @@ export default function Navbar() {
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => scrollToSection(e, item.id)}
-                className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full flex justify-center items-center transition-all duration-300 ${
+                className={`px-2 sm:px-4 py-1.5 sm:py-2 rounded-full flex justify-center items-center transition-all duration-300 ${
                   isActive ? "bg-red-600/90 shadow-[0_0_15px_rgba(255,26,26,0.5)]" : "hover:bg-black/10 dark:hover:bg-white/10"
                 }`}
               >
-                <span className={`text-[9px] sm:text-xs tracking-widest uppercase flex items-center justify-center transition-colors duration-300 ${
+                <span className={`text-[8px] sm:text-xs tracking-widest uppercase flex items-center justify-center transition-colors duration-300 ${
                   isActive ? "text-white font-bold" : "text-gray-600 dark:text-gray-300 font-medium"
                 }`}>
                   {typeof item.label === "string" ? item.label : (
@@ -124,7 +124,7 @@ export default function Navbar() {
         </div>
 
         {/* Divider */}
-        <div className="w-[1px] h-4 sm:h-5 bg-black/20 dark:bg-white/20 mx-1.5 sm:mx-3 rounded-full"></div>
+        <div className="w-[1px] h-4 sm:h-5 bg-black/20 dark:bg-white/20 mx-1 sm:mx-3 rounded-full"></div>
 
         {/* Let's Talk CTA */}
         <div className="relative flex items-center gap-2" ref={contactRef}>
@@ -137,7 +137,7 @@ export default function Navbar() {
             <span className={`absolute inset-0 w-full h-full bg-red-600 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 ${
               isContactOpen ? "translate-x-0" : "-translate-x-[105%] group-hover:translate-x-0"
             }`}></span>
-            <span className={`relative z-10 text-[9px] sm:text-xs font-bold tracking-widest uppercase transition-colors duration-300 ${isContactOpen ? "text-white" : "text-black dark:text-white group-hover:text-white"}`}>Let&rsquo;s Talk</span>
+            <span className={`relative z-10 text-[8px] sm:text-xs font-inter font-bold tracking-widest uppercase transition-colors duration-300 ${isContactOpen ? "text-white" : "text-black dark:text-white group-hover:text-white"}`}>Let&rsquo;s Talk</span>
           </button>
 
           {/* Theme Toggle Button */}

@@ -76,19 +76,19 @@ export default function Footer() {
           <div className="flex flex-col space-y-3">
             <p className="text-gray-500 text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold md:text-right">Socials</p>
             <div className="flex items-center gap-6 md:justify-end">
-              <Link href="https://github.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:-translate-y-1 transition-all duration-300">
+              <Link href="https://github.com/Ace-design2" target="_blank" className="text-gray-400 hover:text-red-500 hover:-translate-y-1 transition-all duration-300">
                 <FiGithub className="w-5 h-5 md:w-6 md:h-6" />
                 <span className="sr-only">GitHub</span>
               </Link>
-              <Link href="https://linkedin.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:-translate-y-1 transition-all duration-300">
+              <Link href="https://www.linkedin.com/in/showunmi-oluwasegun-50015124b/" target="_blank" className="text-gray-400 hover:text-red-500 hover:-translate-y-1 transition-all duration-300">
                 <FiLinkedin className="w-5 h-5 md:w-6 md:h-6" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
-              <Link href="https://twitter.com" target="_blank" className="text-gray-400 hover:text-red-500 hover:-translate-y-1 transition-all duration-300">
+              <Link href="https://x.com/madebyacee" target="_blank" className="text-gray-400 hover:text-red-500 hover:-translate-y-1 transition-all duration-300">
                 <FiTwitter className="w-5 h-5 md:w-6 md:h-6" />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="mailto:hello@example.com" className="text-gray-400 hover:text-red-500 hover:-translate-y-1 transition-all duration-300">
+              <Link href="mailto:showunmioluwasegun135@gmail.com" className="text-gray-400 hover:text-red-500 hover:-translate-y-1 transition-all duration-300">
                 <FiMail className="w-5 h-5 md:w-6 md:h-6" />
                 <span className="sr-only">Email</span>
               </Link>

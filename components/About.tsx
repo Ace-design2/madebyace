@@ -410,11 +410,11 @@ export default function About() {
             >
               <Link
                 href="/design-process"
-                className="group relative overflow-hidden px-8 py-4 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full inline-flex items-center gap-3 transition-all duration-500 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,26,26,0.2)]"
+                className="group relative overflow-hidden px-5 md:px-8 py-3 md:py-4 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full inline-flex items-center gap-2 md:gap-3 transition-all duration-500 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,26,26,0.2)]"
               >
                 <span className="absolute inset-0 w-full h-full bg-red-600 -translate-x-[105%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></span>
-                <span className="relative z-10 text-sm font-bold tracking-[0.2em] uppercase text-gray-600 dark:text-gray-300 group-hover:text-white transition-colors duration-300">Read my design process</span>
-                <FiArrowRight className="relative z-10 w-4 h-4 text-red-500 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
+                <span className="relative z-10 text-[10px] md:text-sm font-bold tracking-[0.2em] uppercase text-gray-600 dark:text-gray-300 group-hover:text-white transition-colors duration-300">Read my design process</span>
+                <FiArrowRight className="relative z-10 w-3.5 h-3.5 md:w-4 md:h-4 text-red-500 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
               </Link>
             </motion.div>
           </div>

@@ -160,19 +160,19 @@ export default function Home() {
             {/* Social Icons Stack - Centered horizontally to line */}
             <div className="bg-black/5 dark:bg-white/[0.03] backdrop-blur-md border border-black/10 dark:border-white/10 rounded-full px-8 py-3 sm:px-10 sm:py-4 lg:px-4 lg:py-8 shadow-[0_4px_15px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-all duration-500">
               <div className="flex flex-row lg:flex-col items-center gap-6 lg:gap-8">
-                <Link href="https://github.com" target="_blank" className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300">
+                <Link href="https://github.com/Ace-design2" target="_blank" className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300">
                   <FiGithub className="w-5 h-5 sm:w-6 sm:h-6" />
                   <span className="sr-only">GitHub</span>
                 </Link>
-                <Link href="https://linkedin.com" target="_blank" className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300">
+                <Link href="https://www.linkedin.com/in/showunmi-oluwasegun-50015124b/" target="_blank" className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300">
                   <FiLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
                   <span className="sr-only">LinkedIn</span>
                 </Link>
-                <Link href="https://twitter.com" target="_blank" className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300">
+                <Link href="https://x.com/madebyacee" target="_blank" className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300">
                   <FiTwitter className="w-5 h-5 sm:w-6 sm:h-6" />
                   <span className="sr-only">Twitter</span>
                 </Link>
-                <Link href="mailto:hello@example.com" target="_blank" className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300">
+                <Link href="mailto:showunmioluwasegun135@gmail.com" target="_blank" className="text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300">
                   <FiMail className="w-5 h-5 sm:w-6 sm:h-6" />
                   <span className="sr-only">Email</span>
                 </Link>

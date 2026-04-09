@@ -79,25 +79,25 @@ export default function DesignProcessPage() {
 
       {/* Persistent Navigation Overlay at the Top */}
       <div className="fixed top-8 left-0 right-0 z-[100] flex justify-center px-4 pointer-events-none">
-        <FadeIn className="pointer-events-auto flex items-center gap-3">
+        <FadeIn className="pointer-events-auto flex items-center gap-2 md:gap-3">
           <Link 
             href="/#about" 
-            className="flex items-center gap-3 px-6 py-3 bg-red-600 border border-red-500 rounded-full text-[10px] font-black uppercase tracking-[0.3em] text-white hover:bg-red-700 hover:shadow-[0_8px_32px_rgba(255,26,26,0.4)] transition-all group"
+            className="flex items-center gap-2 md:gap-3 px-5 md:px-6 py-2.5 md:py-3 bg-red-600 border border-red-500 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-white hover:bg-red-700 hover:shadow-[0_8px_32px_rgba(255,26,26,0.4)] transition-all group"
           >
-            <FiArrowLeft className="group-hover:-translate-x-1 transition-transform w-3.5 h-3.5" />
+            <FiArrowLeft className="group-hover:-translate-x-1 transition-transform w-3 md:w-3.5 h-3 md:h-3.5" />
             Back to About
           </Link>
           
           {mounted && (
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="w-11 h-11 rounded-full flex justify-center items-center bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-black/10 dark:border-white/10 hover:border-red-500/50 hover:shadow-[0_8px_32px_rgba(255,26,26,0.3)] transition-all group"
+              className="w-10 md:w-11 h-10 md:h-11 rounded-full flex justify-center items-center bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-black/10 dark:border-white/10 hover:border-red-500/50 hover:shadow-[0_8px_32px_rgba(255,26,26,0.3)] transition-all group"
               aria-label="Toggle Theme"
             >
               {theme === 'dark' ? (
-                <FiSun className="w-4 h-4 text-gray-400 group-hover:text-red-500 transition-colors" />
+                <FiSun className="w-3.5 md:w-4 h-3.5 md:h-4 text-gray-400 group-hover:text-red-500 transition-colors" />
               ) : (
-                <FiMoon className="w-4 h-4 text-gray-600 group-hover:text-red-500 transition-colors" />
+                <FiMoon className="w-3.5 md:w-4 h-3.5 md:h-4 text-gray-600 group-hover:text-red-500 transition-colors" />
               )}
             </button>
           )}
