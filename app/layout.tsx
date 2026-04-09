@@ -24,6 +24,10 @@ export const metadata: Metadata = {
     description: "Explore the digital portfolio of Segun Showunmi, a Product Designer and Developer dedicated to crafting high-performance websites and seamless user experiences.",
     creator: "@madebyacee",
   },
+  icons: {
+    icon: "/img/my-avi-2.png",
+    apple: "/img/my-avi-2.png",
+  },
 };
 
 import LoadingScreen from "@/components/LoadingScreen";
