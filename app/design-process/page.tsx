@@ -123,7 +123,7 @@ export default function DesignProcessPage() {
           
           <FadeIn delay={0.2}>
             <p className="text-lg md:text-xl text-gray-600 dark:text-[#B3B3B3] max-w-2xl leading-relaxed font-medium">
-              A systematic approach to building cinematic digital products that merge aesthetic brilliance with technical precision.
+              A structured, user-focused approach that turns ideas into functional, modern digital experiences.
             </p>
           </FadeIn>
           
