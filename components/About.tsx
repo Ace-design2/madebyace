@@ -101,7 +101,7 @@ export default function About() {
   ];
 
   const timeline = [
-    { year: "2026", title: "Started Web Design Agency", desc: "Leading a boutique agency focused on high-end cinematic digital products." },
+    { year: "2026", title: "Started Web Design Agency", desc: "Leading a boutique agency focused on delivering high-end digital products." },
     { year: "2025", title: "Built Multiple Client Websites", desc: "Delivered complex e-commerce and portfolio solutions for international brands." },
     { year: "2024", title: "Began Professional Web Development", desc: "Started crafting custom React and Next.js applications for full-stack projects." },
   ];
@@ -170,16 +170,16 @@ export default function About() {
                {/* Description */}
                <div className="space-y-6 text-lg sm:text-xl max-w-[500px] text-gray-700 dark:text-[#B3B3B3] font-medium leading-relaxed text-left transition-colors duration-500">
                  <p>
-                   I build cinematic, agency-level digital products. My work sits exclusively at the intersection of aesthetic brilliance and technical precision.
+                   Hi, my name is Segun Showunmi. I am a Software Designer & Developer I build highly functional, agency-level digital products. My work sits exclusively at the intersection of aesthetic brilliance and technical precision.
                  </p>
                  <p className="text-gray-500 dark:text-gray-500 text-base">
-                   With a deep focus on user experience and seamless performance, I help ambitious brands stand out in a crowded digital landscape through bold design and pristine architecture.
+                   With core attention to detail and a deep focus on user experience and seamless performance, I help ambitious brands stand out in a crowded digital landscape through bold design and pristine architecture.
                  </p>
                </div>
                
                {/* Signature */}
                <div className="pt-4 text-left">
-                 <p className="text-black dark:text-white font-black italic text-2xl tracking-wide transition-colors duration-500">— Ace</p>
+                 <p className="text-black dark:text-white font-black italic text-2xl tracking-wide transition-colors duration-500">— Ace. Designer & Developer</p>
                </div>
             </div>
           </FadeIn>
@@ -397,7 +397,7 @@ export default function About() {
           <div className="pt-12 md:pt-20 pb-0 flex flex-col items-center text-center relative px-6">
             <div className="absolute top-0 text-9xl text-black/5 dark:text-red-500/10 font-serif -translate-y-1/2 select-none transition-colors duration-500">“</div>
             <h4 className="text-2xl md:text-3xl lg:text-4xl font-semibold italic text-black dark:text-white max-w-4xl leading-snug relative z-10 transition-colors duration-500">
-              &ldquo;I build digital experiences that are fast, reliable, and designed to make an impact. My goal is to transform blank pixels into cinematic masterpieces.&rdquo;
+              &ldquo;I build web experiences that are fast, reliable, and designed to make an impact. My goal is to satisfy client needs and provide advisory services when required.&rdquo;
             </h4>
             <div className="w-20 h-1 bg-red-600 mt-12 rounded-full" />
           </div>
