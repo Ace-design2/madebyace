@@ -150,14 +150,6 @@ export default function About() {
           <FadeIn delay={200}>
             <div className="flex flex-col items-start gap-8 z-10 w-full max-w-xl relative mx-auto lg:mx-0">
                
-               {/* Designer Badge */}
-               <div className="flex items-center gap-3 px-3 py-1.5 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full w-fit">
-                 <span className="relative flex h-1.5 w-1.5">
-                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500 shadow-[0_0_8px_rgba(255,26,26,0.8)]"></span>
-                 </span>
-                 <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500 dark:text-gray-300">Designer & Developer</span>
-               </div>
 
                {/* Headline Title */}
                <div className="space-y-4">
@@ -170,7 +162,7 @@ export default function About() {
                {/* Description */}
                <div className="space-y-6 text-lg sm:text-xl max-w-[500px] text-gray-700 dark:text-[#B3B3B3] font-medium leading-relaxed text-left transition-colors duration-500">
                  <p>
-                   Hi, my name is Segun Showunmi. I am a Software Designer & Developer I build highly functional, agency-level digital products. My work sits exclusively at the intersection of aesthetic brilliance and technical precision.
+                   Hi, my name is <span className="text-red-600 dark:text-red-500 font-bold">Segun Showunmi</span>. I am a Software Designer & Developer I build highly functional, agency-level digital products. My work sits exclusively at the intersection of aesthetic brilliance and technical precision.
                  </p>
                  <p className="text-gray-500 dark:text-gray-500 text-base">
                    With core attention to detail and a deep focus on user experience and seamless performance, I help ambitious brands stand out in a crowded digital landscape through bold design and pristine architecture.
