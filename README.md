@@ -1,4 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ACE Portfolio
+
+A premium, cinematic digital portfolio showcasing a structured and user-focused approach to software design and development. This repository contains the source code for the professional portfolio of Segun Showunmi (ACE), built to demonstrate the intersection of aesthetic brilliance and technical precision.
+
+## Overview
+
+This portfolio is designed to turn complex ideas into functional, modern digital experiences. It features high-end visual effects, smooth transitions, and a dedicated design process section that illustrates the workflow from discovery to delivery.
+
+## Key Features
+
+- **Cinematic Visual Excellence**: High-fidelity layouts with interactive micro-animations and physics-based drag-and-swipe interactions.
+- **Modern Performance**: Built on Next.js for industry-leading performance, SEO, and responsiveness.
+- **Interactive Methodology**: A comprehensive design process experience that guides users through the Discovery, Strategy, Design, and Development phases.
+- **Dynamic Theming**: Sophisticated light and dark mode implementations with seamless transitions and interactive mouse glow effects.
+
+## Technical Stack
+
+- **Core**: Next.js (App Router), TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Database & Services**: Firebase, MySQL
+- **Tooling**: Git, npm
+- **Typography**: Custom Marags Branding
+
+## Project Architecture
+
+The project utilizes a modular component architecture focused on reusability and clean code practices.
+
+- `app/`: Contains the main routes and page layouts.
+- `components/`: Houses reusable UI components (Hero, About, Projects, Navbar, Footer).
+- `context/`: For global state management (Loading patterns and Theme states).
+- `public/`: Static assets including high-fidelity imagery and custom branding fonts.
 
 ## Getting Started
 
@@ -6,31 +37,10 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Design Philosophy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The work presented here is defined by a commitment to clarity, usability, and technical excellence. Every project follows a systematic roadmap to ensure results are efficient, scalable, and focused on achieving business objectives.
