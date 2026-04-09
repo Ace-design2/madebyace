@@ -105,15 +105,15 @@ export default function Navbar() {
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => scrollToSection(e, item.id)}
-                className={`px-2 sm:px-4 py-1.5 sm:py-2 rounded-full flex justify-center items-center transition-all duration-300 ${
-                  isActive ? "bg-red-600/90 shadow-[0_0_15px_rgba(255,26,26,0.5)]" : "hover:bg-black/10 dark:hover:bg-white/10"
+                className={`px-2 sm:px-4 py-1.5 sm:py-2 rounded-full flex justify-center items-center transition-all duration-500 ease-[var(--ease-out-expo)] ${
+                  isActive ? "bg-red-600/90 shadow-[0_0_20px_rgba(255,26,26,0.3)] animate-[liquid-pill_3s_ease-in-out_infinite]" : "hover:bg-black/10 dark:hover:bg-white/10"
                 }`}
               >
-                <span className={`text-[8px] sm:text-xs tracking-widest uppercase flex items-center justify-center transition-colors duration-300 ${
-                  isActive ? "text-white font-bold" : "text-gray-600 dark:text-gray-300 font-medium"
+                <span className={`text-[8px] sm:text-xs tracking-[0.2em] uppercase flex items-center justify-center transition-colors duration-500 ease-[var(--ease-out-expo)] ${
+                  isActive ? "text-white font-black" : "text-gray-600 dark:text-gray-400 font-bold"
                 }`}>
                   {typeof item.label === "string" ? item.label : (
-                    <span className={isActive ? "text-white" : "text-gray-600 dark:text-gray-300"}>
+                    <span className={isActive ? "text-white" : "text-gray-600 dark:text-gray-400"}>
                       {item.label}
                     </span>
                   )}
@@ -124,20 +124,20 @@ export default function Navbar() {
         </div>
 
         {/* Divider */}
-        <div className="w-[1px] h-4 sm:h-5 bg-black/20 dark:bg-white/20 mx-1 sm:mx-3 rounded-full"></div>
+        <div className="w-[1px] h-4 sm:h-5 bg-black/10 dark:bg-white/10 mx-1 sm:mx-3 rounded-full"></div>
 
         {/* Let's Talk CTA */}
         <div className="relative flex items-center gap-2" ref={contactRef}>
           <button
             onClick={() => setIsContactOpen(!isContactOpen)}
-            className={`relative overflow-hidden group border rounded-full px-3 sm:px-5 py-1.5 sm:py-2 flex justify-center items-center transition-all duration-500 ${
-              isContactOpen ? "border-red-500 bg-red-600 shadow-[0_0_15px_rgba(255,26,26,0.4)]" : "border-black/20 dark:border-white/20 hover:border-red-500"
+            className={`relative overflow-hidden group border rounded-full px-3 sm:px-5 py-1.5 sm:py-2 flex justify-center items-center transition-all duration-700 ease-[var(--ease-out-expo)] ${
+              isContactOpen ? "border-red-500 bg-red-600 shadow-[0_0_25px_rgba(255,26,26,0.5)] animate-[liquid-pill_4s_ease-in-out_infinite]" : "border-black/10 dark:border-white/10 hover:border-red-500/50"
             }`}
           >
-            <span className={`absolute inset-0 w-full h-full bg-red-600 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 ${
+            <span className={`absolute inset-0 w-full h-full bg-red-600 transition-transform duration-700 ease-[var(--ease-out-expo)] z-0 ${
               isContactOpen ? "translate-x-0" : "-translate-x-[105%] group-hover:translate-x-0"
             }`}></span>
-            <span className={`relative z-10 text-[8px] sm:text-xs font-inter font-bold tracking-widest uppercase transition-colors duration-300 ${isContactOpen ? "text-white" : "text-black dark:text-white group-hover:text-white"}`}>Let&rsquo;s Talk</span>
+            <span className={`relative z-10 text-[8px] sm:text-xs font-inter font-black tracking-[0.2em] uppercase transition-colors duration-500 ease-[var(--ease-out-expo)] ${isContactOpen ? "text-white" : "text-black dark:text-white group-hover:text-white"}`}>Let&rsquo;s Talk</span>
           </button>
 
           {/* Theme Toggle Button */}
