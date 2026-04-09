@@ -10,7 +10,7 @@ import {
 } from "react-icons/fi";
 import { 
   SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, 
-  SiFramer, SiNodedotjs, SiGit, SiFirebase 
+  SiFramer, SiNodedotjs, SiGit, SiFirebase, SiPython, SiMysql 
 } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -66,8 +66,8 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: nu
 
 export default function About() {
   const stats = [
-    { number: "50+", label: "Projects Completed", icon: <FiBriefcase /> },
-    { number: "5+", label: "Years Experience", icon: <FiAward /> },
+    { number: "10+", label: "Projects Completed", icon: <FiBriefcase /> },
+    { number: "2+", label: "Years Experience", icon: <FiAward /> },
     { number: "20+", label: "Technologies Used", icon: <FiCpu /> },
     { number: "100%", label: "Happy Clients", icon: <FiUsers /> },
   ];
@@ -81,6 +81,10 @@ export default function About() {
     { name: "Figma", icon: <SiFramer className="text-[#F24E1E]" />, desc: "Visual storytelling" },
     { name: "API Integration", icon: <FiCode className="text-red-400" />, desc: "Seamless data flow" },
     { name: "Optimization", icon: <FiZap className="text-yellow-400" />, desc: "Speed and performance" },
+    { name: "Python", icon: <SiPython className="text-[#3776AB]" />, desc: "Dynamic backend logic" },
+    { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" />, desc: "Real-time cloud infrastructure" },
+    { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" />, desc: "Reliable data architecture" },
+    { name: "Git", icon: <SiGit className="text-[#F05032]" />, desc: "Modern version control" },
   ];
 
   const techStack = [
@@ -92,6 +96,8 @@ export default function About() {
     { name: "Git", icon: <SiGit /> },
     { name: "Figma", icon: <SiFramer /> },
     { name: "Firebase", icon: <SiFirebase /> },
+    { name: "Python", icon: <SiPython /> },
+    { name: "MySQL", icon: <SiMysql /> },
   ];
 
   const timeline = [
