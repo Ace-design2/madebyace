@@ -6,7 +6,7 @@ import Link from "next/link";
 import { 
   FiMonitor, FiCode, FiLayout, FiZap, 
   FiBriefcase, FiUsers, FiAward, FiCpu,
-  FiChevronRight, FiGithub, FiFigma, FiGlobe
+  FiChevronRight, FiGithub, FiFigma, FiGlobe, FiArrowRight
 } from "react-icons/fi";
 import { 
   SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, 
@@ -399,7 +399,24 @@ export default function About() {
             <h4 className="text-2xl md:text-3xl lg:text-4xl font-semibold italic text-black dark:text-white max-w-4xl leading-snug relative z-10 transition-colors duration-500">
               &ldquo;I build web experiences that are fast, reliable, and designed to make an impact. My goal is to satisfy client needs and provide advisory services when required.&rdquo;
             </h4>
-            <div className="w-20 h-1 bg-red-600 mt-12 rounded-full" />
+            <div className="w-20 h-1 bg-red-600 mt-12 mb-10 rounded-full" />
+            
+            {/* Design Process CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Link
+                href="/design-process"
+                className="group relative overflow-hidden px-8 py-4 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full inline-flex items-center gap-3 transition-all duration-500 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,26,26,0.2)]"
+              >
+                <span className="absolute inset-0 w-full h-full bg-red-600 -translate-x-[105%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></span>
+                <span className="relative z-10 text-sm font-bold tracking-[0.2em] uppercase text-gray-600 dark:text-gray-300 group-hover:text-white transition-colors duration-300">Read my design process</span>
+                <FiArrowRight className="relative z-10 w-4 h-4 text-red-500 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
+              </Link>
+            </motion.div>
           </div>
         </FadeIn>
 
