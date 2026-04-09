@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FiArrowLeft, FiSearch, FiTarget, FiLayout, FiCode, FiZap, FiCheckCircle } from "react-icons/fi";
+import { FiArrowLeft, FiSearch, FiTarget, FiLayout, FiCode, FiZap, FiCheckCircle, FiSun, FiMoon } from "react-icons/fi";
 import { SiFramer } from "react-icons/si";
+import { useTheme } from "next-themes";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MouseGlow from "@/components/MouseGlow";
@@ -27,40 +28,46 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 
 export default function DesignProcessPage() {
   const { isLoading } = useLoading();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const processes = [
     {
       step: "01",
       title: "Discovery & Research",
-      desc: "Every great product starts with understanding. I dive deep into your brand, goals, and target audience to define the core problem we are solving.",
+      desc: "Every successful project begins with understanding. In this phase, I take time to learn about your business, audience, and goals. I analyze competitors, identify opportunities, and gather the insights needed to build a strong foundation for the project. This ensures that every design decision is intentional and aligned with real user needs.",
       icon: <FiSearch />,
       color: "from-blue-500/20 to-transparent"
     },
     {
       step: "02",
       title: "Strategy & Planning",
-      desc: "Mapping out the user journey, information architecture, and technical roadmap. We align on the vision before a single pixel is moved.",
+      desc: "Once the research is complete, I create a clear roadmap for the project. This includes defining the structure, user flow, features, and overall direction of the website or product. Careful planning helps prevent confusion, reduces revisions, and ensures the final result is efficient, scalable, and focused on achieving your business objectives.",
       icon: <FiTarget />,
       color: "from-purple-500/20 to-transparent"
     },
     {
       step: "03",
       title: "Visual Design",
-      desc: "This is where the magic happens. I craft high-fidelity, cinematic interfaces in Figma that are both aesthetically stunning and functionally intuitive.",
+      desc: "With a solid plan in place, I design the visual experience. This is where creativity meets usability. I craft layouts, typography, colors, and interactions that reflect your brand while maintaining clarity and ease of use. The goal is to create a modern, visually appealing interface that users enjoy interacting with.",
       icon: <SiFramer />,
       color: "from-red-600/20 to-transparent"
     },
     {
       step: "04",
       title: "Modern Development",
-      desc: "Transforming designs into high-performance, responsive code. Using Next.js and Framer Motion to ensure the experience is fluid and fast.",
+      desc: "After the design is approved, I bring it to life using modern technologies and best practices. I focus on clean code, performance, responsiveness, and accessibility to ensure the website works seamlessly across devices and browsers. The result is a fast, reliable, and scalable digital product built for real-world use.",
       icon: <FiCode />,
       color: "from-emerald-500/20 to-transparent"
     },
     {
       step: "05",
-      title: "Optimization & Delivery",
-      desc: "Final polish—performance tuning, SEO optimization, and rigorous testing to ensure your product is ready to make a global impact.",
+      title: "Optimisation & Delivery",
+      desc: "Before launch, I test, refine, and optimize every detail. This includes performance improvements, responsiveness checks, and final adjustments to ensure everything runs smoothly. Once the project is ready, I deliver a polished product and provide support to ensure long-term success.",
       icon: <FiZap />,
       color: "from-yellow-400/20 to-transparent"
     }
@@ -69,7 +76,33 @@ export default function DesignProcessPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white relative selection:bg-red-500/30 flex flex-col transition-colors duration-500 overflow-x-hidden">
       <MouseGlow />
-      <Navbar />
+
+      {/* Persistent Navigation Overlay at the Top */}
+      <div className="fixed top-8 left-0 right-0 z-[100] flex justify-center px-4 pointer-events-none">
+        <FadeIn className="pointer-events-auto flex items-center gap-3">
+          <Link 
+            href="/#about" 
+            className="flex items-center gap-3 px-6 py-3 bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 dark:text-gray-300 hover:text-red-500 hover:border-red-500/50 hover:shadow-[0_8px_32px_rgba(255,26,26,0.3)] transition-all group"
+          >
+            <FiArrowLeft className="group-hover:-translate-x-1 transition-transform w-3.5 h-3.5" />
+            Back to About
+          </Link>
+          
+          {mounted && (
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="w-11 h-11 rounded-full flex justify-center items-center bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-black/10 dark:border-white/10 hover:border-red-500/50 hover:shadow-[0_8px_32px_rgba(255,26,26,0.3)] transition-all group"
+              aria-label="Toggle Theme"
+            >
+              {theme === 'dark' ? (
+                <FiSun className="w-4 h-4 text-gray-400 group-hover:text-red-500 transition-colors" />
+              ) : (
+                <FiMoon className="w-4 h-4 text-gray-600 group-hover:text-red-500 transition-colors" />
+              )}
+            </button>
+          )}
+        </FadeIn>
+      </div>
 
       {/* Background Decorative Layer */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -78,20 +111,10 @@ export default function DesignProcessPage() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 dark:opacity-5 mix-blend-overlay" />
       </div>
 
-      <main className="relative z-10 flex-1 w-full max-w-[1400px] mx-auto px-6 pt-32 pb-24 md:pt-48 md:pb-32">
+      <main className="relative z-10 flex-1 w-full max-w-[1400px] mx-auto px-6 pt-32 pb-40 md:pt-48 md:pb-56">
         
         {/* Header Section */}
         <div className="flex flex-col items-center text-center gap-8 mb-20 md:mb-32">
-          <FadeIn>
-            <Link 
-              href="/#about" 
-              className="inline-flex items-center gap-2 px-4 py-2 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-red-500 hover:border-red-500/50 transition-all mb-8 group"
-            >
-              <FiArrowLeft className="group-hover:-translate-x-1 transition-transform" />
-              Back to About
-            </Link>
-          </FadeIn>
-          
           <FadeIn delay={0.1}>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-marags font-black tracking-tighter uppercase leading-none">
               My Design <br/><span className="text-red-600 dark:text-red-500">Process</span>
