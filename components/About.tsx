@@ -86,9 +86,6 @@ export default function About() {
     { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" />, desc: "Real-time cloud infrastructure" },
     { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" />, desc: "Reliable data architecture" },
     { name: "Git", icon: <SiGit className="text-[#F05032]" />, desc: "Modern version control" },
-    { name: "HTML5", icon: <SiHtml5 className="text-[#E34F26]" />, desc: "Semantic web structure" },
-    { name: "CSS3", icon: <SiCss className="text-[#1572B6]" />, desc: "Advanced visual styling" },
-    { name: "JavaScript", icon: <SiJavascript className="text-[#F7DF1E]" />, desc: "Dynamic interactive logic" },
   ];
 
   const techStack = [
