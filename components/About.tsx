@@ -260,7 +260,13 @@ export default function About() {
 
         {/* 4. Tools & Technologies Stack */}
         <FadeIn>
-          <div className="bg-white dark:bg-black border-y border-black/10 dark:border-white/10 py-10 overflow-hidden relative group transition-colors duration-500">
+          <div 
+            className="bg-white dark:bg-black border-y border-black/10 dark:border-white/10 py-10 overflow-hidden relative group transition-colors duration-500"
+            style={{
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+              maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+            }}
+          >
             <div className="flex animate-marquee hover:pause-on-hover gap-12 items-center whitespace-nowrap px-6 w-max">
               {[...techStack, ...techStack, ...techStack, ...techStack].map((tech, index) => (
                 <div key={index} className="flex items-center justify-center p-4 bg-black/5 dark:bg-black border border-black/10 dark:border-white/10 rounded-full hover:border-red-500/50 hover:shadow-[0_0_15px_rgba(255,26,26,0.3)] transition-all duration-300 group/item">
