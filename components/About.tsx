@@ -263,9 +263,8 @@ export default function About() {
           <div className="bg-white dark:bg-black border-y border-black/10 dark:border-white/10 py-10 overflow-hidden relative group transition-colors duration-500">
             <div className="flex animate-marquee hover:pause-on-hover gap-12 items-center whitespace-nowrap px-6 w-max">
               {[...techStack, ...techStack, ...techStack, ...techStack].map((tech, index) => (
-                <div key={index} className="flex items-center gap-3 px-6 py-3 bg-black/5 dark:bg-black border border-black/10 dark:border-white/10 rounded-full hover:border-red-500/50 hover:shadow-[0_0_15px_rgba(255,26,26,0.3)] transition-all duration-300 group/item">
-                  <span className="text-xl text-black dark:text-white opacity-70 group-hover/item:opacity-100 group-hover/item:text-red-600 dark:group-hover/item:text-red-500 transition-colors">{tech.icon}</span>
-                  <span className="text-sm font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">{tech.name}</span>
+                <div key={index} className="flex items-center justify-center p-4 bg-black/5 dark:bg-black border border-black/10 dark:border-white/10 rounded-full hover:border-red-500/50 hover:shadow-[0_0_15px_rgba(255,26,26,0.3)] transition-all duration-300 group/item">
+                  <span className="text-2xl text-black dark:text-white opacity-70 group-hover/item:opacity-100 group-hover/item:text-red-600 dark:group-hover/item:text-red-500 transition-colors">{tech.icon}</span>
                 </div>
               ))}
             </div>
