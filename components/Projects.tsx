@@ -142,91 +142,137 @@ interface Project {
   link?: string;
 }
 
-const ProjectCard = ({ project }: { project: Project }) => (
-  <a 
-    href={project.link || "#"} 
-    target={project.link ? "_blank" : undefined}
-    rel={project.link ? "noopener noreferrer" : undefined}
-    className="group relative rounded-[2.5rem] bg-gray-50 dark:bg-[#0A0A0A] shadow-md dark:shadow-2xl transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,26,26,0.15)] hover:-translate-y-2 p-4 sm:p-5 flex flex-col h-full cursor-pointer border border-black/5 dark:border-transparent no-underline block"
-  >
-    
-    {/* Base inactive border */}
-    <div className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-[2.5rem] transition-colors duration-500 pointer-events-none group-hover:border-transparent z-0"></div>
-    
-    {/* SVG Progress Border */}
-    <svg
-      className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        x="0"
-        y="0"
-        width="100%"
-        height="100%"
-        rx="40"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="4"
-        pathLength="100"
-        strokeDasharray="100"
-        className="text-red-500 [stroke-dashoffset:100] group-hover:[stroke-dashoffset:0] transition-all duration-700 ease-out"
-      />
-    </svg>
+const ProjectCard = ({ project }: { project: Project }) => {
+  const cardRef = useRef<HTMLAnchorElement>(null);
+  const [transformStyle, setTransformStyle] = useState("");
+  const [isHovered, setIsHovered] = useState(false);
 
-    <div className={`w-full aspect-video sm:aspect-square overflow-hidden rounded-[2rem] relative mb-6 bg-gradient-to-br ${project.gradient} z-10`}>
-      {/* Cinematic Texture Overlay */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay z-0" />
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!cardRef.current) return;
+    const { left, top, width, height } = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - left - width / 2) / 25; 
+    const y = -(e.clientY - top - height / 2) / 25;
+    
+    setTransformStyle(`perspective(1000px) rotateX(${y}deg) rotateY(${x}deg) scale3d(1.02, 1.02, 1.02)`);
+  };
+
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTransformStyle("");
+  };
+
+  return (
+    <a 
+      ref={cardRef}
+      href={project.link || "#"} 
+      target={project.link ? "_blank" : undefined}
+      rel={project.link ? "noopener noreferrer" : undefined}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={{ 
+        transform: transformStyle || "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
+        transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out, box-shadow 0.5s ease',
+        transformStyle: 'preserve-3d'
+      }}
+      className="group relative z-10 hover:z-20 rounded-[2.5rem] bg-gray-50 dark:bg-[#0A0A0A] shadow-md dark:shadow-2xl hover:shadow-[0_0_40px_rgba(255,26,26,0.15)] p-4 sm:p-5 flex flex-col h-full cursor-pointer border border-black/5 dark:border-transparent no-underline block"
+    >
       
-      {/* Hover Reveal Overlay */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out flex items-center justify-center bg-black/50 backdrop-blur-[2px] z-10">
-         <div className="px-6 py-2 rounded-full border border-red-500/50 bg-red-600/20 text-white font-bold tracking-[0.2em] uppercase text-xs sm:text-sm translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center gap-2 shadow-[0_0_20px_rgba(255,26,26,0.3)]">
-            <span>View Site</span>
-            <FiArrowUpRight className="w-4 h-4" />
-         </div>
+      {/* Base inactive border */}
+      <div 
+        className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-[2.5rem] transition-colors duration-500 pointer-events-none group-hover:border-transparent z-0"
+        style={{ transform: "translateZ(-1px)" }}
+      ></div>
+      
+      {/* SVG Progress Border */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ transform: "translateZ(0px)" }}
+      >
+        <rect
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          rx="40"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="4"
+          pathLength="100"
+          strokeDasharray="100"
+          className="text-red-500 [stroke-dashoffset:100] group-hover:[stroke-dashoffset:0] transition-all duration-700 ease-out"
+        />
+      </svg>
+
+      <div 
+        className={`w-full aspect-video sm:aspect-square overflow-hidden rounded-[2rem] relative mb-6 bg-gradient-to-br ${project.gradient} z-10`}
+        style={{ 
+          transform: isHovered ? "translateZ(20px)" : "translateZ(0)",
+          transition: "transform 0.3s ease-out",
+        }}
+      >
+        {/* Cinematic Texture Overlay */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay z-0" />
+        
+        {/* Hover Reveal Overlay */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out flex items-center justify-center bg-black/50 backdrop-blur-[2px] z-10">
+           <div className="px-6 py-2 rounded-full border border-red-500/50 bg-red-600/20 text-white font-bold tracking-[0.2em] uppercase text-xs sm:text-sm translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center gap-2 shadow-[0_0_20px_rgba(255,26,26,0.3)]">
+              <span>View Site</span>
+              <FiArrowUpRight className="w-4 h-4" />
+           </div>
+        </div>
+
+        {project.image ? (
+          <img 
+            src={project.image} 
+            alt={project.title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-0"
+          />
+        ) : (
+          <div className="w-full h-full bg-cover bg-center group-hover:scale-105 group-hover:rotate-1 transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
+        )}
+        
+        {/* Decorative inner border */}
+        <div className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-[2rem] pointer-events-none transition-colors duration-500 z-20" />
       </div>
 
-      {project.image ? (
-        <img 
-          src={project.image} 
-          alt={project.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-0"
-        />
-      ) : (
-        <div className="w-full h-full bg-cover bg-center group-hover:scale-105 group-hover:rotate-1 transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
-      )}
-      
-      {/* Decorative inner border */}
-      <div className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-[2rem] pointer-events-none transition-colors duration-500 z-20" />
-    </div>
-
-    <div className="flex flex-col flex-1 px-2 pb-2 z-10 relative">
-      <div className="flex items-start justify-between gap-4 mb-3">
-        <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-white leading-snug group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors duration-300">
-          {project.title}
-        </h3>
-        {/* Animated Arrow Icon */}
-        <div className="rounded-full shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 group-hover:bg-red-600 group-hover:border-red-500 group-hover:shadow-[0_0_15px_rgba(255,26,26,0.5)] transition-all duration-500 ease-out -mt-1 sm:-top-1">
-          <FiArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500 dark:text-gray-400 group-hover:text-white transition-colors duration-300" strokeWidth={2.5} />
+      <div 
+        className="flex flex-col flex-1 px-2 pb-2 z-10 relative"
+        style={{ 
+          transform: isHovered ? "translateZ(30px)" : "translateZ(0)",
+          transition: "transform 0.3s ease-out",
+        }}
+      >
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-white leading-snug group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors duration-300">
+            {project.title}
+          </h3>
+          {/* Animated Arrow Icon */}
+          <div className="rounded-full shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 group-hover:bg-red-600 group-hover:border-red-500 group-hover:shadow-[0_0_15px_rgba(255,26,26,0.5)] transition-all duration-500 ease-out -mt-1 sm:-top-1">
+            <FiArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500 dark:text-gray-400 group-hover:text-white transition-colors duration-300" strokeWidth={2.5} />
+          </div>
+        </div>
+        
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-medium mb-8 flex-1 transition-colors duration-500 text-left">
+          {project.description}
+        </p>
+        
+        <div className="flex flex-wrap gap-2 sm:gap-3 mt-auto">
+          {project.tags.map((tag: string) => (
+            <span
+              key={tag}
+              className="text-[10px] sm:text-xs font-bold uppercase tracking-widest px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 group-hover:border-red-500/30 group-hover:text-black dark:group-hover:text-gray-200 transition-all duration-300"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
-      
-      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-medium mb-8 flex-1 transition-colors duration-500 text-left">
-        {project.description}
-      </p>
-      
-      <div className="flex flex-wrap gap-2 sm:gap-3 mt-auto">
-        {project.tags.map((tag: string) => (
-          <span
-            key={tag}
-            className="text-[10px] sm:text-xs font-bold uppercase tracking-widest px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 group-hover:border-red-500/30 group-hover:text-black dark:group-hover:text-gray-200 transition-all duration-300"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-  </a>
-);
+    </a>
+  );
+};
 
 export default function Projects() {
   return (
