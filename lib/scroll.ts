@@ -1,6 +1,11 @@
 export const animateScroll = (targetY: number, duration: number = 1500, offset: number = 0) => {
   const startPosition = window.pageYOffset;
-  const distance = targetY - startPosition - offset;
+  const maxScroll = Math.max(
+    document.body.scrollHeight, 
+    document.documentElement.scrollHeight
+  ) - window.innerHeight;
+  const clampedTarget = Math.min(Math.max(0, targetY - offset), maxScroll);
+  const distance = clampedTarget - startPosition;
   let start: number | null = null;
 
   // Cinematic easeOutQuint function
