@@ -290,11 +290,11 @@ export default function Projects() {
         {/* Section Header */}
         <FadeIn>
           <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-marags font-extrabold tracking-tight text-black dark:text-white transition-colors duration-500">
-              Selected <span className="text-red-600 dark:text-red-500">Works</span>
+            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-marags font-black text-black dark:text-white tracking-tighter uppercase leading-none text-left transition-colors duration-500">
+              SELECTED <br/><span className="text-red-600 dark:text-red-500">WORKS</span>
             </h2>
-            <div className="w-24 h-[3px] bg-red-600 rounded-full" />
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed mt-6 transition-colors duration-500">
+            <div className="w-16 h-[3px] bg-red-600/50" />
+            <p className="text-base md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed mt-6 transition-colors duration-500">
               A curated execution of high-performance digital products, merging premium aesthetics with robust engineering.
             </p>
           </div>

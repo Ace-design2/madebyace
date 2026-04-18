@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiChevronDown, FiArrowRight, FiSend } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
@@ -16,6 +16,8 @@ import { animateScroll } from "@/lib/scroll";
 
 export default function Home() {
   const { isLoading } = useLoading();
+  const { scrollY } = useScroll();
+  const imageScale = useTransform(scrollY, [0, 800], [1, 1.4]);
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white relative selection:bg-red-500/30 flex flex-col transition-colors duration-500">
@@ -54,7 +56,7 @@ export default function Home() {
           </div>
 
           {/* Supporting Text */}
-          <p className="text-lg sm:text-xl max-w-[600px] text-gray-700 dark:text-[#B3B3B3] font-medium leading-relaxed m-0 transition-colors duration-500">
+          <p className="text-base sm:text-xl max-w-[600px] text-gray-700 dark:text-[#B3B3B3] font-medium leading-relaxed m-0 transition-colors duration-500">
             I design and build high-performance websites and applications that combine modern design, speed, and seamless user experience.
           </p>
 
@@ -94,7 +96,10 @@ export default function Home() {
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="lg:col-span-1 z-0 order-2 w-full flex justify-center items-center pointer-events-none mt-8 lg:mt-0"
         >
-          <div className="relative lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[240px] h-[240px] sm:w-[240px] sm:h-[240px] md:w-[340px] md:h-[340px] lg:w-[420px] lg:h-[420px] xl:w-[520px] xl:h-[520px] 2xl:w-[600px] 2xl:h-[600px] max-w-[90vw] z-0 mx-auto">
+          <motion.div 
+            style={{ scale: imageScale }}
+            className="relative lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[240px] h-[240px] sm:w-[240px] sm:h-[240px] md:w-[340px] md:h-[340px] lg:w-[420px] lg:h-[420px] xl:w-[520px] xl:h-[520px] 2xl:w-[600px] 2xl:h-[600px] max-w-[90vw] z-0 mx-auto"
+          >
             {/* Pulsing Rings Background - Subtler Pulse */}
             {[1.2, 1.8, 2.4].map((scale, i) => (
               <motion.div
@@ -123,7 +128,7 @@ export default function Home() {
                 sizes="(max-width: 640px) 240px, (max-width: 1024px) 340px, 600px"
               />
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Right Column: Social Icons & Scroll Indicator */}

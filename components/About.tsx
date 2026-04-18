@@ -164,11 +164,11 @@ export default function About() {
                </div>
                
                {/* Description */}
-               <div className="space-y-6 text-lg sm:text-xl max-w-[500px] text-gray-700 dark:text-[#B3B3B3] font-medium leading-relaxed text-left transition-colors duration-500">
+               <div className="space-y-6 text-base sm:text-xl max-w-[500px] text-gray-700 dark:text-[#B3B3B3] font-medium leading-relaxed text-left transition-colors duration-500">
                  <p>
                    Hi, my name is <span className="text-red-600 dark:text-red-500 font-bold">Segun Showunmi</span>. I am a Software Designer & Developer I build highly functional, agency-level digital products. My work sits exclusively at the intersection of aesthetic brilliance and technical precision.
                  </p>
-                 <p className="text-gray-500 dark:text-gray-500 text-base">
+                 <p className="text-gray-500 dark:text-gray-500 text-sm sm:text-base">
                    With core attention to detail and a deep focus on user experience and seamless performance, I help ambitious brands stand out in a crowded digital landscape through bold design and pristine architecture.
                  </p>
                </div>
@@ -243,9 +243,12 @@ export default function About() {
         {/* 3. Skills Grid */}
         <div id="core-skills" className="space-y-12">
           <FadeIn>
-            <h3 className="text-5xl sm:text-6xl lg:text-7xl font-marags font-black text-black dark:text-white tracking-tighter uppercase leading-none text-center transition-colors duration-500">
-              Core <br className="sm:hidden" /><span className="text-red-600 dark:text-red-500">Skills</span>
-            </h3>
+            <div className="space-y-4">
+              <h3 className="text-5xl sm:text-6xl lg:text-7xl font-marags font-black text-black dark:text-white tracking-tighter uppercase leading-none text-left transition-colors duration-500">
+                CORE <br/><span className="text-red-600 dark:text-red-500">SKILLS</span>
+              </h3>
+              <div className="w-16 h-[3px] bg-red-600/50" />
+            </div>
           </FadeIn>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {skills.map((skill, index) => (
@@ -292,7 +295,7 @@ export default function About() {
                     <div className="absolute left-[-7px] top-1.5 w-3 h-3 bg-red-500 rounded-full shadow-[0_0_15px_rgba(255,26,26,0.8)] group-hover:scale-150 transition-transform duration-500" />
                     <div className="text-red-600 dark:text-red-500 font-black text-xl mb-1">{item.year}</div>
                     <h4 className="text-xl font-bold text-black dark:text-white mb-3 group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">{item.title}</h4>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg transition-colors">{item.desc}</p>
+                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg transition-colors">{item.desc}</p>
                   </div>
                 ))}
               </div>
