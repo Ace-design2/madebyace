@@ -224,7 +224,7 @@ export default function About() {
   }, [isAutoPlaying]);
 
   return (
-    <section id="about" className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-0 pb-10 md:pb-16 overflow-hidden selection:bg-red-500/30 transition-colors duration-500">
+    <section id="about" className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-0 pb-16 md:pb-24 overflow-hidden selection:bg-red-500/30 transition-colors duration-500">
       
       {/* Background Decorative Layer */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -233,61 +233,63 @@ export default function About() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 dark:opacity-5 mix-blend-overlay" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-0 lg:px-12 space-y-16 md:space-y-24">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-0 lg:px-12 space-y-32 md:space-y-48">
         
-        {/* 1. Who I Am Profile Panel - Hero Cinematic Layout */}
-        <div id="who-i-am" className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 items-center w-full pt-8 md:pt-20">
+        {/* 1. Who I Am Profile Section */}
+        <div id="who-i-am" className="space-y-12 md:space-y-20">
           
-          {/* Left Column Text Content */}
+          {/* Section Header */}
           <FadeIn delay={200}>
-            <div className="flex flex-col items-start gap-8 z-10 w-full max-w-xl relative mx-auto lg:mx-0">
-               
-
-               {/* Headline Title */}
-               <div className="space-y-4">
-                 <h3 className="text-5xl sm:text-6xl lg:text-7xl font-marags font-black text-black dark:text-white tracking-tighter uppercase leading-none text-left transition-colors duration-500">
-                   WHO I <br/><span className="text-red-600 dark:text-red-500">AM</span>
-                 </h3>
-                 <div className="w-16 h-[3px] bg-red-600/50" />
-               </div>
-               
-               {/* Description */}
-               <div className="space-y-6 text-base sm:text-xl max-w-[500px] text-gray-700 dark:text-[#B3B3B3] font-medium leading-relaxed text-left transition-colors duration-500">
-                 <p>
-                   Hi, my name is <span className="text-red-600 dark:text-red-500 font-bold">Segun Showunmi</span>. I am a Software Designer & Developer I build highly functional, agency-level digital products. My work sits exclusively at the intersection of aesthetic brilliance and technical precision.
-                 </p>
-                 <p className="text-gray-500 dark:text-gray-500 text-sm sm:text-base">
-                   With core attention to detail and a deep focus on user experience and seamless performance, I help ambitious brands stand out in a crowded digital landscape through bold design and pristine architecture.
-                 </p>
-               </div>
-               
-               {/* Signature */}
-               <div className="pt-4 text-left">
-                 <p className="text-black dark:text-white font-black italic text-2xl tracking-wide transition-colors duration-500">— Ace. Designer & Developer</p>
-               </div>
+            <div className="flex flex-col items-center text-center space-y-4">
+              <h3 className="text-5xl sm:text-6xl lg:text-7xl font-marags font-black text-black dark:text-white tracking-tighter uppercase leading-none transition-colors duration-500">
+                WHO I <span className="text-red-600 dark:text-red-500">AM</span>
+              </h3>
+              <div className="w-16 h-[3px] bg-red-600/50" />
             </div>
           </FadeIn>
 
-          {/* Right Column Cinematic Image frame */}
-          <FadeIn delay={400}>
-             <div className="relative w-full flex justify-center lg:justify-end z-0">
-                {/* Glow Behind Image */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-red-600/20 blur-[120px] rounded-full pointer-events-none" />
-                
-                <div className="relative w-full max-w-[420px] lg:max-w-[500px] aspect-[4/5] rounded-[2.5rem] bg-gray-100 dark:bg-[#0A0A0A] border border-black/5 dark:border-white/5 overflow-hidden shadow-2xl group transition-colors duration-500">
-                  <Image 
-                    src="/img/IMG_6723.jpg" 
-                    alt="Ace Profile" 
-                    fill 
-                    className="object-cover grayscale group-hover:scale-105 group-hover:grayscale-0 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
-                    priority
-                  />
-                  {/* Internal frame gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 dark:from-black/80 via-black/5 dark:via-black/20 to-transparent opacity-80" />
-                  <div className="absolute inset-0 border border-black/10 dark:border-white/10 rounded-[2.5rem] pointer-events-none group-hover:border-red-500/40 group-hover:shadow-[inset_0_0_50px_rgba(255,26,26,0.2)] transition-all duration-500" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 items-center w-full">
+            {/* Left Column Text Content */}
+            <FadeIn delay={300}>
+              <div className="flex flex-col items-start text-left gap-8 z-10 w-full max-w-xl relative mx-auto lg:mx-0">
+                {/* Description */}
+                <div className="flex flex-col items-start text-left space-y-6 text-base sm:text-xl text-gray-700 dark:text-[#B3B3B3] font-medium leading-relaxed transition-colors duration-500">
+                  <p>
+                    Hi, my name is <span className="text-red-600 dark:text-red-500 font-bold">Segun Showunmi</span>. I am a Software Designer & Developer I build highly functional, agency-level digital products. My work sits exclusively at the intersection of aesthetic brilliance and technical precision.
+                  </p>
+                  <p className="text-gray-500 dark:text-gray-500 text-sm sm:text-base">
+                    With core attention to detail and a deep focus on user experience and seamless performance, I help ambitious brands stand out in a crowded digital landscape through bold design and pristine architecture.
+                  </p>
                 </div>
-             </div>
-          </FadeIn>
+                
+                {/* Signature */}
+                <div className="pt-4 text-left w-full">
+                  <p className="text-black dark:text-white font-black italic text-2xl tracking-wide transition-colors duration-500">— Ace. Designer & Developer</p>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Right Column Cinematic Image frame */}
+            <FadeIn delay={400}>
+               <div className="relative w-full flex justify-center lg:justify-end z-0">
+                  {/* Glow Behind Image */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-red-600/20 blur-[120px] rounded-full pointer-events-none" />
+                  
+                  <div className="relative w-full max-w-[420px] lg:max-w-[500px] aspect-[4/5] rounded-[2.5rem] bg-gray-100 dark:bg-[#0A0A0A] border border-black/5 dark:border-white/5 overflow-hidden shadow-2xl group transition-colors duration-500">
+                    <Image 
+                      src="/img/IMG_6723.jpg" 
+                      alt="Ace Profile" 
+                      fill 
+                      className="object-cover grayscale group-hover:scale-105 group-hover:grayscale-0 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      priority
+                    />
+                    {/* Internal frame gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 dark:from-black/80 via-black/5 dark:via-black/20 to-transparent opacity-80" />
+                    <div className="absolute inset-0 border border-black/10 dark:border-white/10 rounded-[2.5rem] pointer-events-none group-hover:border-red-500/40 group-hover:shadow-[inset_0_0_50px_rgba(255,26,26,0.2)] transition-all duration-500" />
+                  </div>
+               </div>
+            </FadeIn>
+          </div>
         </div>
 
         {/* 2. Stats / Achievements Cards */}
@@ -302,9 +304,9 @@ export default function About() {
         {/* 3. Skills Grid */}
         <div id="core-skills" className="space-y-12">
           <FadeIn>
-            <div className="space-y-4">
-              <h3 className="text-5xl sm:text-6xl lg:text-7xl font-marags font-black text-black dark:text-white tracking-tighter uppercase leading-none text-left transition-colors duration-500">
-                CORE <br/><span className="text-red-600 dark:text-red-500">SKILLS</span>
+            <div className="flex flex-col items-center text-center space-y-4">
+              <h3 className="text-5xl sm:text-6xl lg:text-7xl font-marags font-black text-black dark:text-white tracking-tighter uppercase leading-none transition-colors duration-500">
+                CORE <span className="text-red-600 dark:text-red-500">SKILLS</span>
               </h3>
               <div className="w-16 h-[3px] bg-red-600/50" />
             </div>

@@ -276,7 +276,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-10 md:pt-16 pb-20 md:pb-32 overflow-hidden selection:bg-red-500/30 transition-colors duration-500">
+    <section id="projects" className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-16 md:pt-24 pb-16 md:pb-24 overflow-hidden selection:bg-red-500/30 transition-colors duration-500">
       
       {/* Background Cinematic Decor Element */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -285,13 +285,13 @@ export default function Projects() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 dark:opacity-5 mix-blend-overlay" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-0 lg:px-12 space-y-16 md:space-y-32">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-0 lg:px-12 space-y-32 md:space-y-48">
         
         {/* Section Header */}
         <FadeIn>
-          <div className="space-y-4">
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-marags font-black text-black dark:text-white tracking-tighter uppercase leading-none text-left transition-colors duration-500">
-              SELECTED <br/><span className="text-red-600 dark:text-red-500">WORKS</span>
+          <div className="flex flex-col items-center text-center space-y-4">
+            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-marags font-black text-black dark:text-white tracking-tighter uppercase leading-none transition-colors duration-500">
+              SELECTED <span className="text-red-600 dark:text-red-500">WORKS</span>
             </h2>
             <div className="w-16 h-[3px] bg-red-600/50" />
             <p className="text-base md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed mt-6 transition-colors duration-500">

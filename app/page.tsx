@@ -7,6 +7,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
+import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 import MouseGlow from "@/components/MouseGlow";
 import TypewriterHeadline from "@/components/TypewriterHeadline";
@@ -236,6 +237,7 @@ export default function Home() {
       <div className="relative z-10 bg-transparent flex-none">
         <About />
         <Projects />
+        <Testimonials />
       </div>
       
       {/* Footer Section placed at the bottom */}
