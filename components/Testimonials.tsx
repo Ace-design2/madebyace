@@ -53,8 +53,8 @@ export default function Testimonials() {
 
   // Physics-based game loop for the marquee
   useAnimationFrame((t, delta) => {
-    // 0.5 is the base auto-pan speed towards the left
-    let moveBy = -0.75 * (delta / 16); 
+    // 0.35 is a smooth, readable base auto-pan speed towards the left
+    let moveBy = -0.35 * (delta / 16); 
 
     if (isHovered || isDragging.current) {
       moveBy = 0;
