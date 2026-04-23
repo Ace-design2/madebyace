@@ -65,6 +65,94 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
   );
 };
 
+const StatCard = ({ stat }: { stat: { number: string; label: string; icon: React.ReactNode } }) => {
+  const numMatch = stat.number.match(/(\d+)/);
+  const targetNum = numMatch ? parseInt(numMatch[1], 10) : 0;
+  const suffix = stat.number.replace(/[0-9]/g, '');
+
+  const [count, setCount] = useState(targetNum);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (!isHovered) {
+      setCount(targetNum);
+      return;
+    }
+
+    let startTime: number;
+    let animationFrame: number;
+    
+    // Dynamically adjust duration so smaller counts don't feel agonizingly slow
+    // e.g., 2 takes 500ms, 100 takes 1500ms
+    const duration = Math.min(1500, Math.max(500, targetNum * 20));
+
+    const animateFn = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const progressRatio = Math.min(progress / duration, 1);
+      
+      // Use a much smoother easeOut (Cubic or Quad) so it doesn't "hang" 
+      // on the second-to-last number like an exponential curve does.
+      const easeOut = 1 - Math.pow(1 - progressRatio, 3); // Cubic ease out
+      
+      // Use Math.round instead of floor so it reaches the final integer naturally
+      const currentCount = Math.round(easeOut * targetNum);
+      
+      setCount(currentCount);
+
+      if (progressRatio < 1) {
+        animationFrame = requestAnimationFrame(animateFn);
+      } else {
+        setCount(targetNum);
+      }
+    };
+
+    setCount(0);
+    animationFrame = requestAnimationFrame(animateFn);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isHovered, targetNum]);
+
+  return (
+    <div 
+      className="relative bg-black/5 dark:bg-[#0A0A0A] p-6 rounded-2xl text-center group hover:shadow-[0_0_35px_rgba(255,26,26,0.15)] transition-all duration-500 hover:-translate-y-1 overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Base inactive border */}
+      <div className="absolute inset-0 border border-black/10 dark:border-white/10 rounded-2xl transition-colors duration-500 pointer-events-none group-hover:border-transparent z-0"></div>
+      
+      {/* SVG Progress Border */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none z-0"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          rx="16"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="4"
+          pathLength="100"
+          strokeDasharray="100"
+          className="text-red-500 [stroke-dashoffset:100] group-hover:[stroke-dashoffset:0] transition-all duration-700 ease-out"
+        />
+      </svg>
+
+      <div className="relative z-10">
+        <div className="mb-3 text-red-500 text-2xl flex justify-center group-hover:scale-110 transition-transform duration-500">{stat.icon}</div>
+        <div className="text-3xl font-bold text-black dark:text-white mb-1 transition-colors">
+          {count}{suffix}
+        </div>
+        <div className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-500 group-hover:text-red-600 dark:group-hover:text-red-500/80 transition-colors">{stat.label}</div>
+      </div>
+    </div>
+  );
+};
+
 export default function About() {
   const stats = [
     { number: "10+", label: "Projects Completed", icon: <FiBriefcase /> },
@@ -206,36 +294,7 @@ export default function About() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <FadeIn key={index} delay={index * 100}>
-              <div className="relative bg-black/5 dark:bg-[#0A0A0A] p-6 rounded-2xl text-center group hover:shadow-[0_0_35px_rgba(255,26,26,0.15)] transition-all duration-500 hover:-translate-y-1 overflow-hidden">
-                {/* Base inactive border */}
-                <div className="absolute inset-0 border border-black/10 dark:border-white/10 rounded-2xl transition-colors duration-500 pointer-events-none group-hover:border-transparent z-0"></div>
-                
-                {/* SVG Progress Border */}
-                <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none z-0"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="0"
-                    y="0"
-                    width="100%"
-                    height="100%"
-                    rx="16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    pathLength="100"
-                    strokeDasharray="100"
-                    className="text-red-500 [stroke-dashoffset:100] group-hover:[stroke-dashoffset:0] transition-all duration-700 ease-out"
-                  />
-                </svg>
-
-                <div className="relative z-10">
-                  <div className="mb-3 text-red-500 text-2xl flex justify-center group-hover:scale-110 transition-transform duration-500">{stat.icon}</div>
-                  <div className="text-3xl font-bold text-black dark:text-white mb-1 transition-colors">{stat.number}</div>
-                  <div className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-500 group-hover:text-red-600 dark:group-hover:text-red-500/80 transition-colors">{stat.label}</div>
-                </div>
-              </div>
+              <StatCard stat={stat} />
             </FadeIn>
           ))}
         </div>
