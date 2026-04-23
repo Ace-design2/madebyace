@@ -1,6 +1,8 @@
 "use client";
 
 import { FiStar } from "react-icons/fi";
+import { motion, useAnimationFrame, useMotionValue } from "framer-motion";
+import { useRef, useState } from "react";
 
 const testimonials = [
   {
@@ -41,8 +43,40 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  // Duplicate array for seamless infinite marquee loop
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
+  // Duplicate array three times to safely allow dragging in both directions endlessly
+  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
+
+  const x = useMotionValue(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const isDragging = useRef(false);
+
+  // Physics-based game loop for the marquee
+  useAnimationFrame((t, delta) => {
+    // 0.5 is the base auto-pan speed towards the left
+    let moveBy = -0.75 * (delta / 16); 
+
+    if (isHovered || isDragging.current) {
+      moveBy = 0;
+    }
+
+    if (!containerRef.current) return;
+    
+    // We rendered 3 identical sets. The length of exactly 1 set is the total width divided by 3.
+    const singleSetWidth = containerRef.current.scrollWidth / 3;
+    let currentX = x.get();
+    
+    currentX += moveBy;
+
+    // Infinite seamless loop boundary logic
+    if (currentX <= -singleSetWidth) {
+      currentX += singleSetWidth;
+    } else if (currentX > 0) {
+      currentX -= singleSetWidth;
+    }
+
+    x.set(currentX);
+  });
 
   return (
     <section className="relative w-full pt-16 md:pt-24 pb-32 md:pb-48 bg-white dark:bg-black overflow-hidden transition-colors duration-500 border-y border-black/5 dark:border-white/5">
@@ -69,20 +103,31 @@ export default function Testimonials() {
       <div 
         className="w-full relative overflow-hidden flex flex-col justify-center items-start group"
         style={{
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
-          maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)'
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
         }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="flex animate-marquee hover:[animation-play-state:paused] w-max gap-6 md:gap-8 px-6">
+        <motion.div 
+          ref={containerRef}
+          style={{ x }}
+          className="flex w-max gap-6 md:gap-8 px-6 cursor-grab active:cursor-grabbing"
+          drag="x"
+          dragConstraints={{ left: -10000, right: 10000 }} // Manual JS bounds applied in animation loop
+          dragElastic={0}
+          onDragStart={() => (isDragging.current = true)}
+          onDragEnd={() => (isDragging.current = false)}
+        >
           {duplicatedTestimonials.map((testimonial, idx) => (
             <div 
               key={idx} 
-              className="relative w-[300px] sm:w-[380px] md:w-[450px] flex-shrink-0 bg-black/5 dark:bg-[#0A0A0A] backdrop-blur-xl border border-black/10 dark:border-white/10 p-8 md:p-10 rounded-[2.5rem] group/card hover:border-red-500/30 hover:shadow-[0_0_30px_rgba(255,26,26,0.1)] transition-all duration-500 cursor-pointer"
+              className="relative w-[300px] sm:w-[380px] md:w-[450px] flex-shrink-0 bg-black/5 dark:bg-[#0A0A0A] backdrop-blur-xl border border-black/10 dark:border-white/10 p-8 md:p-10 rounded-[2.5rem] group/card hover:border-red-500/30 hover:shadow-[0_0_30px_rgba(255,26,26,0.1)] transition-all duration-500"
             >
               {/* Internal subtle glow on hover */}
               <div className="absolute inset-0 bg-gradient-to-b from-red-500/0 via-transparent to-red-500/5 opacity-0 group-hover/card:opacity-100 rounded-[2.5rem] pointer-events-none transition-opacity duration-500" />
               
-              <div className="relative z-10 flex flex-col gap-6 h-full justify-between">
+              <div className="relative z-10 flex flex-col gap-6 h-full justify-between pointer-events-none">
                 <div>
                   <div className="flex gap-1 mb-6">
                     {[...Array(testimonial.rating)].map((_, i) => (
@@ -96,7 +141,7 @@ export default function Testimonials() {
                 </div>
                 
                 <div className="flex items-center gap-4 mt-8 pt-6 border-t border-black/5 dark:border-white/5">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden border border-black/10 dark:border-white/10 shrink-0">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border border-black/10 dark:border-white/10 shrink-0 pointer-events-auto">
                     <img src={testimonial.avatar} alt={testimonial.name} className="w-full h-full object-cover" />
                   </div>
                   <div className="flex flex-col">
@@ -112,7 +157,7 @@ export default function Testimonials() {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
       
     </section>
