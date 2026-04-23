@@ -16,7 +16,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 
 // Helper components for modularity
-const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) => {
+const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
@@ -58,7 +58,7 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: nu
       style={{ transitionDelay: isVisible && shouldAnimate ? `${delay}ms` : '0ms' }}
       className={`${shouldAnimate ? 'transition-all duration-700 ease-out' : 'transition-none'} ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
+      } ${className}`}
     >
       {children}
     </div>
@@ -74,18 +74,18 @@ export default function About() {
   ];
 
   const skills = [
-    { name: "React", icon: <SiReact className="text-[#61DAFB]" />, desc: "High-performance applications" },
-    { name: "TypeScript", icon: <SiTypescript className="text-[#3178C6]" />, desc: "Type-safe robust code" },
-    { name: "Next.js", icon: <SiNextdotjs className="text-white" />, desc: "Server-side excellence" },
-    { name: "Tailwind", icon: <SiTailwindcss className="text-[#06B6D4]" />, desc: "Modern utility styling" },
-    { name: "UI Design", icon: <FiLayout className="text-[#FF1A1A]" />, desc: "Clean aesthetic layouts" },
-    { name: "Figma", icon: <SiFramer className="text-[#F24E1E]" />, desc: "Visual storytelling" },
-    { name: "API Integration", icon: <FiCode className="text-red-400" />, desc: "Seamless data flow" },
-    { name: "Optimization", icon: <FiZap className="text-yellow-400" />, desc: "Speed and performance" },
-    { name: "Python", icon: <SiPython className="text-[#3776AB]" />, desc: "Dynamic backend logic" },
-    { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" />, desc: "Real-time cloud infrastructure" },
-    { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" />, desc: "Reliable data architecture" },
-    { name: "Git", icon: <SiGit className="text-[#F05032]" />, desc: "Modern version control" },
+    { name: "React", icon: <SiReact className="text-[#61DAFB]" />, desc: "High-performance applications", className: "md:col-span-2 lg:col-span-2 lg:row-span-2" },
+    { name: "TypeScript", icon: <SiTypescript className="text-[#3178C6]" />, desc: "Type-safe robust code", className: "md:col-span-1 lg:col-span-2 lg:row-span-1" },
+    { name: "Next.js", icon: <SiNextdotjs className="text-black dark:text-white" />, desc: "Server-side excellence", className: "md:col-span-1 lg:col-span-1 lg:row-span-1" },
+    { name: "Tailwind", icon: <SiTailwindcss className="text-[#06B6D4]" />, desc: "Modern utility styling", className: "md:col-span-1 lg:col-span-1 lg:row-span-1" },
+    { name: "UI Design", icon: <FiLayout className="text-[#FF1A1A]" />, desc: "Clean aesthetic layouts", className: "md:col-span-1 md:row-span-2 lg:col-span-1 lg:row-span-2" },
+    { name: "Figma", icon: <SiFramer className="text-[#F24E1E]" />, desc: "Visual storytelling", className: "md:col-span-2 lg:col-span-2 lg:row-span-1" },
+    { name: "API Integration", icon: <FiCode className="text-red-400" />, desc: "Seamless data flow", className: "md:col-span-1 md:row-span-2 lg:col-span-1 lg:row-span-2" },
+    { name: "Optimization", icon: <FiZap className="text-yellow-400" />, desc: "Speed and performance", className: "md:col-span-2 lg:col-span-2 lg:row-span-1" },
+    { name: "Python", icon: <SiPython className="text-[#3776AB]" />, desc: "Dynamic backend logic", className: "md:col-span-2 lg:col-span-2 lg:row-span-2" },
+    { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" />, desc: "Real-time cloud infrastructure", className: "md:col-span-1 lg:col-span-2 lg:row-span-1" },
+    { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" />, desc: "Reliable data architecture", className: "md:col-span-1 lg:col-span-1 lg:row-span-1" },
+    { name: "Git", icon: <SiGit className="text-[#F05032]" />, desc: "Modern version control", className: "md:col-span-1 lg:col-span-1 lg:row-span-1" },
   ];
 
   const techStack = [
@@ -250,15 +250,17 @@ export default function About() {
               <div className="w-16 h-[3px] bg-red-600/50" />
             </div>
           </FadeIn>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {skills.map((skill, index) => (
-              <FadeIn key={index} delay={index * 50}>
-                <div className="relative overflow-hidden bg-black/5 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 p-6 rounded-2xl group hover:border-red-500/40 hover:shadow-[0_0_25px_rgba(255,26,26,0.2)] transition-all duration-500">
+              <FadeIn key={index} delay={index * 50} className={skill.className || ""}>
+                <div className="relative h-full flex flex-col justify-between overflow-hidden bg-black/5 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 p-6 sm:p-8 rounded-3xl group hover:border-red-500/40 hover:shadow-[0_0_25px_rgba(255,26,26,0.2)] transition-all duration-500">
                   <span className="absolute inset-0 w-full h-full bg-red-600 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 -translate-x-[105%] group-hover:translate-x-0"></span>
                   
-                  <div className="relative z-10 mb-4 text-3xl transition-transform duration-500">{skill.icon}</div>
-                  <h4 className="relative z-10 text-lg font-bold text-black dark:text-white group-hover:text-white mb-2 transition-colors">{skill.name}</h4>
-                  <p className="relative z-10 text-sm text-gray-500 dark:text-gray-400 group-hover:text-white/90 leading-snug transition-colors">{skill.desc}</p>
+                  <div className={`relative z-10 transition-transform duration-500 ${skill.className?.includes('row-span-2') ? 'text-5xl mt-2 mb-auto' : 'text-3xl mb-4'}`}>{skill.icon}</div>
+                  <div className="relative z-10 mt-auto pt-4">
+                    <h4 className={`font-bold text-black dark:text-white group-hover:text-white mb-2 transition-colors tracking-tight ${skill.className?.includes('row-span-2') ? 'text-2xl md:text-3xl' : 'text-lg'}`}>{skill.name}</h4>
+                    <p className={`text-gray-500 dark:text-gray-400 group-hover:text-white/90 leading-snug transition-colors ${skill.className?.includes('row-span-2') ? 'text-base' : 'text-sm'}`}>{skill.desc}</p>
+                  </div>
                 </div>
               </FadeIn>
             ))}
