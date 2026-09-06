@@ -122,10 +122,10 @@ export default function Testimonials() {
           {duplicatedTestimonials.map((testimonial, idx) => (
             <div 
               key={idx} 
-              className="relative w-[300px] sm:w-[380px] md:w-[450px] flex-shrink-0 bg-black/5 dark:bg-[#0A0A0A] backdrop-blur-xl border border-black/10 dark:border-white/10 p-8 md:p-10 rounded-[2.5rem] group/card hover:border-red-500/30 hover:shadow-[0_0_30px_rgba(255,26,26,0.1)] transition-all duration-500"
+              className="relative w-[300px] sm:w-[380px] md:w-[450px] flex-shrink-0 bg-black/5 dark:bg-[#0A0A0A] backdrop-blur-xl border border-black/10 dark:border-white/10 p-8 md:p-10 rounded-xl group/card hover:border-red-500/30 hover:shadow-[0_0_30px_rgba(255,26,26,0.1)] transition-all duration-500"
             >
               {/* Internal subtle glow on hover */}
-              <div className="absolute inset-0 bg-gradient-to-b from-red-500/0 via-transparent to-red-500/5 opacity-0 group-hover/card:opacity-100 rounded-[2.5rem] pointer-events-none transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-b from-red-500/0 via-transparent to-red-500/5 opacity-0 group-hover/card:opacity-100 rounded-xl pointer-events-none transition-opacity duration-500" />
               
               <div className="relative z-10 flex flex-col gap-6 h-full justify-between pointer-events-none">
                 <div>

@@ -176,12 +176,12 @@ const ProjectCard = ({ project }: { project: Project }) => {
         transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out, box-shadow 0.5s ease',
         transformStyle: 'preserve-3d'
       }}
-      className="group relative z-10 hover:z-20 rounded-[2.5rem] bg-gray-50 dark:bg-[#0A0A0A] shadow-md dark:shadow-2xl hover:shadow-[0_0_40px_rgba(255,26,26,0.15)] p-4 sm:p-5 flex flex-col h-full cursor-pointer border border-black/5 dark:border-transparent no-underline block"
+      className="group relative z-10 hover:z-20 rounded-xl bg-gray-50 dark:bg-[#0A0A0A] shadow-md dark:shadow-2xl hover:shadow-[0_0_40px_rgba(255,26,26,0.15)] p-4 sm:p-5 flex flex-col h-full cursor-pointer border border-black/5 dark:border-transparent no-underline block"
     >
       
       {/* Base inactive border */}
       <div 
-        className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-[2.5rem] transition-colors duration-500 pointer-events-none group-hover:border-transparent z-0"
+        className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-xl transition-colors duration-500 pointer-events-none group-hover:border-transparent z-0"
         style={{ transform: "translateZ(-1px)" }}
       ></div>
       
@@ -196,7 +196,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           y="0"
           width="100%"
           height="100%"
-          rx="40"
+          rx="12"
           fill="none"
           stroke="currentColor"
           strokeWidth="4"
@@ -207,7 +207,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
       </svg>
 
       <div 
-        className={`w-full aspect-video sm:aspect-square overflow-hidden rounded-[2rem] relative mb-6 bg-gradient-to-br ${project.gradient} z-10`}
+        className={`w-full aspect-video sm:aspect-square overflow-hidden rounded-lg relative mb-6 bg-gradient-to-br ${project.gradient} z-10`}
         style={{ 
           transform: isHovered ? "translateZ(20px)" : "translateZ(0)",
           transition: "transform 0.3s ease-out",
@@ -235,7 +235,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         )}
         
         {/* Decorative inner border */}
-        <div className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-[2rem] pointer-events-none transition-colors duration-500 z-20" />
+        <div className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-lg pointer-events-none transition-colors duration-500 z-20" />
       </div>
 
       <div 

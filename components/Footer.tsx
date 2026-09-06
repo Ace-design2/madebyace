@@ -43,7 +43,7 @@ export default function Footer() {
         {/* Massive Typography section */}
         <div className="w-full flex flex-col items-center text-center space-y-6 md:space-y-10 mb-16 md:mb-32">
           <p className="text-red-500 font-bold uppercase tracking-[0.4em] text-[10px] md:text-sm animate-pulse shadow-sm">Have an idea?</p>
-          <h2 className="text-[14vw] md:text-[11vw] leading-none font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-black to-black/20 dark:from-white dark:to-white/10 select-none drop-shadow-2xl hover:scale-105 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] cursor-default">
+          <h2 className="font-marags text-[14vw] md:text-[11vw] leading-none font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-black to-black/20 dark:from-white dark:to-white/10 select-none drop-shadow-2xl hover:scale-105 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] cursor-default">
             LET&apos;S WORK
           </h2>
           <div className="pt-6 md:pt-12">

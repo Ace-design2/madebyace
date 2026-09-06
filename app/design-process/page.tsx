@@ -147,7 +147,7 @@ export default function DesignProcessPage() {
               
               {/* Content Side */}
               <FadeIn delay={index * 0.1} className="w-full md:w-1/2">
-                <div className={`p-8 md:p-12 rounded-[2.5rem] bg-black/5 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 relative overflow-hidden group hover:border-transparent transition-all duration-500 shadow-xl ${index % 2 !== 0 ? 'md:text-right md:items-end flex flex-col' : ''}`}>
+                <div className={`p-8 md:p-12 rounded-xl bg-black/5 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 relative overflow-hidden group hover:border-transparent transition-all duration-500 shadow-xl ${index % 2 !== 0 ? 'md:text-right md:items-end flex flex-col' : ''}`}>
                   
                   {/* SVG Progress Border */}
                   <svg
@@ -159,7 +159,7 @@ export default function DesignProcessPage() {
                       y="0"
                       width="100%"
                       height="100%"
-                      rx="40"
+                      rx="12"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="4"
@@ -174,7 +174,7 @@ export default function DesignProcessPage() {
                   
                   <div className="relative z-10">
                     <div className={`text-sm font-black text-red-600 mb-4 tracking-[0.3em] font-mono`}>{process.step}</div>
-                    <div className={`w-14 h-14 bg-red-600/10 rounded-2xl flex items-center justify-center text-red-500 text-3xl mb-6 group-hover:bg-red-600 group-hover:text-white transition-all duration-500 ${index % 2 !== 0 ? 'md:ml-auto' : ''}`}>
+                    <div className={`w-14 h-14 bg-red-600/10 rounded-lg flex items-center justify-center text-red-500 text-3xl mb-6 group-hover:bg-red-600 group-hover:text-white transition-all duration-500 ${index % 2 !== 0 ? 'md:ml-auto' : ''}`}>
                       {process.icon}
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-black dark:text-white mb-4 tracking-tight transition-colors">{process.title}</h3>
